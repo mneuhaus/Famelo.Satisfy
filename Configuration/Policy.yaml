@@ -1,0 +1,16 @@
+#                                                                        #
+# Security policy for the TYPO3 package                                  #
+#                                                                        #
+
+resources:
+  methods:
+    ADU: 'method(Famelo\ADU\(?!.*Login).*->.*Action())'
+
+roles:
+  Administrator: [ Editor ]
+  Editor: []
+
+acls:
+  Editor:
+    methods:
+      ADU: GRANT
