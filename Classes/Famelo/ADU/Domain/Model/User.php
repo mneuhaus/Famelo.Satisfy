@@ -59,10 +59,14 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	protected $role;
 
 	public function __construct() {
-		parent::__construct();
-		$account = new \TYPO3\Flow\Security\Account();
-		$account->setAuthenticationProviderName('ADUProvider');
-		$this->addAccount($account);
+		if ($this->accounts == NULL) {
+			parent::__construct();
+			$account = new \TYPO3\Flow\Security\Account();
+			$account->setAuthenticationProviderName('ADUProvider');
+			$this->addAccount($account);
+		} else {
+			parent::__construct();
+		}
 	}
 
 	public function __toString() {
@@ -80,6 +84,9 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 */
 	public function setAccounts($accounts) {
 		$this->accounts = $accounts;
+		foreach ($this->accounts as $account) {
+			$account->setParty($this);
+		}
 	}
 
 	/**
