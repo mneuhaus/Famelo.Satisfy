@@ -2,7 +2,7 @@ Famelo:
   ADU:
     modules:
       intro:
-        label: 'Overview'
+        label: 'Übersicht'
         arguments:
           @controller: 'Overview'
           @package: 'Famelo.ADU'
