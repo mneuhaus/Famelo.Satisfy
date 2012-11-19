@@ -1,0 +1,34 @@
+prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		role.ignore = true
+		electronicAddresses.ignore = true
+		primaryElectronicAddress.ignore = true
+
+		accounts {
+			label = 'Zugangsdaten'
+			inline {
+				element = 'TYPO3.Expose:InlineSeamless'
+				multipleMode = false
+			}
+		}
+		name {
+			label = 'Name'
+			@position= 'after accounts'
+			inline {
+				element = 'TYPO3.Expose:InlineSeamless'
+			}
+		}
+		phone {
+			label = 'Telefon'
+		}
+		mobile {
+			label = 'Mobiltelefon'
+		}
+		email {
+			label = 'E-Mail'
+		}
+		branch {
+			label = 'Niederlassung'
+		}
+	}
+}

@@ -4,7 +4,7 @@
 
 resources:
   methods:
-    ADU: 'method(Famelo\ADU\(?!.*Login).*->.*Action())'
+    ADU: 'method(Famelo\ADU\(?!.*Login).*->.*FAction())'
 
 roles:
   Administrator: [ Editor ]

@@ -18,6 +18,7 @@ use TYPO3\Flow\Annotations as Flow;
  * A person
  *
  * @Flow\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class User extends \TYPO3\Party\Domain\Model\Person {
 
@@ -56,7 +57,7 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 * The role
 	 * @var string
 	 */
-	protected $role;
+	protected $role = '';
 
 	public function __construct() {
 		if ($this->accounts == NULL) {
@@ -66,6 +67,16 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 			$this->addAccount($account);
 		} else {
 			parent::__construct();
+		}
+	}
+
+	/**
+	 * @ORM\PrePersist
+	 */
+	public function updateAccounts() {
+		foreach ($this->accounts as $account) {
+			$account->setParty($this);
+			$account->addRole(new \TYPO3\Flow\Security\Policy\Role('Administrator'));
 		}
 	}
 
@@ -84,9 +95,6 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 */
 	public function setAccounts($accounts) {
 		$this->accounts = $accounts;
-		foreach ($this->accounts as $account) {
-			$account->setParty($this);
-		}
 	}
 
 	/**
