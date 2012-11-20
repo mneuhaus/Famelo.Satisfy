@@ -10,7 +10,7 @@ Famelo:
       surveys:
         label: 'Befragungen'
         arguments:
-          @controller: 'Overview'
+          @controller: 'Survey'
           @package: 'Famelo.ADU'
 
       branches:
@@ -63,3 +63,17 @@ TYPO3:
             entryPoint: 'WebRedirect'
             entryPointOptions:
               uri: famelo.adu/login
+
+  Form:
+    presets:
+      expose:
+        formElementTypes:
+
+          'Famelo.ADU:HiddenQuestion':
+            superTypes: ['TYPO3.Expose:Hidden']
+
+          'Famelo.ADU:Answers':
+            superTypes: ['TYPO3.Expose:InlineStacked']
+
+          'Famelo.ADU:AnswersItem':
+            superTypes: ['TYPO3.Expose:InlineStacked']

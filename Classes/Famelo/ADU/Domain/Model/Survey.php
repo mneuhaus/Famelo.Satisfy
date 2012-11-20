@@ -45,6 +45,7 @@ class Survey {
 
 	public function __construct() {
 		$this->created = new \DateTime();
+		$this->answers = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	/**
@@ -120,7 +121,21 @@ class Survey {
 	 * @return void
 	 */
 	public function setAnswers($answers) {
+		foreach ($answers as $answer) {
+			$answer->setSurvey($this);
+		}
 		$this->answers = $answers;
+	}
+
+	/**
+	 * Sets this Survey's answers
+	 *
+	 * @param \Famelo\ADU\Domain\Model\Answer $answer The Survey's answer
+	 * @return void
+	 */
+	public function addAnswer($answer) {
+		$answer->setSurvey($this);
+		$this->answers->add($answer);
 	}
 
 }

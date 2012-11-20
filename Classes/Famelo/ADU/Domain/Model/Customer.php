@@ -70,6 +70,9 @@ class Customer {
 	 */
 	protected $branch;
 
+	public function __toString() {
+		return $this->getName();
+	}
 
 	/**
 	 * Get the Customer's name

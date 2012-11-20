@@ -17,6 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Answer {
 
 	/**
+	 * The survey
+	 * @var \Famelo\ADU\Domain\Model\Survey
+	 * @ORM\ManyToOne(inversedBy="answers", cascade={"all"})
+	 */
+	protected $survey;
+
+	/**
 	 * The question
 	 * @var \Famelo\ADU\Domain\Model\Question
 	 * @ORM\ManyToOne(inversedBy="answers", cascade={"all"})
@@ -33,8 +40,11 @@ class Answer {
 	 * The comment
 	 * @var string
 	 */
-	protected $comment;
+	protected $comment = '';
 
+	public function __toString() {
+		return $this->question->getBody();
+	}
 
 	/**
 	 * Get the Answer's question
@@ -93,5 +103,18 @@ class Answer {
 		$this->comment = $comment;
 	}
 
+	/**
+	 * @param \Famelo\ADU\Domain\Model\Survey $survey
+	 */
+	public function setSurvey($survey) {
+		$this->survey = $survey;
+	}
+
+	/**
+	 * @return \Famelo\ADU\Domain\Model\Survey
+	 */
+	public function getSurvey() {
+		return $this->survey;
+	}
 }
 ?>

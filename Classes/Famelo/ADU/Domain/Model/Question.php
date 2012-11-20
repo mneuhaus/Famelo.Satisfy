@@ -24,7 +24,7 @@ class Question {
 
 	/**
 	 * The weight
-	 * @var integer
+	 * @var float
 	 */
 	protected $weight;
 
@@ -34,6 +34,9 @@ class Question {
 	 */
 	protected $type;
 
+	public function __toString() {
+		return $this->getBody();
+	}
 
 	/**
 	 * Get the Question's body
@@ -57,7 +60,7 @@ class Question {
 	/**
 	 * Get the Question's weight
 	 *
-	 * @return integer The Question's weight
+	 * @return float The Question's weight
 	 */
 	public function getWeight() {
 		return $this->weight;
@@ -66,7 +69,7 @@ class Question {
 	/**
 	 * Sets this Question's weight
 	 *
-	 * @param integer $weight The Question's weight
+	 * @param float $weight The Question's weight
 	 * @return void
 	 */
 	public function setWeight($weight) {
