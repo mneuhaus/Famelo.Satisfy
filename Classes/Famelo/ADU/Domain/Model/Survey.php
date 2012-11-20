@@ -19,7 +19,7 @@ class Survey {
 	/**
 	 * The customer
 	 * @var \Famelo\ADU\Domain\Model\Customer
-	 * @ORM\ManyToOne(cascade={"all"})
+	 * @ORM\ManyToOne
 	 */
 	protected $customer;
 

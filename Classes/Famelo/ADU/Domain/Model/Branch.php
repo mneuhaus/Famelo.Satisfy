@@ -88,6 +88,19 @@ class Branch {
 	}
 
 	/**
+	 * Get the branch's questions
+	 *
+	 * @return \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Question> The branch's questions
+	 */
+	public function getMatchingQuestions() {
+		if (count($this->questions) > 0) {
+			return $this->questions;
+		}
+
+		return $this->getBranch()->getMatchingQuestions();
+	}
+
+	/**
 	 * Sets this branch's questions
 	 *
 	 * @param \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Question> $questions The branch's questions

@@ -31,7 +31,7 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	public function newAction($customer) {
 		$survey = new \Famelo\ADU\Domain\Model\Survey();
 		$survey->setCustomer($customer);
-		foreach ($customer->getBranch()->getQuestions() as $question) {
+		foreach ($customer->getBranch()->getMatchingQuestions() as $question) {
 			$answer = new \Famelo\ADU\Domain\Model\Answer();
 			$answer->setQuestion($question);
 			$survey->addAnswer($answer);

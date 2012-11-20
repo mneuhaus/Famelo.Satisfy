@@ -43,7 +43,11 @@ class Answer {
 	protected $comment = '';
 
 	public function __toString() {
-		return $this->question->getBody();
+		if (is_object($this->question)) {
+			return $this->question->getBody();
+		} else {
+			return '';
+		}
 	}
 
 	/**
