@@ -1,0 +1,13 @@
+prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		rating.ignore = true
+
+		answers {
+			label = 'Fragen'
+			inline {
+				element = 'Famelo.ADU:Answers'
+				multipleMode = false
+			}
+		}
+	}
+}

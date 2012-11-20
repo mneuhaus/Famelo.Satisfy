@@ -1,0 +1,16 @@
+prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Branch) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		name {
+			label = 'Bezeichnung'
+		}
+		branch {
+			label = 'Übergeordnete Niederlassung'
+		}
+		questions {
+			label = 'Fragen'
+			inline {
+				element = 'TYPO3.Expose:InlineTabular'
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Question) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		body.label = 'Frage'
+		weight {
+			label = 'Gewichtung'
+		}
+		type {
+			label = 'Art'
+		}
+	}
+}
