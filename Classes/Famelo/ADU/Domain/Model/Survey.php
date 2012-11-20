@@ -19,7 +19,7 @@ class Survey {
 	/**
 	 * The customer
 	 * @var \Famelo\ADU\Domain\Model\Customer
-	 * @ORM\ManyToOne
+	 * @ORM\ManyToOne(cascade={"persist"})
 	 */
 	protected $customer;
 
@@ -32,7 +32,7 @@ class Survey {
 	/**
 	 * The rating
 	 * @var \Famelo\ADU\Domain\Model\Rating
-	 * @ORM\OneToOne(cascade={"all"})
+	 * @ORM\OneToOne(cascade={"persist"})
 	 */
 	protected $rating;
 

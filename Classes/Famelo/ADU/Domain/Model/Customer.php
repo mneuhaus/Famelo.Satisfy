@@ -34,7 +34,7 @@ class Customer {
 	 * The contact
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Contact
-	 * @ORM\ManyToOne(inversedBy="customers", cascade={"all"})
+	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
 	 */
 	protected $contact;
 
@@ -42,7 +42,7 @@ class Customer {
 	 * The alternative contact
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Contact
-	 * @ORM\ManyToOne(inversedBy="alternative_customers", cascade={"all"})
+	 * @ORM\ManyToOne(inversedBy="alternative_customers", cascade={"persist"})
 	 */
 	protected $alternativeContact;
 
@@ -50,7 +50,7 @@ class Customer {
 	 * The category
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Category
-	 * @ORM\ManyToOne(inversedBy="customers", cascade={"all"})
+	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
 	 */
 	protected $category;
 
@@ -58,7 +58,7 @@ class Customer {
 	 * The consultant
 	 *
 	 * @var \Famelo\ADU\Domain\Model\User
-	 * @ORM\ManyToOne(inversedBy="customers", cascade={"all"})
+	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
 	 */
 	protected $consultant;
 
@@ -66,7 +66,7 @@ class Customer {
 	 * The Branch
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Branch
-	 * @ORM\ManyToOne(inversedBy="customers", cascade={"all"})
+	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
 	 */
 	protected $branch;
 
