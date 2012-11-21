@@ -6,7 +6,20 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 
 		cycle {
 			label = 'Rhytmus'
+			element = 'TYPO3.Form:SingleSelectDropdown'
+			optionsProvider {
+				class = 'Array'
+				options {
+					30 = 'Monatlich'
+					90 = 'Quartal'
+					180 = 'Halbjährig'
+				}
+			}
 		}
+
+		category.label = 'Kategorie'
+		consultant.label = 'Kundenbetreuer'
+		branch.label = 'Niederlassung'
 
 		contact {
 			label = 'Ansprechpartner'
@@ -21,6 +34,8 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 				element = 'TYPO3.Expose:InlineSeamless'
 			}
 		}
+
+		surveys.ignore = true
 	}
 }
 
