@@ -1,8 +1,7 @@
 @import "mixins.less";
 
 .btn-off-canvas {
-	display: none;
-  	padding: 7px 10px;
+  	padding: 7px;
   	margin-right: 5px;
   	margin-left: 0px;
 
@@ -20,7 +19,7 @@
 	}
 
 	.icon-bar + .icon-bar {
-  	margin-top: 3px;
+  		margin-top: 3px;
 	}
 }
 
@@ -42,6 +41,8 @@
 			width: 90%;
 			padding: 0;
 			box-sizing: border-box;
+			height: 100%;
+			overflow: auto;
 		}
 
 		[role="left"] {
@@ -61,24 +62,13 @@
 	[role="main"]{
 //		width: 100%;
 	}
-	.off-canvas[data-canvas="left"] {
+	.off-canvas-active {
 		[role="left"] {
-			margin-left: -20px;
-			width: 300px;
+			margin-left: 0px;
+			width: 240px;
 		}
 		[role="main"] {
-			margin-left: 300px;
-			position: relative;
-		}
-	}
-	.off-canvas[data-canvas="right"] {
-		[role="right"] {
-			margin-left: 0;
-			width: 300px;
-		}
-		[role="main"]{
-			margin-right: 320px;
-			margin-left: -100%;
+			margin-left: 240px;
 			position: relative;
 		}
 	}

@@ -2,9 +2,7 @@
 {namespace cm=TYPO3\Expose\ViewHelpers}
 
 <div class="adu-answers">
-	<f:for each="{inline.elements}" as="element">
-	<div class="row">
-		<form:renderRenderable renderable="{element}" />
-	</div>
-	</f:for>
+<f:for each="{inline.elements}" as="element">
+	<form:renderRenderable renderable="{element}" />
+</f:for>
 </div>

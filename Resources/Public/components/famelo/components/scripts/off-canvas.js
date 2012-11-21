@@ -1,14 +1,8 @@
-$("[data-canvas-toggle]").live('click', function(){
-	var e = $(this);
-	if ($(".off-canvas").attr("data-canvas") === e.attr("data-canvas-toggle")){
-		$(".off-canvas").removeAttr("data-canvas");
-	} else {
-		$(".off-canvas").attr("data-canvas", e.attr("data-canvas-toggle"));
-	}
+$("[data-canvas-toggle]").click(function(){
+	$(".off-canvas").toggleClass("off-canvas-active");
 	return false;
 });
 
-$("[role='main']").live('click', function(){
-	var e = $(this);
-	$(".off-canvas").removeAttr("data-canvas");
+$("[role='main']").click(function(){
+	$(".off-canvas").removeClass("off-canvas-active");
 });

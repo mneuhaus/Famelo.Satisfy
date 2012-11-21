@@ -8,8 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href="{f:uri.resource(path: 'css/off-canvas.css', package: 'Famelo.ADU')}" rel="stylesheet">
-
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,41 +15,34 @@
   </head>
 
   <body>
+    <div class="off-canvas">
+      <div role="left">
+        <img src="{f:uri.resource(path: 'img/logo.png', package: 'Famelo.ADU')}" class="brand"/>
+        <ul class="nav nav-vertical">
+          <f:for each="{settings.modules}" key="module" as="moduleConfiguration">
+            <li{f:if(condition: '{currentModule} == {module}', then: ' class="active"')}>
+              <s:link.module path="{module}" settingsPath="Famelo.ADU.modules" namespace="content">{moduleConfiguration.label}</s:link.module>
+            </li>
+          </f:for>
+        </ul>
 
-    <div class="container">
-      <div class="row off-canvas">
-        <div class="span3" role="left">
-          <ul class="nav nav-pills nav-stacked">
-            <f:for each="{settings.modules}" key="module" as="moduleConfiguration">
-              <li{f:if(condition: '{currentModule} == {module}', then: ' class="active"')}>
-                <s:link.module path="{module}" settingsPath="Famelo.ADU.modules" namespace="content">{moduleConfiguration.label}</s:link.module>
-              </li>
-            </f:for>
-          </ul>
-        </div>
-        <div class="span9" role="main">
-          <div class="navbar navbar-fixed-top hidden-desktop">
-            <div class="navbar-inner">
-              <a class="btn btn-off-canvas" data-canvas-toggle="left">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-            </div>
-          </div>
-
-          <f:render section="content" />
-
-        </div>
       </div>
-    </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{f:uri.resource(path: 'components/jquery/jquery.js', package: 'Famelo.ADU')}"></script>
-    <script src="{f:uri.resource(path: 'components/famelo/components/scripts/off-canvas.js', package: 'Famelo.ADU')}"></script>
-    <script src="{f:uri.resource(path: 'JavaScript/Form/jquery.inlinehelper.js', package: 'TYPO3.Expose')}"></script>
-    <script src="{f:uri.resource(path: 'JavaScript/Form/Form.js', package: 'TYPO3.Expose')}"></script>
+      <div role="main">
+
+        <div class="navbar hidden-desktop">
+          <div class="navbar-inner">
+            <a class="btn btn-off-canvas" data-canvas-toggle="left">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+          </div>
+        </div>
+
+        <f:render section="content" />
+
+      </div>
+    </div>
   </body>
 </html>

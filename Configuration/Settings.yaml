@@ -67,7 +67,25 @@ TYPO3:
   Form:
     presets:
       expose:
+#        stylesheets:
+#          raty:
+#            source: 'resource://SomePackage/Public/Css/File1.css'
+        javaScripts:
+          raty:
+            source: 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.min.js'
         formElementTypes:
+
+          'Famelo.ADU:Rating':
+            superTypes: ['TYPO3.Form:SingleLineText']
+
+          'Famelo.ADU:SingleLineTextFull':
+            superTypes: ['TYPO3.Form:SingleLineText']
+
+          'Famelo.ADU:Comment':
+            superTypes: ['TYPO3.Form:SingleLineText']
+
+          'Famelo.ADU:HiddenCustomer':
+            superTypes: ['TYPO3.Expose:Hidden']
 
           'Famelo.ADU:HiddenQuestion':
             superTypes: ['TYPO3.Expose:Hidden']

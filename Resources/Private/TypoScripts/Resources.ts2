@@ -1,0 +1,25 @@
+prototype(TYPO3.Expose:ResourceHandler) {
+	stylesheets {
+		adu {
+			file = 'resource://Famelo.ADU/Public/css/off-canvas.css'
+		}
+	}
+
+	javascripts {
+		jquery {
+			file = 'resource://TYPO3.Expose/Public/js/jquery.1.7.1.min.js'
+			@position = 'start'
+		}
+
+		inlinehelper.file = 'resource://TYPO3.Expose/Public/JavaScript/Form/jquery.inlinehelper.js'
+		form.file = 'resource://TYPO3.Expose/Public/JavaScript/Form/Form.js'
+
+		raphael.file = 'https://raw.github.com/DmitryBaranovskiy/raphael/300aa589f5a0ba7fce667cd62c7cdda0bd5ad904/raphael-min.js'
+		morris.file = 'resource://Famelo.ADU/Public/components/morris.js/morris.min.js'
+
+		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
+		peity.file = 'resource://Famelo.ADU/Public/components/peity/jquery.peity.min.js'
+		offCanvas.file = 'resource://Famelo.ADU/Public/components/famelo/components/scripts/off-canvas.js'
+		main.file = 'resource://Famelo.ADU/Public/Scripts/main.js'
+	}
+}

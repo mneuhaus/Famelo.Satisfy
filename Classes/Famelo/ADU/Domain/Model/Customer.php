@@ -70,6 +70,18 @@ class Customer {
 	 */
 	protected $branch;
 
+	/**
+	 * The surveys
+	 *
+	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Survey>
+	 * @ORM\OneToMany(mappedBy="customer", cascade={"persist"})
+	 */
+	protected $surveys;
+
+	public function __construct() {
+		$this->surveys = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+
 	public function __toString() {
 		return $this->getName();
 	}
@@ -207,5 +219,18 @@ class Customer {
 		$this->branch = $branch;
 	}
 
+	/**
+	 * @param \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Survey> $surveys
+	 */
+	public function setSurveys($surveys) {
+		$this->surveys = $surveys;
+	}
+	
+	/**
+	 * @return \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Survey>
+	 */
+	public function getSurveys() {
+		return $this->surveys;
+	}
 }
 ?>

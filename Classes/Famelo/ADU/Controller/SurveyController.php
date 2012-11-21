@@ -50,8 +50,6 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$this->persistenceManager->add($object);
 		}
 		$this->persistenceManager->persistAll();
-
-		$this->redirect('index');
 	}
 
 	/**

@@ -2,6 +2,10 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 	properties {
 		rating.ignore = true
 
+		customer {
+			element = 'Famelo.ADU:HiddenCustomer'
+		}
+
 		answers {
 			label = 'Fragen'
 			inline {
@@ -10,4 +14,30 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 			}
 		}
 	}
+}
+
+
+prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
+	recordList.surveyReport = Famelo.ADU:SurveyReport
+	currentFormat = ${format}
+
+	prototype(TYPO3.Expose:RecordList.FormatSelector) {
+		10 = TYPO3.Expose:RecordList.FormatSelector.Button
+		10.format = 'surveyReport'
+		10.label = 'Diagramme'
+
+		20 = TYPO3.Expose:RecordList.FormatSelector.Button
+		20.format = 'table'
+		20.label = 'Table'
+	}
+}
+
+prototype(Famelo.ADU:SurveyReport) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/List.html'
+	elements = TYPO3.TypoScript:Collection {
+		collection = ${objects}
+		itemName = 'item'
+		itemRenderer = Famelo.ADU:Element
+	}
+	objects = ${objects}
 }

@@ -138,5 +138,12 @@ class Survey {
 		$this->answers->add($answer);
 	}
 
+	public function getResult() {
+		$result = 0;
+		foreach ($this->getAnswers() as $answer) {
+			$result += ($answer->getAnswer() * $answer->getQuestion()->getWeight());
+		}
+		return $result;
+	}
 }
 ?>

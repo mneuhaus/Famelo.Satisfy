@@ -1,18 +1,58 @@
 @import "../components/bootstrap/less/bootstrap.less";
 
-@import "../components/famelo/navigation/less/navs.less";
+@import "../components/famelo/components/less/navigation/nav-vertical.less";
+@import "../components/famelo/components/less/mixins.less";
 @import "../components/famelo/components/less/box.less";
 
 @import "../components/bootstrap/less/responsive.less";
 
 @import "../components/famelo/components/less/off-canvas.less";
+@import "../components/famelo/components/less/app-layout.less";
 
+//@import "responsive.less";
 @import "variables.less";
 
 [class^="icon-"], [class*=" icon-"] {
 	background-image: url("../components/bootstrap/img/glyphicons-halflings.png");
 }
 
-.off-canvas [role='left'] {
-	background: #eee;
+[role="main"] {
+	background: #ffffff;
+}
+
+[role='left'] {
+	background: #fafafa;
+	border-right: 3px solid #f1f1f1;
+	padding: 20px;
+
+	.nav-vertical {
+		a {
+			color: #6f6f6f;
+			.border-radius(2px);
+		}
+
+		a:hover {
+			background: #135c8a;
+			color: white;
+		}
+	}
+}
+
+.adu-answer {
+	overflow: hidden;
+	border: 1px solid #f1f1f1;
+	margin-bottom: 20px;
+	padding: 10px;
+	.adu-question {
+		font-size: 16px;
+	}
+}
+
+.rating {
+	margin: 10px auto 20px;
+	width: 140px;
+}
+
+.brand {
+	margin-bottom: 20px;
 }
