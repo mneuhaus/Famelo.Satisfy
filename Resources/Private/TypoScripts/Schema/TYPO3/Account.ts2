@@ -3,6 +3,10 @@ prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Exp
 		party.ignore = true
 		authenticationProviderName.hidden = true
 
+		authenticationProviderName {
+			element = 'TYPO3.Expose:Hidden'
+		}
+
 		accountIdentifier {
 			label = 'Benutzername	'
 		}

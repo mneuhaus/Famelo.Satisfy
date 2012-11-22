@@ -128,7 +128,7 @@ textarea {
   clear: both;
 }
 .hide-text {
-  font: a;
+  font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -5791,8 +5791,7 @@ a.badge:hover {
   line-height: 14px;
 }
 .btn-off-canvas {
-  display: none;
-  padding: 7px 10px;
+  padding: 7px;
   margin-right: 5px;
   margin-left: 0px;
 }
@@ -5921,8 +5920,9 @@ a.badge:hover {
   .off-canvas [role="left"],
   .off-canvas [role="right"] {
     width: 90%;
-    padding: 0;
     box-sizing: border-box;
+    height: 100%;
+    overflow: auto;
   }
   .off-canvas [role="left"] {
     margin-left: -100%;
@@ -5935,21 +5935,12 @@ a.badge:hover {
     float: right;
     position: absolute;
   }
-  .off-canvas[data-canvas="left"] [role="left"] {
-    margin-left: -20px;
-    width: 300px;
+  .off-canvas-active [role="left"] {
+    margin-left: 0px;
+    width: 200px;
   }
-  .off-canvas[data-canvas="left"] [role="main"] {
-    margin-left: 300px;
-    position: relative;
-  }
-  .off-canvas[data-canvas="right"] [role="right"] {
-    margin-left: 0;
-    width: 300px;
-  }
-  .off-canvas[data-canvas="right"] [role="main"] {
-    margin-right: 320px;
-    margin-left: -100%;
+  .off-canvas-active [role="main"] {
+    margin-left: 200px;
     position: relative;
   }
 }
@@ -6001,7 +5992,7 @@ a.badge:hover {
   clear: both;
 }
 .hide-text {
-  font: a;
+  font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;

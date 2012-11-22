@@ -32,3 +32,9 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User) < prototype(TYPO3.Ex
 		}
 	}
 }
+
+prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User) {
+	properties {
+		mobile.ignore = true
+	}
+}

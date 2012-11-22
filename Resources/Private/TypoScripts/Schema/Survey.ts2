@@ -2,6 +2,10 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 	properties {
 		rating.ignore = true
 
+		created {
+			ignore = true
+		}
+
 		customer {
 			element = 'Famelo.ADU:HiddenCustomer'
 		}
@@ -16,6 +20,12 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 	}
 }
 
+prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) {
+	properties {
+		answers.ignore = true
+		created.ignore = false
+	}
+}
 
 prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
 	recordList.surveyReport = Famelo.ADU:SurveyReport

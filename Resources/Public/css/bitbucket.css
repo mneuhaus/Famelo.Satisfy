@@ -5920,7 +5920,6 @@ a.badge:hover {
   .off-canvas [role="left"],
   .off-canvas [role="right"] {
     width: 90%;
-    padding: 0;
     box-sizing: border-box;
     height: 100%;
     overflow: auto;
@@ -5938,10 +5937,10 @@ a.badge:hover {
   }
   .off-canvas-active [role="left"] {
     margin-left: 0px;
-    width: 240px;
+    width: 200px;
   }
   .off-canvas-active [role="main"] {
-    margin-left: 240px;
+    margin-left: 200px;
     position: relative;
   }
 }

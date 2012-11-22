@@ -1,11 +1,17 @@
 Famelo:
   ADU:
+    ResultScale:
+      '0': 'red'
+      '0.25': 'orange'
+      '0.5': 'yellow'
+      '1': 'green'
+
     modules:
-      intro:
-        label: 'Übersicht'
-        arguments:
-          @controller: 'Overview'
-          @package: 'Famelo.ADU'
+#      intro:
+#        label: 'Übersicht'
+#        arguments:
+#          @controller: 'Overview'
+#          @package: 'Famelo.ADU'
 
       surveys:
         label: 'Befragungen'
@@ -64,9 +70,15 @@ TYPO3:
             entryPointOptions:
               uri: famelo.adu/login
 
+    i18n:
+      # The default locale identifier.
+      defaultLocale: de
+
   Form:
     presets:
       expose:
+        renderingOptions:
+          submitButtonLabel: 'foobar'
 #        stylesheets:
 #          raty:
 #            source: 'resource://SomePackage/Public/Css/File1.css'

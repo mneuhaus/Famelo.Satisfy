@@ -7,6 +7,8 @@ namespace Famelo\ADU\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\I18n\Utility;
+use TYPO3\Flow\Reflection\ReflectionService;
 
 /**
  * Standard controller for the Famelo.ADU package 

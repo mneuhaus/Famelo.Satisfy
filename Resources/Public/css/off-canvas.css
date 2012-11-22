@@ -7101,7 +7101,6 @@ a.badge:hover {
   .off-canvas [role="left"],
   .off-canvas [role="right"] {
     width: 90%;
-    padding: 0;
     box-sizing: border-box;
     height: 100%;
     overflow: auto;
@@ -7119,10 +7118,10 @@ a.badge:hover {
   }
   .off-canvas-active [role="left"] {
     margin-left: 0px;
-    width: 240px;
+    width: 200px;
   }
   .off-canvas-active [role="main"] {
-    margin-left: 240px;
+    margin-left: 200px;
     position: relative;
   }
 }
@@ -7207,6 +7206,10 @@ body,
 [role='left'] .nav-vertical a:hover {
   background: #135c8a;
   color: white;
+}
+[role='left'] img.brand {
+  max-width: none;
+  width: 160px;
 }
 .adu-answer {
   overflow: hidden;
