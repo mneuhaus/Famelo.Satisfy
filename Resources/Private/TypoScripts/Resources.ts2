@@ -1,7 +1,7 @@
 prototype(TYPO3.Expose:ResourceHandler) {
 	stylesheets {
 		adu {
-			file = 'resource://Famelo.ADU/Public/css/off-canvas.css'
+			file = 'resource://Famelo.ADU/Public/css/main.css'
 		}
 	}
 
@@ -16,6 +16,10 @@ prototype(TYPO3.Expose:ResourceHandler) {
 
 		raphael.file = 'https://raw.github.com/DmitryBaranovskiy/raphael/300aa589f5a0ba7fce667cd62c7cdda0bd5ad904/raphael-min.js'
 		morris.file = 'resource://Famelo.ADU/Public/components/morris.js/morris.min.js'
+
+		bootstrapdropdown.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-dropdown.js'
+
+		pjax.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-dropdown.js'
 
 		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
 		peity.file = 'resource://Famelo.ADU/Public/components/peity/jquery.peity.min.js'

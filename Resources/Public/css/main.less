@@ -9,38 +9,13 @@
 @import "../components/famelo/components/less/off-canvas.less";
 @import "../components/famelo/components/less/app-layout.less";
 
-//@import "responsive.less";
-@import "variables.less";
+@import "imports/layout.less";
+@import "imports/navbar.less";
+//@import "imports/responsive.less";
+@import "imports/variables.less";
 
 [class^="icon-"], [class*=" icon-"] {
 	background-image: url("../components/bootstrap/img/glyphicons-halflings.png");
-}
-
-[role="main"] {
-	background: #ffffff;
-}
-
-[role='left'] {
-	background: #fafafa;
-	border-right: 3px solid #f1f1f1;
-	padding: 20px;
-
-	.nav-vertical {
-		a {
-			color: #6f6f6f;
-			.border-radius(2px);
-		}
-
-		a:hover {
-			background: #135c8a;
-			color: white;
-		}
-	}
-
-	img.brand {
-		max-width: none;
-		width: 160px;
-	}
 }
 
 .adu-answer {
@@ -60,4 +35,12 @@
 
 .brand {
 	margin-bottom: 20px;
+}
+
+.navbar .nav > li > a {
+	padding: 5px 15px 5px;
+	color : #cccdcd;
+	img {
+		width: 30px;
+	}
 }

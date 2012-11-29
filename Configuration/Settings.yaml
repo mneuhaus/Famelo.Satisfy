@@ -18,6 +18,12 @@ Famelo:
         arguments:
           @controller: 'Survey'
           @package: 'Famelo.ADU'
+        submodules:        
+          test:
+            label: 'Stimmungsbarometer'
+            arguments:
+              @controller: 'Survey'
+              @package: 'Famelo.ADU'
 
       branches:
         label: 'Niederlassungen'

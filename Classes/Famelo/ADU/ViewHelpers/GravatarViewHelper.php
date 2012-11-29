@@ -61,7 +61,7 @@ class GravatarViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractTagBasedVi
 	 * @return string The rendered link
 	 */
 	public function render() {
-		$face = new \Famelo\Faces\Face($this->arguments['email']);
+		$face = new \Famelo\Faces\Face($this->arguments['email'], $this->arguments);
 		$this->tag->addAttribute('src', $face->getImage());
 		return $this->tag->render();
 	}

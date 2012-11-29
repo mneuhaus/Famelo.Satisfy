@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {namespace s=Famelo\Scaff\ViewHelpers}
+    {namespace a=Famelo\ADU\ViewHelpers}
     <meta charset="utf-8">
     <title>Bootstrap, from Twitter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,32 @@
   </head>
 
   <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <a class="btn btn-off-canvas" data-canvas-toggle="left" style="margin-left: 10px;">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a:user>
+        <ul class="nav pull-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" id="user-menu" data-toggle="dropdown">
+              {user.party.name}
+              <a:gravatar email="{user.party.email}" size="40" class="img-rounded" />
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <f:link.action action="logout" controller="login" id="logout">Abmelden</f:link.action>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        </a:user>
+      </div>
+    </div>
+
     <div class="off-canvas">
       <div role="left">
         <img src="{f:uri.resource(path: 'img/logo.png', package: 'Famelo.ADU')}" class="brand"/>
@@ -29,16 +56,6 @@
       </div>
 
       <div role="main">
-
-        <div class="navbar navbar-fixed-top hidden-desktop" style="margin-top: -20px;">
-          <div class="navbar-inner">
-            <a class="btn btn-off-canvas" data-canvas-toggle="left" style="margin-left: 10px;">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-          </div>
-        </div>
 
         <f:render section="content" />
 
