@@ -19,8 +19,6 @@ prototype(TYPO3.Expose:ResourceHandler) {
 
 		bootstrapdropdown.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-dropdown.js'
 
-		pjax.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-dropdown.js'
-
 		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
 		peity.file = 'resource://Famelo.ADU/Public/components/peity/jquery.peity.min.js'
 		offCanvas.file = 'resource://Famelo.ADU/Public/components/famelo/components/scripts/off-canvas.js'

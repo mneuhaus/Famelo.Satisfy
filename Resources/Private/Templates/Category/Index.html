@@ -2,5 +2,5 @@
 {namespace e=TYPO3\Expose\ViewHelpers}
 
 <f:section name="content">
-	<e:render.form object="{survey}" callbackAction="create" />
+	<e:render.action controller="SameTypeList" type="\Famelo\ADU\Domain\Model\Category" />
 </f:section>

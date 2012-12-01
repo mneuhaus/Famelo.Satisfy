@@ -1,0 +1,96 @@
+#                                                                        #
+# Routes configuration                                                   #
+#                                                                        #
+# This file contains the configuration for the MVC router.               #
+# Just add your own modifications as necessary.                          #
+#                                                                        #
+# Please refer to the FLOW3 manual for possible configuration options.   #
+#                                                                        #
+
+-
+  name: 'Home'
+  uriPattern: ''
+  navigation: 'Home'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Standard'
+    '@package': 'Famelo.ADU'
+
+######################################
+# Survey                             #
+######################################
+
+-
+  name: 'General Happiness'
+  uriPattern: 'survey/happiness'
+  navigation: 'Stimmungsbarometer'
+  defaults:
+    '@format': 'html'
+    '@action':     'happiness'
+    '@controller': 'Survey'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+-
+  name: 'Surveys'
+  uriPattern: 'survey'
+  navigation: 'Befragungen'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Survey'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+
+######################################
+# Kategorien                         #
+######################################
+-
+  name: 'Categories'
+  uriPattern: 'categories'
+  navigation: 'Kategorien'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Category'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+
+######################################
+# UserManagement                     #
+######################################
+-
+  name: 'UserManagement'
+  uriPattern: 'users'
+  navigation: 'Nutzermanagement'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'User'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+
+######################################
+# Login/logout                       #
+######################################
+-
+  name: 'Login'
+  uriPattern: 'login'
+  defaults:
+    '@format': 'html'
+    '@controller': 'Login'
+    '@action':     'index'
+    '@package': 'Famelo.ADU'
+
+-
+  name: 'Logout'
+  uriPattern: 'logout'
+  defaults:
+    '@format': 'html'
+    '@controller': 'Login'
+    '@action':     'logout'
+    '@package': 'Famelo.ADU'

@@ -6,65 +6,6 @@ Famelo:
       '0.5': 'yellow'
       '1': 'green'
 
-    modules:
-#      intro:
-#        label: 'Übersicht'
-#        arguments:
-#          @controller: 'Overview'
-#          @package: 'Famelo.ADU'
-
-      surveys:
-        label: 'Befragungen'
-        arguments:
-          @controller: 'Survey'
-          @package: 'Famelo.ADU'
-        submodules:        
-          test:
-            label: 'Stimmungsbarometer'
-            arguments:
-              @controller: 'Survey'
-              @package: 'Famelo.ADU'
-
-      branches:
-        label: 'Niederlassungen'
-        arguments:
-          @controller: 'Expose'
-          --exposeRuntime:
-              @controller: "SameTypeList"
-              @action: 'index'
-              @package: "TYPO3.Expose"
-              type: 'Famelo\ADU\Domain\Model\Branch'
-
-      customers:
-        label: 'Kundenmanagement'
-        arguments:
-          @controller: 'Expose'
-          --exposeRuntime:
-              @controller: "SameTypeList"
-              @action: 'index'
-              @package: "TYPO3.Expose"
-              type: 'Famelo\ADU\Domain\Model\Customer'
-
-      categories:
-        label: 'Kategorien'
-        arguments:
-          @controller: 'Expose'
-          --exposeRuntime:
-              @controller: "SameTypeList"
-              @action: 'index'
-              @package: "TYPO3.Expose"
-              type: 'Famelo\ADU\Domain\Model\Category'
-
-      users:
-        label: 'Nutzermanagement'
-        arguments:
-          @controller: 'Expose'
-          --exposeRuntime:
-              @controller: "SameTypeList"
-              @action: 'index'
-              @package: "TYPO3.Expose"
-              type: 'Famelo\ADU\Domain\Model\User'
-
 TYPO3:
   Flow:
     security:
@@ -74,7 +15,7 @@ TYPO3:
             provider: PersistedUsernamePasswordProvider
             entryPoint: 'WebRedirect'
             entryPointOptions:
-              uri: famelo.adu/login
+              uri: login
 
     i18n:
       # The default locale identifier.

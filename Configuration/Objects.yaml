@@ -16,10 +16,10 @@
 #       title:
 #         TYPO3\Flow\Annotations\Validate: []
 
-TYPO3\Flow\Security\Account:
-  annotations:
-    properties:
-      party:
-        Doctrine\ORM\Mapping\ManyToOne:
-          inversedBy: 'accounts'
-          cascade: 'persist'
+# TYPO3\Flow\Security\Account:
+#   annotations:
+#     properties:
+#       party:
+#         Doctrine\ORM\Mapping\ManyToOne:
+#           inversedBy: 'accounts'
+#           cascade: 'persist'

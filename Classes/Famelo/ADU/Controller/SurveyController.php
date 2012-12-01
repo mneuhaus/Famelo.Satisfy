@@ -23,6 +23,13 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	public function indexAction() {}
 
 	/**
+	 * Index action
+	 *
+	 * @return void
+	 */
+	public function happinessAction() {}
+
+	/**
 	 * New action
 	 *
 	 * @param \Famelo\ADU\Domain\Model\Customer $customer
@@ -36,7 +43,7 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$answer->setQuestion($question);
 			$survey->addAnswer($answer);
 		}
-		$this->view->assign('survey', $survey);
+		$this->view->assign("survey", $survey);
 	}
 
 	/**
@@ -58,9 +65,7 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @param \Famelo\ADU\Domain\Model\Survey $survey
 	 * @return void
 	 */
-	public function completeAction($survey) {
-
-	}
+	public function completeAction($survey) {}
 }
 
 ?>

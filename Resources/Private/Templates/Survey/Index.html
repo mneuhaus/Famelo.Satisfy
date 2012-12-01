@@ -1,3 +1,7 @@
+<f:layout name="Main" />
+{namespace s=Famelo\Scaff\ViewHelpers}
 {namespace e=TYPO3\Expose\ViewHelpers}
 
-<e:render.action controller="SameTypeList" type="\Famelo\ADU\Domain\Model\Survey" />
+<f:section name="content">
+	<e:render.action controller="SameTypeList" type="\Famelo\ADU\Domain\Model\Survey" />
+</f:section>

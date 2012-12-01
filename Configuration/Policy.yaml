@@ -4,7 +4,10 @@
 
 resources:
   methods:
-    ADU: 'method(Famelo\ADU\(?!.*Login).*->.*Action())'
+    Home: 'method(Famelo\ADU\Controller\StandardController->.*Action())'
+    UserManagement: 'method(Famelo\ADU\Controller\UserController->.*Action())'
+    Category: 'method(Famelo\ADU\Controller\CategoryController->.*Action())'
+    Everything: 'method(Famelo\ADU\(?!.*Login).*->.*Action())'
 
 roles:
   Administrator: [ Editor ]
@@ -13,4 +16,8 @@ roles:
 acls:
   Editor:
     methods:
-      ADU: GRANT
+      Home: GRANT
+  Administrator:
+    methods:
+      UserManagement: GRANT
+      Everything: GRANT
