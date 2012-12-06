@@ -58,4 +58,18 @@ $(document).ready(function(){
 	$("span.pie").peity("pie");
 	$("span.line").peity("line");
 	$("span.bar").peity("bar");
+
+	$("[data-element='prettyCheckable']").prettyCheckable();
+
+	$(".happiness [data-element='prettyCheckable']").change(function(){
+		var radio = $(this);
+		var value = parseInt(radio.val());
+		if (value > 1) {
+			radio.parents("td").find('.form-horizontal').show();
+		} else {
+			radio.parents("td").find('.form-horizontal').hide();
+		}
+	});
+
+	$('[rel="popover"]').popover({ html: true });
 });

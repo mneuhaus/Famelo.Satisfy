@@ -1,0 +1,21 @@
+prototype(Famelo.ADU:Report) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Report/Table.html'
+	elements = TYPO3.TypoScript:Collection {
+		collection = ${objects}
+		itemName = 'item'
+		itemRenderer = Famelo.ADU:ReportRow
+	}
+	objects = ${objects}
+}
+
+prototype(Famelo.ADU:ReportRow) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Report/Row.html'
+	customer = ${item}
+	type = ${type}
+	controllerLinks = Famelo.ADU:Customer.Links
+}
+
+prototype(Famelo.ADU:Report).prototype(TYPO3.Expose:RecordList) {
+	recordList.report = Famelo.ADU:Report
+	currentFormat = 'report'
+}

@@ -17,6 +17,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Rating {
 
 	/**
+	 * The action
+	 * @var string
+	 */
+	protected $action = '';
+
+	/**
+	 * The comment
+	 * @var string
+	 */
+	protected $comment = '';
+
+	/**
 	 * The created
 	 * @var \DateTime
 	 */
@@ -29,11 +41,56 @@ class Rating {
 	protected $level;
 
 	/**
-	 * The comment
-	 * @var string
+	 * The customer
+	 * @var \Famelo\ADU\Domain\Model\Customer
+	 * @ORM\ManyToOne(inversedBy="ratings", cascade={"all"})
+	 * @Flow\Lazy
 	 */
-	protected $comment;
+	protected $customer;
 
+	/**
+	* TODO: Document this Method! ( __construct )
+	*/
+	public function __construct() {
+		$this->created = new \DateTime();
+	}
+
+	public function __toString() {
+		return strval($this->level);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAction() {
+		return $this->action;
+	}
+
+	/**
+	 * @param string $action
+	 */
+	public function setAction($action) {
+		$this->action = $action;
+	}
+
+	/**
+	 * Get the Rating's comment
+	 *
+	 * @return string The Rating's comment
+	 */
+	public function getComment() {
+		return $this->comment;
+	}
+
+	/**
+	 * Sets this Rating's comment
+	 *
+	 * @param string $comment The Rating's comment
+	 * @return void
+	 */
+	public function setComment($comment) {
+		$this->comment = $comment;
+	}
 
 	/**
 	 * Get the Rating's created
@@ -74,23 +131,19 @@ class Rating {
 	}
 
 	/**
-	 * Get the Rating's comment
-	 *
-	 * @return string The Rating's comment
+	 * @param \Famelo\ADU\Domain\Model\Customer $customer
 	 */
-	public function getComment() {
-		return $this->comment;
+	public function setCustomer($customer) {
+		$this->customer = $customer;
 	}
 
 	/**
-	 * Sets this Rating's comment
-	 *
-	 * @param string $comment The Rating's comment
-	 * @return void
+	 * @return \Famelo\ADU\Domain\Model\Customer
 	 */
-	public function setComment($comment) {
-		$this->comment = $comment;
+	public function getCustomer() {
+		return $this->customer;
 	}
 
 }
+
 ?>

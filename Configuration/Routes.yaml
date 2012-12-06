@@ -20,11 +20,43 @@
 ######################################
 # Survey                             #
 ######################################
+-
+  name: 'Do Survey'
+  uriPattern: 'survey/do'
+  navigation: 'Durchführen'
+  defaults:
+    '@format': 'html'
+    '@action':     'new'
+    '@controller': 'Survey'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+-
+  name: 'Process Survey'
+  uriPattern: 'survey/edit'
+  navigation: 'Bearbeiten'
+  defaults:
+    '@format': 'html'
+    '@action':     'list'
+    '@controller': 'Survey'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+-
+  name: 'View'
+  uriPattern: 'survey/view'
+  navigation: 'Ansehen'
+  defaults:
+    '@format': 'html'
+    '@action':     'view'
+    '@controller': 'Survey'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
 
 -
   name: 'General Happiness'
   uriPattern: 'survey/happiness'
-  navigation: 'Stimmungsbarometer'
+  navigation: 'Selbsteinschätzung'
   defaults:
     '@format': 'html'
     '@action':     'happiness'
@@ -43,6 +75,33 @@
     '@package': 'Famelo.ADU'
   appendExceedingArguments: true
 
+######################################
+# Report                             #
+######################################
+-
+  name: 'Report'
+  uriPattern: 'report'
+  navigation: 'Auswertung'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Report'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+######################################
+# Branch                             #
+######################################
+-
+  name: 'Banches'
+  uriPattern: 'branch'
+  navigation: 'Niederlassungen'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Branch'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
 
 ######################################
 # Kategorien                         #
@@ -58,6 +117,20 @@
     '@package': 'Famelo.ADU'
   appendExceedingArguments: true
 
+
+######################################
+# CustomerManagement                 #
+######################################
+-
+  name: 'CustomerManagement'
+  uriPattern: 'customers'
+  navigation: 'Kunden'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Customer'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
 
 ######################################
 # UserManagement                     #

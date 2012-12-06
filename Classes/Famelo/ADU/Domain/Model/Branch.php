@@ -26,8 +26,18 @@ class Branch {
 	 * The branch
 	 * @var \Famelo\ADU\Domain\Model\Branch
 	 * @ORM\ManyToOne(inversedBy="sub_branches", cascade={"all"})
+	 * @ORM\JoinColumn(name="parent_branch_id")
+	 * @Flow\Lazy
 	 */
 	protected $branch;
+
+	/**
+	 * The branch
+	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Branch>
+	 * @ORM\OneToMany(targetEntity="\Famelo\ADU\Domain\Model\Branch", mappedBy="branch")
+	 * @Flow\Lazy
+	 */
+	protected $children;
 
 	/**
 	 * The questions
@@ -110,5 +120,27 @@ class Branch {
 		$this->questions = $questions;
 	}
 
+	/**
+	 * @param \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Branch> $children
+	 */
+	public function setChildren($children) {
+		$this->children = $children;
+	}
+
+	/**
+	 * @return \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Branch>
+	 */
+	public function getChildren() {
+		return $this->children;
+	}
+
+	public function getAllChildren() {
+		$children = array();
+		foreach ($this->children as $child) {
+			$children = array_merge($children, $child->getAllChildren());
+			$children[] = $child;
+		}
+		return $children;
+	}
 }
 ?>

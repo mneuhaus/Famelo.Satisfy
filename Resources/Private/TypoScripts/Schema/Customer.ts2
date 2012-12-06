@@ -39,7 +39,6 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 	}
 }
 
-
 prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer).prototype(TYPO3.Expose:RecordList) {
 	recordList.customerList = Famelo.ADU:List
 	currentFormat = 'customerList'

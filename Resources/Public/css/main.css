@@ -7187,6 +7187,7 @@ body,
 }
 [role="main"] {
   background: #FFFFFF;
+  padding-top: 60px;
 }
 [role="main"] > div {
   margin-top: 30px;
@@ -7301,6 +7302,78 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
   .btn-off-canvas {
     display: inline-block;
   }
+}
+.badge-green,
+.badge-yellow,
+.badge-orange,
+.badge-red {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  display: block;
+  background: red;
+  height: 30px;
+  width: 30px;
+}
+.badge-green {
+  background: #3fd351;
+  border-color: #3fd351;
+}
+.badge-yellow {
+  background: #f2f124;
+  border-color: #f2f124;
+}
+.badge-orange {
+  background: #f49320;
+  border-color: #f49320;
+}
+.badge-red {
+  background: #dc182d;
+  border-color: #dc182d;
+}
+body [class^="radio-"] {
+  float: left;
+}
+body [class^="radio-"] a,
+body [class*=" radio-"] a {
+  width: 50px;
+  height: 50px;
+  display: block;
+  float: left;
+  cursor: pointer;
+  margin: 0;
+}
+.radio-red .prettyradio a {
+  background-image: url(../img/RadioButtons/Red.png);
+}
+.radio-green .prettyradio a {
+  background-image: url(../img/RadioButtons/Green.png);
+}
+.radio-yellow .prettyradio a {
+  background-image: url(../img/RadioButtons/Yellow.png);
+}
+.radio-orange .prettyradio a {
+  background-image: url(../img/RadioButtons/Orange.png);
+}
+body [class^="radio-"] a,
+body [class*=" radio-"] a {
+  background-position: 0 -200px;
+}
+body [class^="radio-"] a:focus,
+body [class*=" radio-"] a:focus {
+  outline: 0 none;
+}
+body [class^="radio-"] a:focus,
+body [class*=" radio-"] a:focus {
+  background-position: 0 -250px;
+}
+body [class^="radio-"] a.checked,
+body [class*=" radio-"] a.checked {
+  background-position: 0 -300px;
+}
+body [class^="radio-"] a.checked:focus,
+body [class*=" radio-"] a.checked:focus {
+  background-position: 0 -350px;
 }
 .t3-expose-recordlist .bar {
   margin-bottom: 20px;

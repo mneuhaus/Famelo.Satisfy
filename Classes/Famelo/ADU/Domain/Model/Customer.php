@@ -78,12 +78,25 @@ class Customer {
 	 */
 	protected $surveys;
 
+	/**
+	 * The branch
+	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Rating>
+	 * @ORM\OneToMany(targetEntity="\Famelo\ADU\Domain\Model\Rating", mappedBy="customer")
+	 * @ORM\OrderBy({"created" = "DESC"})
+	 * @Flow\Lazy
+	 */
+	protected $ratings;
+
 	public function __construct() {
 		$this->surveys = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	public function __toString() {
 		return $this->getName();
+	}
+
+	public function getIdentity() {
+		return $this->Persistence_Object_Identifier;
 	}
 
 	/**
@@ -225,12 +238,49 @@ class Customer {
 	public function setSurveys($surveys) {
 		$this->surveys = $surveys;
 	}
-	
+
 	/**
 	 * @return \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Survey>
 	 */
 	public function getSurveys() {
 		return $this->surveys;
+	}
+
+	/**
+	 * @param \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Rating> $ratings
+	 */
+	public function setRatings($ratings) {
+		$this->ratings = $ratings;
+	}
+
+	/**
+	 * @return \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Rating>
+	 */
+	public function getRatings() {
+		return $this->ratings;
+	}
+
+	/**
+	 * @param \Famelo\ADU\Domain\Model\Rating $rating
+	 */
+	public function addRating($rating) {
+		$this->ratings->add($rating);
+	}
+
+	public function getLatestRating() {
+		foreach ($this->ratings as $rating) {
+			return $rating;
+		}
+	}
+
+	public function getCurrentRatingColor() {
+		$colors = array(
+			"1" => "green",
+			"2" => "yellow",
+			"3" => "orange",
+			"4" => "red"
+		);
+		return $colors[$this->getLatestRating()->getLevel()];
 	}
 }
 ?>

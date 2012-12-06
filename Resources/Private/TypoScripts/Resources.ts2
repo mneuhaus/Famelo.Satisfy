@@ -3,6 +3,7 @@ prototype(TYPO3.Expose:ResourceHandler) {
 		adu {
 			file = 'resource://Famelo.ADU/Public/css/main.css'
 		}
+		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettyCheckable/prettyCheckable.css'
 	}
 
 	javascripts {
@@ -18,10 +19,15 @@ prototype(TYPO3.Expose:ResourceHandler) {
 		morris.file = 'resource://Famelo.ADU/Public/components/morris.js/morris.min.js'
 
 		bootstrapdropdown.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-dropdown.js'
+		bootstraptooltip.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-tooltip.js'
+		bootstrappopover.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-popover.js'
 
 		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
 		peity.file = 'resource://Famelo.ADU/Public/components/peity/jquery.peity.min.js'
 		offCanvas.file = 'resource://Famelo.ADU/Public/components/famelo/components/scripts/off-canvas.js'
+
+		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettyCheckable/prettyCheckable.js'
+
 		main.file = 'resource://Famelo.ADU/Public/Scripts/main.js'
 	}
 }

@@ -16,6 +16,9 @@ TYPO3:
             entryPoint: 'WebRedirect'
             entryPointOptions:
               uri: login
+    object:
+      excludeClasses:
+       'Famelo.Faces' : ['.*']
 
     i18n:
       # The default locale identifier.

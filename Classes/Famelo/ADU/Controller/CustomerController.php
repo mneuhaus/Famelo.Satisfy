@@ -1,5 +1,5 @@
 <?php
-namespace Famelo\ADU\Domain\Repository;
+namespace Famelo\ADU\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "Famelo.ADU".            *
@@ -9,13 +9,17 @@ namespace Famelo\ADU\Domain\Repository;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * A repository for Customers
+ * Survey controller for the Famelo.ADU package 
  *
  * @Flow\Scope("singleton")
  */
-class CustomersRepository extends \TYPO3\Flow\Persistence\Repository {
-
-	// add customized methods here
-
+class CustomerController extends \TYPO3\Flow\Mvc\Controller\ActionController {
+	/**
+	 * Index action
+	 *
+	 * @return void
+	 */
+	public function indexAction() {}
 }
+
 ?>

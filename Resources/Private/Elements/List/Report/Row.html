@@ -1,0 +1,19 @@
+<f:comment>REVIEWED for release</f:comment>
+{namespace e=TYPO3\Expose\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+
+<tr>
+	<td>
+		{customer}
+	</td>
+	<td>
+		<f:if condition="{customer.latestRating.comment}">
+			<f:then>
+				<a class="badge-{customer.currentRatingColor}" rel="popover" data-title="Kommentar/Maßnahme" data-content="{customer.latestRating.comment}<br />{customer.latestRating.action}"></a>
+			</f:then>
+			<f:else>
+				<a class="badge-{customer.currentRatingColor}"></a>
+			</f:else>
+		</f:if>
+	</td>
+</tr>

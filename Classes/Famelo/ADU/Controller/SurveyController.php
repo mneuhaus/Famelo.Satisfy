@@ -14,6 +14,21 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Scope("singleton")
  */
 class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
+	/**
+	 * The securityContext
+	 *
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
+
+	/**
+	 * The customerRepository
+	 *
+	 * @var \Famelo\ADU\Domain\Repository\CustomerRepository
+	 * @Flow\Inject
+	 */
+	protected $customerRepository;
 
 	/**
 	 * Index action
@@ -27,23 +42,48 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 *
 	 * @return void
 	 */
-	public function happinessAction() {}
+	public function happinessAction() {
+		$customers = $this->customerRepository->findAll();
+		$this->view->assign('customers', $customers);
+	}
+
+	/**
+	 * Index action
+	 *
+	 * @param array $ratings
+	 * @return void
+	 */
+	public function saveHappinessAction($ratings) {
+		foreach ($ratings as $identifier => $data) {
+			$customer = $this->customerRepository->findByIdentifier($identifier);
+			$rating = new \Famelo\ADU\Domain\Model\Rating();
+			$rating->setLevel($data['value']);
+			if (isset($data['comment'])) {
+				$rating->setComment($data['comment']);
+			}
+			if (isset($data['action'])) {
+				$rating->setAction($data['action']);
+			}
+			$rating->setCustomer($customer);
+			$this->persistenceManager->add($rating);
+		}
+
+		$this->redirect('index');
+	}
 
 	/**
 	 * New action
 	 *
-	 * @param \Famelo\ADU\Domain\Model\Customer $customer
 	 * @return void
 	 */
-	public function newAction($customer) {
+	public function newAction() {
 		$survey = new \Famelo\ADU\Domain\Model\Survey();
-		$survey->setCustomer($customer);
-		foreach ($customer->getBranch()->getMatchingQuestions() as $question) {
+		foreach ($this->securityContext->getParty()->getBranch()->getMatchingQuestions() as $question) {
 			$answer = new \Famelo\ADU\Domain\Model\Answer();
 			$answer->setQuestion($question);
 			$survey->addAnswer($answer);
 		}
-		$this->view->assign("survey", $survey);
+		$this->view->assign('survey', $survey);
 	}
 
 	/**

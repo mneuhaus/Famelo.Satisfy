@@ -1,0 +1,28 @@
+@radio-width: 50px;
+body [class^="radio-"] {
+    float: left;
+}
+
+body [class^="radio-"] a,
+body [class*=" radio-"] a{
+    width: @radio-width;
+    height: @radio-width;
+    display: block;
+    float: left;
+    cursor: pointer;
+    margin:0;
+}
+
+.radio-red .prettyradio a{ background-image: url(../img/RadioButtons/Red.png);}
+.radio-green .prettyradio a{ background-image: url(../img/RadioButtons/Green.png);}
+.radio-yellow .prettyradio a{ background-image: url(../img/RadioButtons/Yellow.png);}
+.radio-orange .prettyradio a{ background-image: url(../img/RadioButtons/Orange.png);}
+
+body [class^="radio-"],
+body [class*=" radio-"] {
+	a {background-position: 0 (@radio-width * -4);}
+	a:focus {outline: 0 none;}
+	a:focus{background-position: 0 (@radio-width * -5);}
+	a.checked { background-position: 0 (@radio-width * -6); }
+	a.checked:focus { background-position: 0 (@radio-width * -7); }
+}
