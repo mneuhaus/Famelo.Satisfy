@@ -7274,6 +7274,22 @@ body,
   background: #135c8a;
   color: white;
 }
+[role="left"] .nav-vertical a.important {
+  background: #b94a48;
+  color: white;
+}
+[role="left"] .nav-vertical a.important:hover {
+  background: #bc514f;
+  color: white;
+}
+[role="left"] .nav-vertical a.warning {
+  background: #f89406;
+  color: white;
+}
+[role="left"] .nav-vertical a.warning:hover {
+  background: #f9980f;
+  color: white;
+}
 [role="left"] img.brand {
   max-width: none;
   width: 160px;

@@ -94,6 +94,17 @@
           </n:navigation>
         </ul>
 
+        <a:notification>
+        <ul class="nav nav-vertical">
+          <f:for each="{notifications}" as="notification">
+          <li>
+            <n:action actionConfiguration="{notification.acton}" class="{notification.class}">
+              {notification.text}
+            </n:action>
+          </li>
+          </f:for>
+        </ul>
+        </a:notification>
       </div>
 
       <div role="main">

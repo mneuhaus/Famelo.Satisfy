@@ -23,6 +23,27 @@
 			background: #135c8a;
 			color: white;
 		}
+
+		a.important {
+		    background: @errorText;
+		    color: white;
+		}
+
+		a.important:hover {
+		    background: lighten(@errorText, 2%);
+		    color: white;
+		}
+
+		a.warning {
+		    background: @orange;
+		    color: white;
+		}
+
+		a.warning:hover {
+		    background: lighten(@orange, 2%);
+		    color: white;
+		}
+
 	}
 
 	img.brand {
