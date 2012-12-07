@@ -8,6 +8,8 @@ prototype(Famelo.ADU:Report) < prototype(TYPO3.TypoScript:Template) {
 	objects = ${objects}
 }
 
+prototype(Famelo.ADU:Report) << 100.Famelo\ADU\Processors:listJs()
+
 prototype(Famelo.ADU:ReportRow) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Report/Row.html'
 	customer = ${item}

@@ -75,6 +75,7 @@ class Customer {
 	 *
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Survey>
 	 * @ORM\OneToMany(mappedBy="customer", cascade={"persist"})
+	 * @ORM\OrderBy({"created" = "DESC"})
 	 */
 	protected $surveys;
 
@@ -267,6 +268,10 @@ class Customer {
 		$this->ratings->add($rating);
 	}
 
+	public function getLatestSurvey() {
+		return $this->surveys->first();
+	}
+
 	public function getLatestRating() {
 		foreach ($this->ratings as $rating) {
 			return $rating;
@@ -275,10 +280,10 @@ class Customer {
 
 	public function getCurrentRatingColor() {
 		$colors = array(
-			"1" => "green",
-			"2" => "yellow",
-			"3" => "orange",
-			"4" => "red"
+			'1' => 'green',
+			'2' => 'yellow',
+			'3' => 'orange',
+			'4' => 'red'
 		);
 		return $colors[$this->getLatestRating()->getLevel()];
 	}

@@ -145,5 +145,24 @@ class Survey {
 		}
 		return $result;
 	}
+
+	public function getResultColor() {
+		$colors = array(
+			0 => 'red',
+			1 => 'orange',
+			3 => 'yellow',
+			5 => 'green'
+		);
+		$result = $this->getResult();
+		$lastValue = 0;
+		foreach ($colors as $value => $color) {
+				// var_dump($result . '>=' . $lastValue .'&&'. $result .'<='. $value);
+			if ($result >= $lastValue && $result <= $value) {
+				return $matchingColor;
+			}
+			$lastValue = $value;
+			$matchingColor = $color;
+		}
+	}
 }
 ?>
