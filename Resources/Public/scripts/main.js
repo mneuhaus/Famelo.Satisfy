@@ -72,4 +72,5 @@ $(document).ready(function(){
 	});
 
 	$('[rel="popover"]').popover({ html: true });
+	$(".validate").validate();
 });

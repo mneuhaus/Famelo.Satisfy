@@ -2,7 +2,7 @@
 {namespace e=TYPO3\Expose\ViewHelpers}
 
 <f:section name="content">
-	<f:form action="saveHappiness">
+	<f:form action="saveHappiness" class="validate">
 	<table class="table table-striped table-bordered happiness">
 		<th>Name</th>
 		<td>Bewertung</td>
@@ -28,13 +28,13 @@
 					<div class="control-group">
 					    <label class="control-label" for="inputEmail">Kommentar</label>
 					    <div class="controls">
-					    	<input type="text" id="inputEmail" name="ratings[{customer.identity}][comment]">
+					    	<input type="text" id="inputEmail" required name="ratings[{customer.identity}][comment]">
 					    </div>
 					</div>
 					<div class="control-group">
 					    <label class="control-label" for="ratings.{customer.identity}.action">Maßnahme</label>
 					    <div class="controls">
-					    	<input type="text" id="ratings.{customer.identity}.action" name="ratings[{customer.identity}][action]">
+					    	<input type="text" id="ratings.{customer.identity}.action" required name="ratings[{customer.identity}][action]">
 					    </div>
 					</div>
 				</div>

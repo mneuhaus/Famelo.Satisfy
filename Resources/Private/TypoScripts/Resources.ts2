@@ -32,6 +32,9 @@ prototype(TYPO3.Expose:ResourceHandler) {
 		listjspaging.file = 'resource://Famelo.ADU/Public/components/listjs/plugins/paging/list.paging.js'
 		listjsfilter.file = 'resource://Famelo.ADU/Public/components/listjs/plugins/filter/list.filter.js'
 
+		validation.file = 'resource://Famelo.ADU/Public/components/jquery.validation/jquery.validate.js'
+		validationde.file = 'resource://Famelo.ADU/Public/components/jquery.validation/localization/messages_de.js'
+
 		main.file = 'resource://Famelo.ADU/Public/Scripts/main.js'
 	}
 }
