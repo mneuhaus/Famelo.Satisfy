@@ -46,6 +46,24 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $userRepository;
 
 	/**
+	 * @Flow\Inject
+	 * @var \Famelo\ADU\Domain\Repository\CustomerRepository
+	 */
+	protected $customerRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \Famelo\ADU\Domain\Repository\BranchRepository
+	 */
+	protected $branchRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+	 */
+	protected $persistenceManager;
+
+	/**
 	 * Create a new User for the ADU Package
 	 *
 	 * The comment of this command method is also used for TYPO3 Flow's help screens. The first line should give a very short
@@ -65,12 +83,33 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 		$account = $this->accountFactory->createAccountWithPassword($username, $password, $roles, $authenticationProviderName);
 		$this->accountRepository->add($account);
-
-		#$user = new \Famelo\ADU\Domain\Model\User();
-		#$user->addAccount($account);
-		#$this->userRepository->add($user);
 	}
 
+	/**
+	 * Create a new User for the ADU Package
+	 *
+	 * Fake some Data :)
+	 *
+	 * @return void
+	 */
+	public function fakeDataCommand() {
+		$branches = array(
+			'Rhein/Ruhr',
+			'Hannover',
+			'OWL/Hessen'
+		);
+		foreach ($branches as $branchName) {
+			$branch = new \Famelo\ADU\Domain\Model\Branch();
+			$branch->setName($branchName);
+//			$this->persistenceManager->add($branch);
+
+			for ($i = 25; $i < 0; $i++) {
+				$customer = new \Famelo\ADU\Domain\Model\Customer();
+				$contact = new \Famelo\ADU\Domain\Model\Contact();
+				$contactAlternative = new \Famelo\ADU\Domain\Model\Contact();
+			}
+		}
+	}
 }
 
 ?>

@@ -11,6 +11,7 @@ TYPO3:
     object:
       excludeClasses:
        'Famelo.Faces' : ['.*']
+       'fzaninotto.faker' : ['.*']
 
     i18n:
       # The default locale identifier.
