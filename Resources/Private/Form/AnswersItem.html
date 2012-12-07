@@ -2,11 +2,13 @@
 <div class="adu-answer">
 	<div class="media">
 		<div class="adu-question media-body">
-			<form:renderRenderable renderable="{inline.elements.question}" />
-		</div>
-		<div class="pull-right">
+			<div class="question">
+				<form:renderRenderable renderable="{inline.elements.question}" />
+			</div>
 			<form:renderRenderable renderable="{inline.elements.answer}" />
-			<form:renderRenderable renderable="{inline.elements.comment}" />
+			<div class="comment">
+				<form:renderRenderable renderable="{inline.elements.comment}" />
+			</div>
 		</div>
 	</div>
 </div>

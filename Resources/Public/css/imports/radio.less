@@ -1,4 +1,11 @@
-@radio-width: 50px;
+@radio-width: 40px;
+
+.rating {
+    display: block;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
 body [class^="radio-"] {
     float: left;
 }
@@ -12,11 +19,61 @@ body [class*=" radio-"] a{
     cursor: pointer;
     margin:0;
 }
-
 .radio-red .prettyradio a{ background-image: url(../img/RadioButtons/Red.png);}
 .radio-green .prettyradio a{ background-image: url(../img/RadioButtons/Green.png);}
 .radio-yellow .prettyradio a{ background-image: url(../img/RadioButtons/Yellow.png);}
 .radio-orange .prettyradio a{ background-image: url(../img/RadioButtons/Orange.png);}
+
+body [class^="radio-c"] a,
+body [class*=" radio-c"] a {
+    background: none;
+    .border-radius(@radio-width);
+    width: @radio-width - 8px;
+    height: @radio-width - 8px;
+    border: 4px solid #d72026;
+    .box-shadow(0px 0px 3px 1px #ccc);
+    .opacity(60);
+}
+
+body [class^="radio-c"] a.checked,
+body [class*=" radio-c"] a.checked {
+    width: @radio-width;
+    height: @radio-width;
+    border: none;
+    .opacity(100);
+}
+
+body [class^="radio-c"] a:hover,
+body [class*=" radio-c"] a:hover {
+    .opacity(100);
+}
+
+.radio-c1 .prettyradio a { border-color: #df001a; }
+.radio-c1 .prettyradio a.checked { background: #df001a; }
+
+.radio-c2 .prettyradio a { border-color: #e95d0f; }
+.radio-c2 .prettyradio a.checked { background: #e95d0f; }
+
+.radio-c3 .prettyradio a { border-color: #f29400; }
+.radio-c3 .prettyradio a.checked { background: #f29400; }
+
+.radio-c4 .prettyradio a { border-color: #fabb00; }
+.radio-c4 .prettyradio a.checked { background: #fabb00; }
+
+.radio-c5 .prettyradio a { border-color: #ffdd00; }
+.radio-c5 .prettyradio a.checked { background: #ffdd00; }
+
+.radio-c6 .prettyradio a { border-color: #ffed00; }
+.radio-c6 .prettyradio a.checked { background: #ffed00; }
+
+.radio-c7 .prettyradio a { border-color: #dfdb00; }
+.radio-c7 .prettyradio a.checked { background: #dfdb00; }
+
+.radio-c8 .prettyradio a { border-color: #7ab51d; }
+.radio-c8 .prettyradio a.checked { background: #7ab51d; }
+
+.radio-c9 .prettyradio a { border-color: #009036; }
+.radio-c9 .prettyradio a.checked { background: #009036; }
 
 body [class^="radio-"],
 body [class*=" radio-"] {

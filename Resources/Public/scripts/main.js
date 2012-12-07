@@ -59,7 +59,7 @@ $(document).ready(function(){
 	$("span.line").peity("line");
 	$("span.bar").peity("bar");
 
-	$("[data-element='prettyCheckable']").prettyCheckable();
+	$("[data-element='prettyCheckable'], .prettyCheckable").prettyCheckable();
 
 	$(".happiness [data-element='prettyCheckable']").change(function(){
 		var radio = $(this);

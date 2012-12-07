@@ -27,6 +27,7 @@ TYPO3:
         javaScripts:
           raty:
             source: 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.min.js'
+
         formElementTypes:
 
           'Famelo.ADU:Rating':
