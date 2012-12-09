@@ -10,34 +10,42 @@
 		<tr>
 			<th>{customer}</th>
 			<td>
-				<div>
-					<label class="radio-green">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="1">
-					</label>
-					<label class="radio-yellow">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="2">
-					</label>
-					<label class="radio-orange">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="3">
-					</label>
-					<label class="radio-red">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="4">
-					</label>
-				</div>
-				<div class="form-horizontal hide" style="clear:both;">
-					<div class="control-group">
-					    <label class="control-label" for="inputEmail">Kommentar</label>
-					    <div class="controls">
-					    	<input type="text" id="inputEmail" required name="ratings[{customer.identity}][comment]">
-					    </div>
-					</div>
-					<div class="control-group">
-					    <label class="control-label" for="ratings.{customer.identity}.action">Maßnahme</label>
-					    <div class="controls">
-					    	<input type="text" id="ratings.{customer.identity}.action" required name="ratings[{customer.identity}][action]">
-					    </div>
-					</div>
-				</div>
+				<f:if condition="{customer.specialColor}">
+					<f:then>
+						<span class="badge-{customer.specialColor}"></span>
+					</f:then>
+					<f:else>
+						<div>
+							<label class="radio-green">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="1">
+							</label>
+							<label class="radio-yellow">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="2">
+							</label>
+							<label class="radio-orange">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="3">
+							</label>
+							<label class="radio-red">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="4">
+							</label>
+						</div>
+						<div class="form-horizontal hide" style="clear:both;">
+							<div class="control-group">
+							    <label class="control-label" for="inputEmail">Kommentar</label>
+							    <div class="controls">
+							    	<input type="text" id="inputEmail" required name="ratings[{customer.identity}][comment]">
+							    </div>
+							</div>
+							<div class="control-group">
+							    <label class="control-label" for="ratings.{customer.identity}.action">Maßnahme</label>
+							    <div class="controls">
+							    	<input type="text" id="ratings.{customer.identity}.action" required name="ratings[{customer.identity}][action]">
+							    </div>
+							</div>
+						</div>
+					</f:else>
+				</f:if>
+
 			</td>
 		</tr>
 		</f:for>

@@ -3,13 +3,17 @@
 .badge-green,
 .badge-yellow,
 .badge-orange,
-.badge-red {
+.badge-red,
+.badge-blue,
+.badge-purple,
+.badge-white {
     .border-radius(@badge-size);
     display: block;
     background: red;
     height: @badge-size;
     width: @badge-size;
     text-indent: -9999em;
+    line-height: 10px;
 }
 
 .badge-green {
@@ -27,4 +31,18 @@
 .badge-red {
     background: #dc182d;
     border-color: #dc182d;
+}
+.badge-purple {
+    background: #571f83;
+    border-color: #571f83;
+}
+.badge-blue {
+    background: #003683;
+    border-color: #003683;
+}
+.badge-white {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    width: @badge-size - 2;
+    height: @badge-size - 2;
 }

@@ -29,6 +29,9 @@ class SelfEvaluationNotification implements NotificationInterface {
 
 	public function getNotifications() {
 		$customer = $this->customerRepository->findAll()->getFirst();
+		if (!is_object($customer->getLatestRating())) {
+			return array();
+		}
 		$lastRating = $customer->getLatestRating()->getCreated();
 
 		$now = new \DateTime();

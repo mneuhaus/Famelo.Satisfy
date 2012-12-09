@@ -17,6 +17,10 @@ TYPO3:
       # The default locale identifier.
       defaultLocale: de
 
+  Expose:
+    Pagination:
+      Default: 9999999
+
   Form:
     presets:
       expose:

@@ -7256,7 +7256,7 @@ body,
   padding-top: 60px;
 }
 [role="main"] > div {
-  margin-top: 30px;
+  margin-top: 0px;
   background: #ffffff;
 }
 [role="left"] {
@@ -7388,6 +7388,9 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
 .pagination {
   margin: 20px 0;
 }
+.pagination div.page {
+  float: left;
+}
 .pagination ul {
   display: inline-block;
   *display: inline;
@@ -7517,7 +7520,10 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
 .badge-green,
 .badge-yellow,
 .badge-orange,
-.badge-red {
+.badge-red,
+.badge-blue,
+.badge-purple,
+.badge-white {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
@@ -7526,6 +7532,7 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
   height: 30px;
   width: 30px;
   text-indent: -9999em;
+  line-height: 10px;
 }
 .badge-green {
   background: #3fd351;
@@ -7542,6 +7549,20 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
 .badge-red {
   background: #dc182d;
   border-color: #dc182d;
+}
+.badge-purple {
+  background: #571f83;
+  border-color: #571f83;
+}
+.badge-blue {
+  background: #003683;
+  border-color: #003683;
+}
+.badge-white {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  width: 28px;
+  height: 28px;
 }
 .rating {
   display: block;

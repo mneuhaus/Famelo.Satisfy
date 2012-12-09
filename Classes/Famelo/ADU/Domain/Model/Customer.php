@@ -88,7 +88,21 @@ class Customer {
 	 */
 	protected $ratings;
 
+	/**
+	 * The created
+	 * @var \DateTime
+	 */
+	protected $created;
+
+	/**
+	 * The created
+	 * @var \DateTime
+	 */
+	protected $termination = NULL;
+
+
 	public function __construct() {
+		$this->created = new \DateTime();
 		$this->surveys = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
@@ -273,19 +287,87 @@ class Customer {
 	}
 
 	public function getLatestRating() {
-		foreach ($this->ratings as $rating) {
-			return $rating;
+		if ($this->ratings->count() > 0) {
+			return $this->ratings->first();
 		}
+		return NULL;
+	}
+
+	public function getCurrentSurveyColor() {
+		if ($this->getTermination() !== NULL) {
+			return 'purple';
+		}
+		if ($this->isNew()) {
+			return 'blue';
+		}
+		if (is_object($this->getLatestSurvey())) {
+			return $this->getLatestSurvey()->getResultColor();
+		}
+		return 'white';
 	}
 
 	public function getCurrentRatingColor() {
+		if ($this->getTermination() !== NULL) {
+			return 'purple';
+		}
+		if ($this->isNew()) {
+			return 'blue';
+		}
 		$colors = array(
 			'1' => 'green',
 			'2' => 'yellow',
 			'3' => 'orange',
 			'4' => 'red'
 		);
-		return $colors[$this->getLatestRating()->getLevel()];
+		if (is_object($this->getLatestRating())) {
+			return $colors[$this->getLatestRating()->getLevel()];
+		}
+		return 'white';
+	}
+
+	/**
+	 * @param DateTime $created
+	 */
+	public function setCreated($created) {
+		$this->created = $created;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function getCreated() {
+		return $this->created;
+	}
+
+	/**
+	 * @param DateTime $termination
+	 */
+	public function setTermination($termination) {
+		$this->termination = $termination;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function getTermination() {
+		if ($this->termination->getTimestamp() > -62169987600) {
+			return $this->termination;
+		}
+	}
+
+	public function isNew() {
+		$now = new \DateTime();
+		return $this->getCreated()->diff($now)->format('%a') <= 30;
+	}
+
+	public function getSpecialColor() {
+		if ($this->getTermination() !== NULL) {
+			return 'purple';
+		}
+		if ($this->isNew()) {
+			return 'blue';
+		}
+		return FALSE;
 	}
 }
 ?>

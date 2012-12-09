@@ -7,15 +7,15 @@
 		{customer}
 	</td>
 	<td>
-		<span class="badge-{customer.latestSurvey.resultColor}"></span>
+		<span class="badge-{customer.currentSurveyColor}"></span>
 	</td>
 	<td>
 		<f:if condition="{customer.latestRating.comment}">
 			<f:then>
-				<a class="rating badge-{customer.currentRatingColor}" rel="popover" data-title="Kommentar/Maßnahme" data-content="{customer.latestRating.comment}<br />{customer.latestRating.action}">{customer.currentRatingColor}</a>
+				<a class="evaluation badge-{customer.currentRatingColor}" rel="popover" data-title="Kommentar/Maßnahme" data-content="{customer.latestRating.comment}<br />{customer.latestRating.action}">{customer.currentRatingColor}</a>
 			</f:then>
 			<f:else>
-				<a class="rating badge-{customer.currentRatingColor}">{customer.currentRatingColor}</a>
+				<a class="evaluation badge-{customer.currentRatingColor}">{customer.currentRatingColor}</a>
 			</f:else>
 		</f:if>
 	</td>

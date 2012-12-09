@@ -9,6 +9,8 @@ prototype(Famelo.ADU:Report) < prototype(TYPO3.TypoScript:Template) {
 }
 
 prototype(Famelo.ADU:Report) << 100.Famelo\ADU\Processors:listJs()
+prototype(Famelo.ADU:Report) << 200.Famelo\ADU\Processors:Dummy()
+prototype(Famelo.ADU:Report) << 300.Famelo\ADU\Processors:Dummy()
 
 prototype(Famelo.ADU:ReportRow) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Report/Row.html'
@@ -20,4 +22,13 @@ prototype(Famelo.ADU:ReportRow) < prototype(TYPO3.TypoScript:Template) {
 prototype(Famelo.ADU:Report).prototype(TYPO3.Expose:RecordList) {
 	recordList.report = Famelo.ADU:Report
 	currentFormat = 'report'
+	bottomRegion {
+		limits = Famelo.ADU:Null
+		paginator = Famelo.ADU:Null
+	}
+}
+
+prototype(Famelo.ADU:Null) {
+	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\ValueImplementation'
+	value = ''
 }

@@ -98,15 +98,51 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 			'Hannover',
 			'OWL/Hessen'
 		);
+		$faker = \Faker\Factory::create('de_DE');
+
 		foreach ($branches as $branchName) {
 			$branch = new \Famelo\ADU\Domain\Model\Branch();
 			$branch->setName($branchName);
-//			$this->persistenceManager->add($branch);
+			$this->persistenceManager->add($branch);
 
-			for ($i = 25; $i < 0; $i++) {
+			for ($i = 0; $i < 25; $i++) {
 				$customer = new \Famelo\ADU\Domain\Model\Customer();
+				$customer->setBranch($branch);
+				$customer->setName($faker->company);
+
 				$contact = new \Famelo\ADU\Domain\Model\Contact();
-				$contactAlternative = new \Famelo\ADU\Domain\Model\Contact();
+				$contact->setFirstname($faker->firstName);
+				$contact->setLastname($faker->lastName);
+				$contact->setPhone($faker->phoneNumber);
+				$contact->setEmail($faker->email);
+				$customer->setContact($contact);
+				$this->persistenceManager->add($contact);
+
+				$contact = new \Famelo\ADU\Domain\Model\Contact();
+				$contact->setFirstname($faker->firstName);
+				$contact->setLastname($faker->lastName);
+				$contact->setPhone($faker->phoneNumber);
+				$contact->setEmail($faker->email);
+				$customer->setAlternativeContact($contact);
+				$this->persistenceManager->add($contact);
+
+				$this->persistenceManager->add($customer);
+			}
+		}
+	}
+
+	/**
+	 * Update Data
+	 *
+	 * Update Data
+	 *
+	 * @return void
+	 */
+	public function migrateDataCommand() {
+		foreach ($this->customerRepository->findAll() as $customer) {
+			if ($customer->getCreated() === NULL) {
+				$customer->setCreated(new \DateTime());
+				$this->persistenceManager->update($customer);
 			}
 		}
 	}
