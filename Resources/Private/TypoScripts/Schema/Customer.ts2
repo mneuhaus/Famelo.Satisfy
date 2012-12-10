@@ -1,5 +1,7 @@
 prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO3.Expose:Schema) {
 	properties {
+		ratings.ignore = true
+
 		name {
 			label = 'Name'
 		}
