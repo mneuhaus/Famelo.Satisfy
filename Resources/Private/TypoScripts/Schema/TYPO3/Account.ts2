@@ -15,6 +15,10 @@ prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Exp
 			label = 'Passwort'
 			element = 'TYPO3.Expose:PasswordWithHashing'
 		}
+
+		roles {
+			optionsProvider.class = 'Role'
+		}
 	}
 }
 
