@@ -10,11 +10,12 @@ resources:
     Everything: 'method(Famelo\ADU\(?!.*Login).*->.*Action())'
 
 roles:
-  Administrator: [ Editor ]
-  Editor: []
+  Administrator: [ Bereichsleiter ]
+  Bereichsleiter: [ Kundenberater ]
+  Kundenberater: []
 
 acls:
-  Editor:
+  Kundenberater:
     methods:
       Home: GRANT
   Administrator:
