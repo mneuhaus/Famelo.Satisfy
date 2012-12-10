@@ -25,6 +25,7 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\TYPO3\Flow\Security\Account>
 	 * @ORM\OneToMany(mappedBy="party", cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $accounts;
 
@@ -58,6 +59,14 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 * @var string
 	 */
 	protected $role = '';
+
+	/**
+	 * The surveys
+	 *
+	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Customer>
+	 * @ORM\OneToMany(mappedBy="consultant", cascade={"persist"})
+	 */
+	protected $customers;
 
 	public function __construct() {
 		if ($this->accounts == NULL) {
@@ -228,6 +237,43 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 */
 	public function setRole($role) {
 		$this->role = $role;
+	}
+
+	/**
+	 * Get the User's customers
+	 *
+	 * @return \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Customer>
+	 */
+	public function getCustomers() {
+		return $this->customers;
+	}
+
+	/**
+	 * Sets this User's customers
+	 *
+	 * @param \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Customer> $customers The User's customers
+	 * @return void
+	 */
+	public function setCustomers($customers) {
+		foreach ($customers as $customer) {
+			$customer->setConsultant($this);
+		}
+		$this->customers = $customers;
+	}
+
+
+	public function getDidNotSelfEvaluate() {
+		if (count($this->getCustomers()) > 0) {
+			$customer = $this->getCustomers()->first();
+			if (!is_object($customer->getLatestRating())) {
+				return array();
+			}
+			$lastRating = $customer->getLatestRating()->getCreated();
+
+				// Check if the user rated customers since last Wednesday (0 0 * * 3)
+			$interval = \Cron\CronExpression::factory('0 0 * * 3');
+			return $interval->getPreviousRunDate() > $lastRating;
+		}
 	}
 }
 

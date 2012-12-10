@@ -369,5 +369,25 @@ class Customer {
 		}
 		return FALSE;
 	}
+
+	public function isSatisfied() {
+		if ($this->getTermination() !== NULL) {
+			return TRUE;
+		}
+
+		if ($this->isNew()) {
+			return TRUE;
+		}
+
+		if (is_object($this->getLatestRating()) && $this->getLatestRating()->getLevel() > 1) {
+			return FALSE;
+		}
+
+		if (is_object($this->getLatestSurvey()) && $this->getLatestSurvey()->getResult() < 5) {
+			return FALSE;
+		}
+
+		return TRUE;
+	}
 }
 ?>
