@@ -1,5 +1,6 @@
 prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User) < prototype(TYPO3.Expose:Schema) {
 	properties {
+		customers.ignore = true
 		role.ignore = true
 		electronicAddresses.ignore = true
 		primaryElectronicAddress.ignore = true
