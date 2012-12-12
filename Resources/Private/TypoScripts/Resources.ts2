@@ -3,7 +3,7 @@ prototype(TYPO3.Expose:ResourceHandler) {
 		adu {
 			file = 'resource://Famelo.ADU/Public/css/main.css'
 		}
-		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettyCheckable/prettyCheckable.css'
+		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettycheckable/prettyCheckable.css'
 	}
 
 	javascripts {
@@ -27,7 +27,7 @@ prototype(TYPO3.Expose:ResourceHandler) {
 		offCanvas.file = 'resource://Famelo.ADU/Public/components/famelo/components/scripts/off-canvas.js'
 
 		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
-		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettyCheckable/prettyCheckable.js'
+		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettycheckable/prettyCheckable.js'
 		listjs.file = 'resource://Famelo.ADU/Public/components/listjs/src/list.js'
 		listjspaging.file = 'resource://Famelo.ADU/Public/components/listjs/plugins/paging/list.paging.js'
 		listjsfilter.file = 'resource://Famelo.ADU/Public/components/listjs/plugins/filter/list.filter.js'
