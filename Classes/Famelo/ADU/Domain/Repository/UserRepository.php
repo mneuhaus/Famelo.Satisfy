@@ -20,6 +20,30 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 	 */
 	protected $accountRepository;
 
+	/**
+	 * The securityContext
+	 *
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
+
+	/**
+	 * Returns a query for objects of this repository
+	 *
+	 * @return \TYPO3\Flow\Persistence\QueryInterface
+	 * @api
+	 */
+	public function createQuery() {
+		$query = parent::createQuery();
+		if ($this->securityContext->hasRole('Administrator')) {
+			// Full Access
+		} elseif ($this->securityContext->hasRole('Bereichsleiter')) {
+			$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
+		}
+		return $query;
+	}
+
 	public function findOneByUsername($username) {
 		$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($username, 'ADUProvider');
 		return $account->getParty();

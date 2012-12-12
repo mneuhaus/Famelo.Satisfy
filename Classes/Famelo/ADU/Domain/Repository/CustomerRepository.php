@@ -30,7 +30,13 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 	 */
 	public function createQuery() {
 		$query = parent::createQuery();
-		#$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
+		if ($this->securityContext->hasRole('Administrator')) {
+			// Full Access
+		} elseif ($this->securityContext->hasRole('Bereichsleiter')) {
+			$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
+		} else {
+			$query->matching($query->equals('consultant', $this->securityContext->getParty()));
+		}
 		return $query;
 	}
 

@@ -207,6 +207,9 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 * @return \Famelo\ADU\Domain\Model\Branch The User's branch
 	 */
 	public function getBranch() {
+		if ($this->branch == NULL && count($this->getCustomers()) > 0) {
+			return $this->getCustomers()->first()->getBranch();
+		}
 		return $this->branch;
 	}
 
