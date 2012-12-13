@@ -234,6 +234,9 @@ class Customer {
 	 * @return \Famelo\ADU\Domain\Model\Branch The Customer's branch
 	 */
 	public function getBranch() {
+		if ($this->branch === NULL && $this->customer !== NULL) {
+			return $this->customer->getBranch();
+		}
 		return $this->branch;
 	}
 

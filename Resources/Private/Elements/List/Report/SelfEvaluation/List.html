@@ -27,8 +27,13 @@
  		</div>
 
  		<div class="filter">
- 			<label>Selbsteinschätzung</label>
+ 			<label>Kundenberater</label>
  			<div class="nav-horizontal" data-filter="dropdown" data-filter-property="consultant"></div>
+ 		</div>
+
+ 		<div class="filter">
+ 			<label>Niederlassung</label>
+ 			<div class="nav-horizontal" data-filter="dropdown" data-filter-property="branch"></div>
  		</div>
 
  	</div>
@@ -38,6 +43,7 @@
 			<tr>
 				<th>Kunde</th>
 				<th>Kundenberater</th>
+				<th>Niederlassung</th>
 				<th>Selbsteinschätzung</th>
 			</tr>
 		</thead>
@@ -53,13 +59,8 @@
 
 
 <script type="text/javascript">
-
-    /*
-    * LOVELY THINGS
-    */
-
     var options = {
-	    valueNames: [ 'name', 'rating', 'evaluation', 'consultant' ],
+	    valueNames: [ 'name', 'rating', 'evaluation', 'consultant', 'branch' ],
 	    page: 10,
 	    plugins: [
 	        [ 'filtering', {} ],
