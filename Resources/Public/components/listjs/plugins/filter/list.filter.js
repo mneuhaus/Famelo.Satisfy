@@ -1,6 +1,7 @@
 List.prototype.plugins.filtering = function(locals, options) {
     var list = this;
     var container = $("#" + list.listContainer.id);
+    var filters = {};
     var init = function() {
         options = options || {};
 
@@ -31,7 +32,57 @@ List.prototype.plugins.filtering = function(locals, options) {
                 return false;
             });
         });
+
+        container.find('[data-filter="dropdown"]').each(function(){
+            var filter = $(this);
+            var filterElement = $('<select></select>');
+            filter.prepend(filterElement);
+            var property = filter.attr("data-filter-property");
+            var values = get.values(property).unique();
+            var item = $("<option value=''>Alle</option>");
+            filterElement.append(item);
+
+            for (var i = values.length - 1; i >= 0; i--) {
+                var value = values[i];
+                if (value !== '') {
+                    var item = $("<option value='"+value+"'>"+value+"</option>");
+                    filterElement.append(item);
+                }
+            };
+            filterElement.change(function() {
+                filters[property] = filterElement.val().split(',');
+                updateFilters();
+            });
+        });
+
+        container.find('[data-filter-set]').live('click', function(){
+            var filter = $(this);
+            var value = filter.attr('data-filter-set');
+            var property = filter.parents('[data-filter-property]').attr('data-filter-property');
+            if (value == "") {
+                delete filters[property];
+            } else {
+                filters[property] = value.split(",");
+            }
+            updateFilters();
+        });
     };
+
+    var updateFilters = function() {
+        list.filter(function(item) {
+            var matching = true;
+            $.each(filters, function(property, values){
+                // console.log(property, values, values.indexOf(item.values()[property]));
+                if (values.length == 0 || values[0] == '') {
+                    return;
+                }
+                if (values.indexOf(item.values()[property]) == -1) {
+                    matching = false;
+                }
+            });
+            return matching;
+        });
+    }
 
     var get = {
         values: function(property){

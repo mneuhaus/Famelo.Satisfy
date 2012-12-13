@@ -89,6 +89,28 @@
     '@package': 'Famelo.ADU'
   appendExceedingArguments: true
 
+-
+  name: 'Report Surveys'
+  uriPattern: 'report/survey'
+  navigation: 'Befragungen'
+  defaults:
+    '@format': 'html'
+    '@action':     'survey'
+    '@controller': 'Report'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+-
+  name: 'Report'
+  uriPattern: 'report/self-evaluation'
+  navigation: 'Selbsteinschätzungen'
+  defaults:
+    '@format': 'html'
+    '@action':     'selfEvaluation'
+    '@controller': 'Report'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
 ######################################
 # Branch                             #
 ######################################

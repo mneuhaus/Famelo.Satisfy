@@ -1,0 +1,12 @@
+<f:comment>REVIEWED for release</f:comment>
+{namespace e=TYPO3\Expose\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+
+<tr>
+	<td class="name">
+		<f:link.action action='customer' controller="Report" arguments="{customer: customer}" useMainRequest="1">{customer}</f:link.action>
+	</td>
+	<td>
+		<span class="badge-{customer.currentSurveyColor}"></span>
+	</td>
+</tr>

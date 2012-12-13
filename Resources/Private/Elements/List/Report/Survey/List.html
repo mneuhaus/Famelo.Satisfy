@@ -1,3 +1,4 @@
+<f:comment>REVIEWED for release</f:comment>
 {namespace cm=TYPO3\Expose\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 
@@ -20,7 +21,6 @@
 			<tr>
 				<th>Kunde</th>
 				<th>Quotient</th>
-				<th>Selbsteinschätzung</th>
 			</tr>
 		</thead>
 		<tbody class="list">
@@ -41,7 +41,7 @@
     */
 
     var options = {
-	    valueNames: [ 'name', 'rating', 'evaluation' ],
+	    valueNames: [ 'name', 'rating' ],
 	    page: 10,
 	    plugins: [
 	        [ 'filtering', {} ],

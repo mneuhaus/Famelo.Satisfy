@@ -4,13 +4,13 @@
 
 resources:
   methods:
-    Home: 'method(Famelo\ADU\Controller\StandardController->.*Action())'
-    Survey: 'method(Famelo\ADU\Controller\SurveyController->.*Action())'
-    Report: 'method(Famelo\ADU\Controller\ReportController->.*Action())'
-    Customer: 'method(Famelo\ADU\Controller\CustomerController->.*Action())'
-    UserManagement: 'method(Famelo\ADU\Controller\UserController->.*Action())'
-    Category: 'method(Famelo\ADU\Controller\CategoryController->.*Action())'
-    Everything: 'method(Famelo\ADU\Controller\(?!.*Login).*->.*Action())'
+    Home: 'method(Famelo\ADU\Controller\StandardController->.*Action(.*))'
+    Survey: 'method(Famelo\ADU\Controller\SurveyController->.*Action(.*))'
+    Report: 'method(Famelo\ADU\Controller\ReportController->.*Action(.*))'
+    Customer: 'method(Famelo\ADU\Controller\CustomerController->.*Action(.*))'
+    UserManagement: 'method(Famelo\ADU\Controller\UserController->.*Action(.*))'
+    Category: 'method(Famelo\ADU\Controller\CategoryController->.*Action(.*))'
+    Everything: 'method(Famelo\ADU\Controller\(?!.*Login).*->.*Action(.*))'
 
 roles:
   Kundenberater: []

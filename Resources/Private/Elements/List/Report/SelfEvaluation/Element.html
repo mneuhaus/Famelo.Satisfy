@@ -1,0 +1,20 @@
+<f:comment>REVIEWED for release</f:comment>
+{namespace e=TYPO3\Expose\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+
+<tr>
+	<td class="name">
+		{customer}
+	</td>
+	<td class="consultant">{customer.consultant}</td>
+	<td>
+		<f:if condition="{customer.latestRating.comment}">
+			<f:then>
+				<a class="evaluation badge-{customer.currentRatingColor}" rel="popover" data-title="Kommentar/Maßnahme" data-content="{customer.latestRating.comment}<br />{customer.latestRating.action}">{customer.currentRatingColor}</a>
+			</f:then>
+			<f:else>
+				<a class="evaluation badge-{customer.currentRatingColor}">{customer.currentRatingColor}</a>
+			</f:else>
+		</f:if>
+	</td>
+</tr>

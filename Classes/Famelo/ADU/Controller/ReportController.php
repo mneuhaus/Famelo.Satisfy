@@ -32,6 +32,36 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$customers = $this->customerRepository->findAll();
 		$this->view->assign('customers', $customers);
 	}
+
+	/**
+	 * Index action
+	 *
+	 * @return void
+	 */
+	public function surveyAction() {
+		$customers = $this->customerRepository->findAll();
+		$this->view->assign('customers', $customers);
+	}
+
+	/**
+	 * Index action
+	 *
+	 * @return void
+	 */
+	public function selfEvaluationAction() {
+		$customers = $this->customerRepository->findAll();
+		$this->view->assign('customers', $customers);
+	}
+
+	/**
+	 * Index action
+	 *
+	 * @param \Famelo\ADU\Domain\Model\Customer $customer
+	 * @return void
+	 */
+	public function customerAction($customer) {
+		$this->view->assign('customer', $customer);
+	}
 }
 
 ?>
