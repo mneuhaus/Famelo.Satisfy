@@ -24,6 +24,13 @@ class Customer {
 	protected $name;
 
 	/**
+	 * The name
+	 *
+	 * @var string
+	 */
+	protected $object;
+
+	/**
 	 * The cycle
 	 *
 	 * @var integer
@@ -283,6 +290,20 @@ class Customer {
 	 */
 	public function addRating($rating) {
 		$this->ratings->add($rating);
+	}
+
+	/**
+	 * @param string $object
+	 */
+	public function setObject($object) {
+		$this->object = $object;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getObject() {
+		return $this->object;
 	}
 
 	public function getLatestSurvey() {

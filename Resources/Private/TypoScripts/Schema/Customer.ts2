@@ -4,6 +4,11 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 
 		name {
 			label = 'Name'
+
+		}
+
+		object {
+			label = 'Objekt'
 		}
 
 		cycle {
