@@ -310,12 +310,12 @@ class Customer {
 	}
 
 	public function getCurrentRatingColor() {
-		if ($this->getTermination() !== NULL) {
-			return 'purple';
-		}
-		if ($this->isNew()) {
-			return 'blue';
-		}
+		// if ($this->getTermination() !== NULL) {
+		// 	return 'purple';
+		// }
+		// if ($this->isNew()) {
+		// 	return 'blue';
+		// }
 		$colors = array(
 			'1' => 'green',
 			'2' => 'yellow',
@@ -363,16 +363,6 @@ class Customer {
 		return $this->getCreated()->diff($now)->format('%a') <= 30;
 	}
 
-	public function getSpecialColor() {
-		if ($this->getTermination() !== NULL) {
-			return 'purple';
-		}
-		if ($this->isNew()) {
-			return 'blue';
-		}
-		return FALSE;
-	}
-
 	public function isSatisfied() {
 		if ($this->getTermination() !== NULL) {
 			return TRUE;
@@ -391,6 +381,16 @@ class Customer {
 		}
 
 		return TRUE;
+	}
+
+	public function getMarker() {
+		if ($this->getTermination() !== NULL) {
+			return 'K';
+		}
+		if ($this->isNew()) {
+			return 'N';
+		}
+		return FALSE;
 	}
 }
 ?>

@@ -12,8 +12,16 @@
     background: red;
     height: @badge-size;
     width: @badge-size;
-    text-indent: -9999em;
     line-height: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+body [class*=" badge-"] a:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .badge-green {
@@ -43,6 +51,4 @@
 .badge-white {
     background: #ffffff;
     border: 1px solid #ddd;
-    width: @badge-size - 2;
-    height: @badge-size - 2;
 }

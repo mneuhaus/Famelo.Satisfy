@@ -61,6 +61,12 @@ $(document).ready(function(){
 
 	$("[data-element='prettyCheckable'], .prettyCheckable").prettyCheckable();
 
+	$(".happiness [data-element='prettyCheckable']").each(function(){
+		var e = $(this);
+		if (typeof(e.attr("data-marker")) !== "undefined") {
+			e.next("a").text(e.attr("data-marker"));
+		}
+	});
 	$(".happiness [data-element='prettyCheckable']").change(function(){
 		var radio = $(this);
 		var value = parseInt(radio.val());

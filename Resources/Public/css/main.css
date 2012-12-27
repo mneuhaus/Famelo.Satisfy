@@ -7531,8 +7531,16 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
   background: red;
   height: 30px;
   width: 30px;
-  text-indent: -9999em;
   line-height: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+body [class*=" badge-"] a:hover {
+  text-decoration: none;
+  color: white;
 }
 .badge-green {
   background: #3fd351;
@@ -7561,8 +7569,6 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
 .badge-white {
   background: #ffffff;
   border: 1px solid #ddd;
-  width: 28px;
-  height: 28px;
 }
 .rating {
   display: block;
@@ -7578,22 +7584,29 @@ body [class*=" radio-"] a {
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   border-radius: 40px;
-  width: 32px;
-  height: 32px;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
   border: 4px solid #d72026;
   -webkit-box-shadow: 0px 0px 3px 1px #cccccc;
   -moz-box-shadow: 0px 0px 3px 1px #cccccc;
   box-shadow: 0px 0px 3px 1px #cccccc;
   opacity: 0.6;
   filter: alpha(opacity=60);
+  color: #555;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+  padding-top: 6px;
 }
 body [class^="radio-"] a.checked,
 body [class*=" radio-"] a.checked {
-  width: 40px;
-  height: 40px;
   border: none;
   opacity: 1;
   filter: alpha(opacity=100);
+  padding: 14px;
+  padding-top: 10px;
+  color: white;
 }
 body [class^="radio-"] a:hover,
 body [class*=" radio-"] a:hover {
@@ -7677,26 +7690,6 @@ body [class*=" radio-"] a:hover {
 }
 .radio-red .prettyradio a.checked {
   background: #df001a;
-}
-body [class^="radio-"] a,
-body [class*=" radio-"] a {
-  background-position: 0 -160px;
-}
-body [class^="radio-"] a:focus,
-body [class*=" radio-"] a:focus {
-  outline: 0 none;
-}
-body [class^="radio-"] a:focus,
-body [class*=" radio-"] a:focus {
-  background-position: 0 -200px;
-}
-body [class^="radio-"] a.checked,
-body [class*=" radio-"] a.checked {
-  background-position: 0 -240px;
-}
-body [class^="radio-"] a.checked:focus,
-body [class*=" radio-"] a.checked:focus {
-  background-position: 0 -280px;
 }
 .survey-new .t3-expose-page > fieldset > .control-group {
   background: #f3f3f3;

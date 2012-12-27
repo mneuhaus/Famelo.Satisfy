@@ -143,6 +143,7 @@ class Survey {
 		foreach ($this->getAnswers() as $answer) {
 			$result += ($answer->getAnswer() * $answer->getQuestion()->getWeight());
 		}
+		$result = $result / 9 * 5;
 		return $result;
 	}
 
@@ -157,6 +158,9 @@ class Survey {
 		$lastValue = 0;
 		foreach ($colors as $value => $color) {
 				// var_dump($result . '>=' . $lastValue .'&&'. $result .'<='. $value);
+			if ($result == $value) {
+				return $color;
+			}
 			if ($result >= $lastValue && $result <= $value) {
 				return $matchingColor;
 			}

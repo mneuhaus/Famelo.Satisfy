@@ -6,15 +6,15 @@
 	<td class="name">
 		{customer}
 	</td>
-	<td class="consultant">{customer.consultant}</td>
-	<td class="branch">{customer.branch}</td>
+	<td class="consultant hidden-phone">{customer.consultant}</td>
+	<td class="branch hidden-phone">{customer.branch}</td>
 	<td>
 		<f:if condition="{customer.latestRating.comment}">
 			<f:then>
-				<a class="evaluation badge-{customer.currentRatingColor}" rel="popover" data-title="Kommentar/Maßnahme" data-content="{customer.latestRating.comment}<br />{customer.latestRating.action}">{customer.currentRatingColor}</a>
+				<a class="evaluation badge-{customer.currentRatingColor}" rel="popover" data-title="Kommentar/Maßnahme" data-content="{customer.latestRating.comment}<br />{customer.latestRating.action}">{customer.marker}</a>
 			</f:then>
 			<f:else>
-				<a class="evaluation badge-{customer.currentRatingColor}">{customer.currentRatingColor}</a>
+				<a class="evaluation badge-{customer.currentRatingColor}">{customer.marker}</a>
 			</f:else>
 		</f:if>
 	</td>
