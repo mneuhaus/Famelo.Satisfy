@@ -23,7 +23,7 @@
 -
   name: 'Do Survey'
   uriPattern: 'survey/do'
-  navigation: 'Durchführen'
+#  navigation: 'Durchführen'
   defaults:
     '@format': 'html'
     '@action':     'new'
@@ -34,7 +34,7 @@
 -
   name: 'Process Survey'
   uriPattern: 'survey/edit'
-  navigation: 'Bearbeiten'
+#  navigation: 'Bearbeiten'
   defaults:
     '@format': 'html'
     '@action':     'list'
@@ -45,7 +45,7 @@
 -
   name: 'View'
   uriPattern: 'survey/view'
-  navigation: 'Ansehen'
+#  navigation: 'Ansehen'
   defaults:
     '@format': 'html'
     '@action':     'view'
@@ -55,7 +55,7 @@
 
 -
   name: 'General Happiness'
-  uriPattern: 'survey/happiness'
+  uriPattern: 'selbsteinschaetzung'
   navigation: 'Selbsteinschätzung'
   defaults:
     '@format': 'html'
@@ -67,7 +67,7 @@
 -
   name: 'Surveys'
   uriPattern: 'survey'
-  navigation: 'Befragungen'
+#  navigation: 'Befragungen'
   defaults:
     '@format': 'html'
     '@action':     'index'
@@ -92,7 +92,7 @@
 -
   name: 'Report Surveys'
   uriPattern: 'report/survey'
-  navigation: 'Befragungen'
+#  navigation: 'Befragungen'
   defaults:
     '@format': 'html'
     '@action':     'survey'
