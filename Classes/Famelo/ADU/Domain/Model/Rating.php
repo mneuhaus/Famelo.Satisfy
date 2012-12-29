@@ -35,6 +35,12 @@ class Rating {
 	protected $created;
 
 	/**
+	 * The date
+	 * @var \DateTime
+	 */
+	protected $date;
+
+	/**
 	 * The level
 	 * @var integer
 	 */
@@ -53,6 +59,7 @@ class Rating {
 	*/
 	public function __construct() {
 		$this->created = new \DateTime();
+		$this->date = new \DateTime();
 	}
 
 	public function __toString() {
@@ -109,6 +116,20 @@ class Rating {
 	 */
 	public function setCreated($created) {
 		$this->created = $created;
+	}
+
+	/**
+	 * @param \DateTime $date
+	 */
+	public function setDate($date) {
+		$this->date = $date;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getDate() {
+		return $this->date;
 	}
 
 	/**

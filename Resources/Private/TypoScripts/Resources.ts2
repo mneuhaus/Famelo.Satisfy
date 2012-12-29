@@ -22,6 +22,9 @@ prototype(TYPO3.Expose:ResourceHandler) {
 		bootstraptooltip.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-tooltip.js'
 		bootstrappopover.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-popover.js'
 
+		bootstrapdatepicker.file = 'resource://Famelo.ADU/Public/components/bootstrap-datepicker/js/bootstrap-datepicker.js'
+		bootstrapdatepickerlocale.file = 'resource://Famelo.ADU/Public/components/bootstrap-datepicker/js/locales/bootstrap-datepicker.de.js'
+
 		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
 		peity.file = 'resource://Famelo.ADU/Public/components/peity/jquery.peity.min.js'
 		offCanvas.file = 'resource://Famelo.ADU/Public/components/famelo/components/scripts/off-canvas.js'

@@ -49,8 +49,12 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function selfEvaluationAction() {
-		$customers = $this->customerRepository->findAll();
-		$this->view->assign('customers', $customers);
+		// $customers = $this->customerRepository->createQuery();
+		// $customers->setOrderings(array(
+		// 	//'selfEvaluationResult' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING
+		// 	'name' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING
+		// ));
+		// $this->view->assign('customers', $customers->execute());
 	}
 
 	/**

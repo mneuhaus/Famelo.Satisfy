@@ -107,6 +107,12 @@ class Customer {
 	 */
 	protected $termination = NULL;
 
+	/**
+	 * The selfEvaluationResult
+	 *
+	 * @var float
+	 */
+	protected $selfEvaluationResult = 0;
 
 	public function __construct() {
 		$this->created = new \DateTime();
@@ -304,6 +310,20 @@ class Customer {
 	 */
 	public function getObject() {
 		return $this->object;
+	}
+
+	/**
+	 * @param float $selfEvaluationResult
+	 */
+	public function setSelfEvaluationResult($selfEvaluationResult) {
+		$this->selfEvaluationResult = $selfEvaluationResult;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getSelfEvaluationResult() {
+		return $this->selfEvaluationResult;
 	}
 
 	public function getLatestSurvey() {

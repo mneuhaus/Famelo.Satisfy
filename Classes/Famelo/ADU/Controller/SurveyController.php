@@ -57,6 +57,9 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		foreach ($ratings as $identifier => $data) {
 			$customer = $this->customerRepository->findByIdentifier($identifier);
 			$rating = new \Famelo\ADU\Domain\Model\Rating();
+			if (!isset($data['value'])) {
+				continue;
+			}
 			$rating->setLevel($data['value']);
 			if (isset($data['comment'])) {
 				$rating->setComment($data['comment']);
@@ -66,6 +69,9 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			}
 			$rating->setCustomer($customer);
 			$this->persistenceManager->add($rating);
+
+			$customer->setSelfEvaluationResult($data['value']);
+			$this->persistenceManager->update($customer);
 		}
 
 		$this->redirect('index');

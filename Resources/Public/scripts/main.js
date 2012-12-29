@@ -81,4 +81,6 @@ $(document).ready(function(){
 	$(".validate").validate();
 
 	$('.dropdown-toggle').dropdown();
+
+	$('[data-date-format]').datepicker({language: 'de'});
 });

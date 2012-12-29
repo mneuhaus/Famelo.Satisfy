@@ -60,7 +60,7 @@
 
 <script type="text/javascript">
     var options = {
-	    valueNames: [ 'name', 'rating', 'evaluation', 'consultant', 'branch' ],
+	    valueNames: [ 'name', 'rating', 'evaluation', 'consultant', 'branch', 'sorting' ],
 	    page: 10,
 	    plugins: [
 	        [ 'filtering', {} ],
@@ -73,4 +73,5 @@
 	    ]
     };
     var featureList = new List('listjs', options);
+    featureList.sort('sorting');
 </script>
