@@ -33,13 +33,19 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 * The phone
 	 * @var string
 	 */
-	protected $phone;
+	protected $phone = '';
+
+	/**
+	 * The origin
+	 * @var string
+	 */
+	protected $origin = 'manual';
 
 	/**
 	 * The mobile
 	 * @var string
 	 */
-	protected $mobile;
+	protected $mobile = '';
 
 	/**
 	 * The email
@@ -85,7 +91,6 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	public function updateAccounts() {
 		foreach ($this->accounts as $account) {
 			$account->setParty($this);
-			$account->addRole(new \TYPO3\Flow\Security\Policy\Role('Administrator'));
 		}
 	}
 
@@ -277,6 +282,20 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 			$interval = \Cron\CronExpression::factory('0 0 * * 3');
 			return $interval->getPreviousRunDate() > $lastRating;
 		}
+	}
+
+	/**
+	 * @param string $origin
+	 */
+	public function setOrigin($origin) {
+		$this->origin = $origin;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getOrigin() {
+		return $this->origin;
 	}
 }
 

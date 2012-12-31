@@ -15,7 +15,15 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class CategoryRepository extends \TYPO3\Flow\Persistence\Repository {
 
-	// add customized methods here
+	public function getOrCreate($name) {
+		$category = $this->findOneByName($name);
+		if ($category === NULL) {
+			$category = new \Famelo\ADU\Domain\Model\Category();
+			$category->setName($name);
+			$this->add($category);
+		}
+		return $category;
+	}
 
 }
 ?>

@@ -8,7 +8,12 @@
 		<td>Bewertung</td>
 		<f:for each="{customers}" as="customer">
 		<tr>
-			<th>{customer}</th>
+			<th>
+				<f:if condition="{customer.object}">
+				<b>{customer.object}</b><br />
+				</f:if>
+				{customer}
+			</th>
 			<td style="width:250px;">
 				<div>
 					<label class="radio-green">

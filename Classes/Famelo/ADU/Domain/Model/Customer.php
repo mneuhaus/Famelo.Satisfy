@@ -57,7 +57,7 @@ class Customer {
 	 * The category
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Category
-	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
+	 * @ORM\ManyToOne(inversedBy="customers")
 	 */
 	protected $category;
 
@@ -104,6 +104,7 @@ class Customer {
 	/**
 	 * The created
 	 * @var \DateTime
+	 * @ORM\Column(type="datetime", nullable=true)
 	 */
 	protected $termination = NULL;
 
@@ -234,7 +235,7 @@ class Customer {
 	/**
 	 * Sets this Customer's consultant
 	 *
-	 * @param \Famelo\ADU\Domain\Model\Consultant $consultant The Customer's consultant
+	 * @param \Famelo\ADU\Domain\Model\User $consultant The Customer's consultant
 	 * @return void
 	 */
 	public function setConsultant($consultant) {
@@ -247,8 +248,8 @@ class Customer {
 	 * @return \Famelo\ADU\Domain\Model\Branch The Customer's branch
 	 */
 	public function getBranch() {
-		if ($this->branch === NULL && $this->customer !== NULL) {
-			return $this->customer->getBranch();
+		if ($this->branch === NULL && $this->consultant !== NULL) {
+			return $this->consultant->getBranch();
 		}
 		return $this->branch;
 	}
@@ -394,7 +395,7 @@ class Customer {
 	 * @return DateTime
 	 */
 	public function getTermination() {
-		if ($this->termination->getTimestamp() > -62169987600) {
+		if ($this->termination instanceof \DateTime && $this->termination->getTimestamp() > -62169987600) {
 			return $this->termination;
 		}
 	}
