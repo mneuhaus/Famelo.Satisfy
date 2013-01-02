@@ -74,6 +74,24 @@ class LoginController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$this->addFlashMessage('Successfully logged out.');
 		$this->redirect('index');
 	}
+
+	/**
+	 *
+	 * @return void
+	 */
+	public function changePasswordAction() {}
+
+	/**
+	 *
+	 * @return void
+	 */
+	public function savePasswordAction() {
+		$objects = $this->request->getInternalArgument('__objects');
+		foreach ($objects as $object) {
+			$this->persistenceManager->update($object);
+		}
+		$this->persistenceManager->persistAll();
+	}
 }
 
 ?>

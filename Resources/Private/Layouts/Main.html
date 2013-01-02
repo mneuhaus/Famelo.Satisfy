@@ -58,9 +58,11 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" id="user-menu" data-toggle="dropdown">
               {user.party.name}
-              <a:gravatar email="{user.party.email}" size="40" class="img-rounded" />
             </a>
             <ul class="dropdown-menu">
+              <li>
+                <f:link.action action="changePassword" controller="login" id="changePassword">Passwort ändern</f:link.action>
+              </li>
               <li>
                 <f:link.action action="logout" controller="login" id="logout">Abmelden</f:link.action>
               </li>
