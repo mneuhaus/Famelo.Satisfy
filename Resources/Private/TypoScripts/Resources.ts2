@@ -1,43 +1,4 @@
 prototype(TYPO3.Expose:ResourceHandler) {
-	stylesheets {
-		adu {
-			file = 'resource://Famelo.ADU/Public/css/main.css'
-		}
-		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettycheckable/prettyCheckable.css'
-	}
-
-	javascripts {
-		jquery {
-			file = 'resource://TYPO3.Expose/Public/js/jquery.1.7.1.min.js'
-			@position = 'start'
-		}
-
-		inlinehelper.file = 'resource://TYPO3.Expose/Public/JavaScript/Form/jquery.inlinehelper.js'
-		form.file = 'resource://TYPO3.Expose/Public/JavaScript/Form/Form.js'
-
-		raphael.file = 'https://raw.github.com/DmitryBaranovskiy/raphael/300aa589f5a0ba7fce667cd62c7cdda0bd5ad904/raphael-min.js'
-		morris.file = 'resource://Famelo.ADU/Public/components/morris.js/morris.min.js'
-
-		bootstrapdropdown.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-dropdown.js'
-		bootstraptooltip.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-tooltip.js'
-		bootstrappopover.file = 'resource://Famelo.ADU/Public/components/bootstrap/js/bootstrap-popover.js'
-
-		bootstrapdatepicker.file = 'resource://Famelo.ADU/Public/components/bootstrap-datepicker/js/bootstrap-datepicker.js'
-		bootstrapdatepickerlocale.file = 'resource://Famelo.ADU/Public/components/bootstrap-datepicker/js/locales/bootstrap-datepicker.de.js'
-
-		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
-		peity.file = 'resource://Famelo.ADU/Public/components/peity/jquery.peity.min.js'
-		offCanvas.file = 'resource://Famelo.ADU/Public/components/famelo/components/scripts/off-canvas.js'
-
-		raty.file = 'resource://Famelo.ADU/Public/components/raty/js/jquery.raty.js'
-		prettyCheckable.file = 'resource://Famelo.ADU/Public/components/prettycheckable/prettyCheckable.js'
-		listjs.file = 'resource://Famelo.ADU/Public/components/listjs/src/list.js'
-		listjspaging.file = 'resource://Famelo.ADU/Public/components/listjs/plugins/paging/list.paging.js'
-		listjsfilter.file = 'resource://Famelo.ADU/Public/components/listjs/plugins/filter/list.filter.js'
-
-		validation.file = 'resource://Famelo.ADU/Public/components/jquery.validation/jquery.validate.js'
-		validationde.file = 'resource://Famelo.ADU/Public/components/jquery.validation/localization/messages_de.js'
-
-		main.file = 'resource://Famelo.ADU/Public/Scripts/main.js'
-	}
+	stylesheets >
+	javascripts >
 }

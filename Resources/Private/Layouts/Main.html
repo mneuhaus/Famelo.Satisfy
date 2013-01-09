@@ -6,42 +6,20 @@
     {namespace n=Famelo\Navigation\ViewHelpers}
     {namespace e=TYPO3\Expose\ViewHelpers}
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>ADU Kundenzufriedenheit</title>
     <f:base />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="apple-touch-icon" href="{f:uri.resource(path: 'img/AppIcon.png', package: 'Famelo.ADU')}" />
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <e:resource />
-        <script src="{f:uri.resource(path:'Libraries/jquery-pjax/jquery.pjax.js', package: 'Community.Pjax')}"></script>
-    <script type="text/javascript"><![CDATA[
+    <link rel="stylesheet" href="{f:uri.resource(path:'components/chosen/chosen/chosen.css', package: 'TYPO3.Expose')}">
+    <link rel="stylesheet" href="{f:uri.resource(path:'css/main.css', package: 'TYPO3.Expose')}">
+    <link rel="stylesheet" href="{f:uri.resource(path:'Styles/main.css', package: 'Famelo.ADU')}">
 
-    // (function ($) {
-    //   $(document).ready(function () {
-    //     var base = $('base').attr('href');
-    //     $(document).delegate('a', 'click', function (e) {
-    //       var link = $(this);
-    //       if (typeof(link.attr('href')) == "string"){
-    //         if (link.attr('href').match(/[a-z]*:\/\//)) {
-    //           try {
-    //             $.pjax({
-    //               url: link.attr('href'),
-    //               container: '[role="main"]',
-    //               fragment:'[role="main"]',
-    //               timeout: 500
-    //             });
-    //             e.preventDefault();
-    //           } catch(e) {}
-    //         }
-    //       }
-    //     });
-    //   });
-    // })(jQuery);
-    ]]></script>
+    <script src="{f:uri.resource(path:'js/jquery.1.7.1.min.js', package: 'TYPO3.Expose')}"></script>
+    <script src="{f:uri.resource(path:'Scripts/Header.min.js', package: 'Famelo.ADU')}"></script>
   </head>
 
   <body>
@@ -75,45 +53,78 @@
 
     <div class="off-canvas">
       <div role="left">
-        <img src="{f:uri.resource(path: 'img/logo.png', package: 'Famelo.ADU')}" class="brand"/>
+        <div class="left-inner">
+          <img src="{f:uri.resource(path: 'img/logo.png', package: 'Famelo.ADU')}" class="brand"/>
 
-        <ul class="nav nav-vertical">
-          <n:navigation as="items">
-          <f:for each="{items}" as="item">
+          <ul class="nav nav-vertical">
+            <n:navigation as="items">
+            <f:for each="{items}" as="item">
+              <li>
+                  <n:action actionConfiguration="{item}">{item.label}</n:action>
+                  <f:if condition="{item.children}">
+                    <ul>
+                    <f:for each="{item.children}" as="child">
+                      <li>
+                          <n:action actionConfiguration="{child}">{child.label}</n:action>
+                      </li>
+                    </f:for>
+                    </ul>
+                  </f:if>
+              </li>
+            </f:for>
+            </n:navigation>
+          </ul>
+
+          <a:notification>
+          <ul class="nav nav-vertical">
+            <f:for each="{notifications}" as="notification">
             <li>
-                <n:action actionConfiguration="{item}">{item.label}</n:action>
-                <f:if condition="{item.children}">
-                  <ul>
-                  <f:for each="{item.children}" as="child">
-                    <li>
-                        <n:action actionConfiguration="{child}">{child.label}</n:action>
-                    </li>
-                  </f:for>
-                  </ul>
-                </f:if>
+              <n:action actionConfiguration="{notification.action}" class="{notification.class}">
+                {notification.text}
+              </n:action>
             </li>
-          </f:for>
-          </n:navigation>
-        </ul>
-
-        <a:notification>
-        <ul class="nav nav-vertical">
-          <f:for each="{notifications}" as="notification">
-          <li>
-            <n:action actionConfiguration="{notification.action}" class="{notification.class}">
-              {notification.text}
-            </n:action>
-          </li>
-          </f:for>
-        </ul>
-        </a:notification>
+            </f:for>
+          </ul>
+          </a:notification>
+        </div>
       </div>
 
       <div role="main">
-
-        <f:render section="content" />
-
+        <div class="main-inner">
+          <f:render section="content" />
+        </div>
       </div>
     </div>
+
+
+      <script src="{f:uri.resource(path:'JavaScript/Form/jquery.inlinehelper.js', package: 'TYPO3.Expose')}"></script>
+      <script src="{f:uri.resource(path:'JavaScript/Form/Form.js', package: 'TYPO3.Expose')}"></script>
+      <script src="{f:uri.resource(path:'components/chosen/chosen/chosen.jquery.min.js', package: 'TYPO3.Expose')}"></script>
+      <script src="{f:uri.resource(path:'Scripts/Footer.min.js', package: 'Famelo.ADU')}"></script>
+      <f:comment><script src="{f:uri.resource(path:'Libraries/jquery-pjax/jquery.pjax.js', package: 'Community.Pjax')}"></script>
+      <script type="text/javascript"><![CDATA[
+
+      // (function ($) {
+      //   $(document).ready(function () {
+      //     var base = $('base').attr('href');
+      //     $(document).delegate('a', 'click', function (e) {
+      //       var link = $(this);
+      //       if (typeof(link.attr('href')) == "string"){
+      //         if (link.attr('href').match(/[a-z]*:\/\//)) {
+      //           try {
+      //             $.pjax({
+      //               url: link.attr('href'),
+      //               container: '[role="main"]',
+      //               fragment:'[role="main"]',
+      //               timeout: 500
+      //             });
+      //             e.preventDefault();
+      //           } catch(e) {}
+      //         }
+      //       }
+      //     });
+      //   });
+      // })(jQuery);
+      ]]></script></f:comment>
   </body>
 </html>

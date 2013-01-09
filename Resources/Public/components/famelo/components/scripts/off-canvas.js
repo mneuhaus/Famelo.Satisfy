@@ -1,8 +1,8 @@
-$("[data-canvas-toggle]").click(function(){
+$("[data-canvas-toggle]").live('click', function(){
 	$(".off-canvas").toggleClass("off-canvas-active");
 	return false;
 });
 
-$("[role='main']").click(function(){
+$("[role='main']").live('click', function(){
 	$(".off-canvas").removeClass("off-canvas-active");
 });

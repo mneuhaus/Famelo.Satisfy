@@ -10,7 +10,7 @@
 -
   name: 'Home'
   uriPattern: ''
-  navigation: 'Home'
+#  navigation: 'Home'
   defaults:
     '@format': 'html'
     '@action':     'index'
@@ -81,7 +81,7 @@
 -
   name: 'Report'
   uriPattern: 'report'
-  navigation: 'Auswertung'
+#  navigation: 'Auswertung'
   defaults:
     '@format': 'html'
     '@action':     'index'
@@ -102,11 +102,22 @@
 
 -
   name: 'Report'
-  uriPattern: 'report/self-evaluation'
-  navigation: 'Selbsteinschätzungen'
+  uriPattern: 'self-evaluation'
+  navigation: 'Auswertung'
   defaults:
     '@format': 'html'
     '@action':     'selfEvaluation'
+    '@controller': 'Report'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+-
+  name: 'Report Overview'
+  uriPattern: 'report/overview'
+#  navigation: 'Auswertung'
+  defaults:
+    '@format': 'html'
+    '@action':     'overview'
     '@controller': 'Report'
     '@package': 'Famelo.ADU'
   appendExceedingArguments: true

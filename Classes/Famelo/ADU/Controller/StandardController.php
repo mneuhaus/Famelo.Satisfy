@@ -23,9 +23,6 @@ class StandardController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function indexAction() {
-		if ($this->request->hasArgument('module')) {
-			$this->view->assign('currentModule', $this->request->getArgument('module'));
-		}
 	}
 
 }

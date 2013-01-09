@@ -56,12 +56,17 @@ TYPO3:
           'Famelo.ADU:AnswersItem':
             superTypes: ['TYPO3.Expose:InlineStacked']
 
+          'TYPO3.Form:DatePicker':
+            properties:
+              dateFormat: 'd.m.Y'
+              enableDatePicker: true
+
   SwiftMailer:
     transport:
       type: 'Swift_SmtpTransport'
       options:
-        host: 'smtp.famelo.com'
+        host: 'mail.adu-kundenzufriedenheit.com'
         port: '465'
-        username: 'server@famelo.com'
-        password: 'IkNlw74WLj'
+        username: 'p182917p1'
+        password: 'larivai97'
         encryption: 'ssl'

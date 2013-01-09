@@ -1,0 +1,8 @@
+<f:layout name="Main" />
+{namespace e=TYPO3\Expose\ViewHelpers}
+
+<f:section name="content">
+	<div class="report-overview">
+	<e:render.action controller="SameTypeList" typoScriptPrefix="Famelo.ADU:Report.SelfEvaluation" type="\Famelo\ADU\Domain\Model\Customer" />
+	</div>
+</f:section>

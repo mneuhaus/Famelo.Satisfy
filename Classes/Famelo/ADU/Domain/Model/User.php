@@ -56,7 +56,7 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	/**
 	 * The group
 	 * @var \Famelo\ADU\Domain\Model\Branch
-	 * @ORM\ManyToOne(inversedBy="users", cascade={"all"})
+	 * @ORM\ManyToOne(inversedBy="users", cascade={"persist", "detach"})
 	 */
 	protected $branch;
 
@@ -71,6 +71,7 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 *
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Customer>
 	 * @ORM\OneToMany(mappedBy="consultant", cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $customers;
 
@@ -212,9 +213,9 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	 * @return \Famelo\ADU\Domain\Model\Branch The User's branch
 	 */
 	public function getBranch() {
-		if ($this->branch == NULL && count($this->getCustomers()) > 0) {
-			return $this->getCustomers()->first()->getBranch();
-		}
+		// if ($this->branch == NULL && is_object($this->getCustomers()) && is_object($this->getCustomers()->first())) {
+		// 	return $this->getCustomers()->first()->getBranch();
+		// }
 		return $this->branch;
 	}
 
@@ -271,8 +272,8 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 
 
 	public function getDidNotSelfEvaluate() {
-		if (count($this->getCustomers()) > 0) {
-			$customer = $this->getCustomers()->first();
+		$customer = $this->getCustomers()->first();
+		if (is_object($customer)) {
 			if (!is_object($customer->getLatestRating())) {
 				return array();
 			}

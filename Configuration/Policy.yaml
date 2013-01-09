@@ -23,10 +23,10 @@ acls:
       Home: GRANT
       Survey: GRANT
       Report: GRANT
-      Customer: GRANT
   Bereichsleiter:
     methods:
       UserManagement: GRANT
+      Customer: GRANT
   Administrator:
     methods:
       Everything: GRANT

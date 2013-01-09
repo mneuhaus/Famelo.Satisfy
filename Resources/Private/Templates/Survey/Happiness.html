@@ -9,10 +9,10 @@
 		<f:for each="{customers}" as="customer">
 		<tr>
 			<th>
+				<b>{customer}</b>
 				<f:if condition="{customer.object}">
-				<b>{customer.object}</b><br />
+				<br />{customer.object}
 				</f:if>
-				{customer}
 			</th>
 			<td style="width:250px;">
 				<div>
@@ -53,6 +53,7 @@
 		</tr>
 		</f:for>
 	</table>
+	<div id="warning" class="alert alert-error" style="display: none;">Es wurden nicht alle Pflichtfelder ausgefüllt!</div>
 	<f:form.submit value="Speichern" />
 	</f:form>
 </f:section>

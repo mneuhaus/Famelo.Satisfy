@@ -15,12 +15,17 @@ prototype(Famelo.ADU:Report.SelfEvaluationRow) < prototype(TYPO3.TypoScript:Temp
 	controllerLinks = Famelo.ADU:Customer.Links
 }
 
+prototype(Famelo.ADU:Report.SelfEvaluationLinks) < prototype(TYPO3.Expose:GlobalControllerLinks)
+
 prototype(Famelo.ADU:Report.SelfEvaluation).prototype(TYPO3.Expose:RecordList) {
 	recordList.report = Famelo.ADU:Report.SelfEvaluation
 	currentFormat = 'report'
 	bottomRegion {
 		limits = Famelo.ADU:Null
 		paginator = Famelo.ADU:Null
+	}
+	topRegion {
+		controllerLinks = Famelo.ADU:Report.SelfEvaluationLinks
 	}
 }
 

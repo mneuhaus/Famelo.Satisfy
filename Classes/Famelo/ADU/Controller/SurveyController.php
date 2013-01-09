@@ -43,8 +43,11 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function happinessAction() {
-		$customers = $this->customerRepository->findAll();
-		$this->view->assign('customers', $customers);
+		$query = $this->customerRepository->createQuery();
+		if ($this->securityContext->hasRole('Administrator')) {
+			$query->matching($query->equals('consultant', $this->securityContext->getParty()));
+		}
+		$this->view->assign('customers', $query->execute());
 	}
 
 	/**
@@ -73,8 +76,6 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$customer->setSelfEvaluationResult($data['value']);
 			$this->persistenceManager->update($customer);
 		}
-
-		$this->redirect('index');
 	}
 
 	/**

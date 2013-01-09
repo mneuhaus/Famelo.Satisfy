@@ -2,6 +2,8 @@ prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Exp
 	properties {
 		party.ignore = true
 		authenticationProviderName.hidden = true
+		creationDate.ignore = true
+		expirationDate.ignore = true
 
 		authenticationProviderName {
 			element = 'TYPO3.Expose:Hidden'
@@ -19,6 +21,7 @@ prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Exp
 		roles {
 			element = 'TYPO3.Expose:RoleSelector'
 			optionsProvider.class = 'Role'
+			label = 'Rolle'
 		}
 	}
 }

@@ -160,11 +160,11 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 	public function importFixturesCommand($startFresh = FALSE) {
 		//$this->removeAllEntities('\Famelo\ADU\Domain\Model\Rating');
 		//$this->removeAllEntities('\Famelo\ADU\Domain\Model\Answer');
-		$this->removeAllEntities('\TYPO3\Flow\Security\Account');
+		//$this->removeAllEntities('\TYPO3\Flow\Security\Account');
 		//$this->removeAllEntities('\Famelo\ADU\Domain\Model\User');
-		$this->removeAllEntities('\Famelo\ADU\Domain\Model\Survey');
+		//$this->removeAllEntities('\Famelo\ADU\Domain\Model\Survey');
 		//$this->removeAllEntities('\Famelo\ADU\Domain\Model\Customer');
-		$this->removeAllEntities('\Famelo\ADU\Domain\Model\Contact');
+		//$this->removeAllEntities('\Famelo\ADU\Domain\Model\Contact');
 
 		$customers = $this->getFixture('Kunden');
 
@@ -191,7 +191,7 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 			$user->setEmail($userData['E-Mail']);
 			$user->setName(new \TYPO3\Party\Domain\Model\PersonName('', $firstName, '', $lastName));
 			if (!empty($userData['Bereich'])) {
-				$user->setBranch($this->branchRepository->getOrCreate($userData['Bereich']));
+				$user->setBranch($this->branchRepository->getOrCreate(trim($userData['Bereich'])));
 			}
 			$this->persistenceManager->add($user);
 			$references[$lastName] = $user;
@@ -202,13 +202,20 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 				->setSubject('Zugangsdaten zum ADU Bewertungsportal')
 				->setMessage('Famelo.ADU:UserCreated')
 				->assign('user', $user)
-				->assign('password', $password);
+				->assign('password', $password)
+				->assign('greeting', $userData['Anrede']);
 
 			$mail->setTo(array('mneuhaus@famelo.com'));
-			// $mail->send();
+			$mail->send();
 
-			// $mail->setTo(array($user->getEmail()))
-			// $mail->send();
+			$mail->setTo(array('jkunter@famelo.com'));
+			$mail->send();
+
+			$mail->setTo(array('b.janz@adu-urban.de'));
+			$mail->send();
+
+			$mail->setTo(array('patrick.bremehr@neuland-medien.de'));
+			$mail->send();
 		}
 
 		$this->outputLine('Importing Customers', array(), 'green');
@@ -222,9 +229,11 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 			$customer = new \Famelo\ADU\Domain\Model\Customer();
 			$customer->setName($customerData['Name']);
 			$customer->setObject($customerData['Objekt']);
-			$customer->setCategory($this->categoryRepository->getOrCreate($customerData['Kategorie']));
+			$customer->setCategory($this->categoryRepository->getOrCreate(trim($customerData['Kategorie'])));
 			$customer->setConsultant($user);
 			$customer->setBranch($user->getBranch());
+			$created = new \DateTime('01.12.2012');
+			$customer->setCreated($created);
 			$this->persistenceManager->add($customer);
 		}
 	}

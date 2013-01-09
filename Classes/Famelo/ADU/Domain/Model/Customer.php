@@ -66,6 +66,7 @@ class Customer {
 	 *
 	 * @var \Famelo\ADU\Domain\Model\User
 	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $consultant;
 
@@ -74,6 +75,7 @@ class Customer {
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Branch
 	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $branch;
 
@@ -352,12 +354,12 @@ class Customer {
 	}
 
 	public function getCurrentRatingColor() {
-		// if ($this->getTermination() !== NULL) {
-		// 	return 'purple';
-		// }
-		// if ($this->isNew()) {
-		// 	return 'blue';
-		// }
+			// if ($this->getTermination() !== NULL) {
+			// 	return 'purple';
+			// }
+			// if ($this->isNew()) {
+			// 	return 'blue';
+			// }
 		$colors = array(
 			'1' => 'green',
 			'2' => 'yellow',
@@ -368,6 +370,12 @@ class Customer {
 			return $colors[$this->getLatestRating()->getLevel()];
 		}
 		return 'white';
+	}
+
+	public function getCurrentRatingImage() {
+		$color = $this->getCurrentRatingColor();
+		$image = 'img/Button-' . ucfirst($color) . '.png';
+		return $image;
 	}
 
 	/**
@@ -433,6 +441,10 @@ class Customer {
 			return 'N';
 		}
 		return FALSE;
+	}
+
+	public function getIsNew() {
+		return $this->getMarker() == 'N';
 	}
 }
 ?>
