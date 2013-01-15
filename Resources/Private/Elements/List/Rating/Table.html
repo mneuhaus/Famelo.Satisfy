@@ -1,7 +1,7 @@
 {namespace cm=TYPO3\Expose\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 
-<!-- <div id="listjs">
+<div id="listjs">
 
   	<div class="filter-bar">
   		<div class="filter">
@@ -31,7 +31,7 @@
 			<div class="nav-horizontal" data-filter="dropdown" data-filter-property="consultant"></div>
 		</div>
  	</div>
- -->
+
 	<table class="table table-striped table-condensed table-bordered">
 		<thead>
 			<tr>
@@ -43,11 +43,11 @@
 				<th></th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="list">
 			<ts:renderTypoScript path="rows"  />
 		</tbody>
 	</table>
-<!-- 
+
   	<div class="pagination pull-right">
     	<ul class="paging clearfix"></ul>
   	</div>
@@ -55,13 +55,8 @@
 
 
 <script type="text/javascript">
-
-    /*
-    * LOVELY THINGS
-    */
-
     var options = {
-	    valueNames: [ 'name', 'object', 'consultant', 'date', 'comment', 'sorting' ],
+	    valueNames: [ 'name', 'object'],
 	    page: 30,
 	    plugins: [
 	        [ 'filtering', {} ],
@@ -75,4 +70,4 @@
     };
     var list = new List('listjs', options);
     list.sort('sorting');
-</script> -->
+</script>

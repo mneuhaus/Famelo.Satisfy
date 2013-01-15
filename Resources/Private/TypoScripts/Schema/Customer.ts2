@@ -123,17 +123,8 @@ prototype(Famelo.ADU:CustomerRow) < prototype(TYPO3.TypoScript:Template) {
 prototype(Famelo.ADU:Customer).prototype(TYPO3.Expose:RecordList) {
 	recordList.Customer = Famelo.ADU:Customer
 	currentFormat = 'Customer'
-	bottomRegion {
-		limits = Famelo.ADU:Null
-		paginator = Famelo.ADU:Null
-	}
 }
 
 prototype(Famelo.ADU:Customer.Links) < prototype(TYPO3.Expose:LocalControllerLinks) {
 	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\ArrayImplementation'
-}
-
-prototype(Famelo.ADU:Null) {
-	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\ValueImplementation'
-	value = ''
 }

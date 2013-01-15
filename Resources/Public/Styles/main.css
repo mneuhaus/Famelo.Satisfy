@@ -8985,36 +8985,6 @@ body [class*=" radio-"] a:hover {
   margin-top: 0px;
   overflow: hidden;
 }
-.t3-expose-recordlist .t3-expose-bar-top {
-  padding: 20px 20px;
-  background: #f3f3f3;
-  color: #999999;
-  *zoom: 1;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-.t3-expose-recordlist .t3-expose-bar-top:before,
-.t3-expose-recordlist .t3-expose-bar-top:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.t3-expose-recordlist .t3-expose-bar-top:after {
-  clear: both;
-}
-.t3-expose-recordlist .t3-expose-bar-top:before,
-.t3-expose-recordlist .t3-expose-bar-top:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.t3-expose-recordlist .t3-expose-bar-top:after {
-  clear: both;
-}
-.t3-expose-recordlist .t3-expose-bar-top form,
-.t3-expose-recordlist .t3-expose-bar-top input {
-  margin-bottom: 0;
-}
 .t3-expose-recordlist .paging {
   margin-top: 0;
 }
