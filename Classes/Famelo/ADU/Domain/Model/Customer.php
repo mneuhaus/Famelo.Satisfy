@@ -354,20 +354,8 @@ class Customer {
 	}
 
 	public function getCurrentRatingColor() {
-			// if ($this->getTermination() !== NULL) {
-			// 	return 'purple';
-			// }
-			// if ($this->isNew()) {
-			// 	return 'blue';
-			// }
-		$colors = array(
-			'1' => 'green',
-			'2' => 'yellow',
-			'3' => 'orange',
-			'4' => 'red'
-		);
 		if (is_object($this->getLatestRating())) {
-			return $colors[$this->getLatestRating()->getLevel()];
+			return $this->getLatestRating()->getColor();
 		}
 		return 'white';
 	}

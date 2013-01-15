@@ -39,6 +39,7 @@ class RatingNeglectNotification implements \Famelo\Scheduler\Tasks\TaskInterface
 	}
 
 	public function execute() {
+		return;
 		$mail = new \Famelo\Messaging\Message();
 
 		$users = array();

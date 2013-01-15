@@ -123,6 +123,21 @@
   appendExceedingArguments: true
 
 ######################################
+# Ratings                            #
+######################################
+
+-
+  name: 'Ratings'
+  uriPattern: 'ratings'
+  navigation: 'Selbsteinschätzungen'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Ratings'
+    '@package': 'Famelo.ADU'
+  appendExceedingArguments: true
+
+######################################
 # Branch                             #
 ######################################
 -

@@ -17,6 +17,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Rating {
 
 	/**
+	 * The customer
+	 * @var \Famelo\ADU\Domain\Model\Customer
+	 * @ORM\ManyToOne(inversedBy="ratings", cascade={"all"})
+	 * @Flow\Lazy
+	 */
+	protected $customer;
+
+	/**
 	 * The action
 	 * @var string
 	 */
@@ -45,14 +53,6 @@ class Rating {
 	 * @var integer
 	 */
 	protected $level;
-
-	/**
-	 * The customer
-	 * @var \Famelo\ADU\Domain\Model\Customer
-	 * @ORM\ManyToOne(inversedBy="ratings", cascade={"all"})
-	 * @Flow\Lazy
-	 */
-	protected $customer;
 
 	/**
 	* TODO: Document this Method! ( __construct )
@@ -165,6 +165,15 @@ class Rating {
 		return $this->customer;
 	}
 
+	public function getColor() {
+		$colors = array(
+			'1' => 'green',
+			'2' => 'yellow',
+			'3' => 'orange',
+			'4' => 'red'
+		);
+		return $colors[$this->getLevel()];
+	}
 }
 
 ?>

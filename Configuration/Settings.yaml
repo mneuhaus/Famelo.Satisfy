@@ -61,6 +61,12 @@ TYPO3:
               dateFormat: 'd.m.Y'
               enableDatePicker: true
 
+          'Famelo.ADU:CustomerString':
+            superTypes: ['TYPO3.Form:ReadOnlyFormElement']
+
+          'Famelo.ADU:SelfEvaluationRating':
+            superTypes: ['TYPO3.Form:SingleLineText']
+
   SwiftMailer:
     transport:
       type: 'Swift_SmtpTransport'

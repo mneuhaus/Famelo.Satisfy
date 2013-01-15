@@ -111,6 +111,6 @@ $(document).ready(function(){
 
 	$('[data-date-format]').datepicker({
 		language: 'de',
-		format: 'mm.dd.yyyy'
+		format: 'dd.mm.yyyy'
 	});
 });

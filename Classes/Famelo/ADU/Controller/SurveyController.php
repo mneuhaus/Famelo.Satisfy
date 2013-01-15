@@ -70,12 +70,21 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			if (isset($data['action'])) {
 				$rating->setAction($data['action']);
 			}
+			if (isset($data['date'])) {
+				$rating->setDate(new \DateTime($data['date']));
+			}
 			$rating->setCustomer($customer);
 			$this->persistenceManager->add($rating);
 
 			$customer->setSelfEvaluationResult($data['value']);
 			$this->persistenceManager->update($customer);
 		}
+	}
+
+	/**
+	 * @return void
+	 */
+	public function ratingsAction() {
 	}
 
 	/**

@@ -15,7 +15,13 @@ prototype(Famelo.ADU:Report.SelfEvaluationRow) < prototype(TYPO3.TypoScript:Temp
 	controllerLinks = Famelo.ADU:Customer.Links
 }
 
-prototype(Famelo.ADU:Report.SelfEvaluationLinks) < prototype(TYPO3.Expose:GlobalControllerLinks)
+prototype(Famelo.ADU:Report.SelfEvaluationLinks) < prototype(TYPO3.Expose:GlobalControllerLinks) {
+	10 = TYPO3.Expose:ControllerLink
+	10.label = 'PDF Generieren'
+	10.action = 'generateSelfEvaluation'
+	10.controller = 'Famelo\\ADU\\Controller\\ReportController'
+	10.arguments.type = ${type}
+}
 
 prototype(Famelo.ADU:Report.SelfEvaluation).prototype(TYPO3.Expose:RecordList) {
 	recordList.report = Famelo.ADU:Report.SelfEvaluation

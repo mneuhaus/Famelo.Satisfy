@@ -48,7 +48,12 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 *
 	 * @return void
 	 */
-	public function selfEvaluationAction() {
+	public function selfEvaluationAction() {}
+
+	public function generateSelfEvaluationAction() {
+		$document = new \Famelo\PDF\Document('Famelo.ADU:CustomerReport');
+		$document->assign('customers', $this->customerRepository->findUnsatisfied());
+		$document->download('ADU Bericht ' . date('d.m.Y') . '.pdf');
 	}
 
 	/**

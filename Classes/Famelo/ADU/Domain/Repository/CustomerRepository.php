@@ -42,5 +42,14 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 		return $query;
 	}
 
+	public function findUnsatisfied() {
+		$query = $this->createQuery();
+		$query->setOrderings(array(
+			'selfEvaluationResult' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING
+		));
+		$query->matching($query->greaterThan('selfEvaluationResult', 1));
+		return $query->execute();
+	}
+
 }
 ?>

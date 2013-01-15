@@ -39,6 +39,7 @@ class GrumpyCustomerNotification implements \Famelo\Scheduler\Tasks\TaskInterfac
 	}
 
 	public function execute() {
+		return;
 		$mail = new \Famelo\Messaging\Message();
 
 		$customers = array();

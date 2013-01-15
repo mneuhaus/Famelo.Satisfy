@@ -57,11 +57,10 @@ class ReportingNotification implements \Famelo\Scheduler\Tasks\TaskInterface {
 			->setMessage('Famelo.ADU:CustomerReport')
 			->assign('customers', $customers);
 
-#		$mail->setTo(array('patrick.bremehr@neuland-medien.de'))
-#			 ->send();
+		$mail->setTo(array('patrick.bremehr@neuland-medien.de'))->send();
+		$mail->setTo(array('apocalip@gmail.com'))->send();
 
-#		$mail->setTo(array('apocalip@gmail.com'))
-#			 ->send();
+#		$mail->setTo(array('b.janz@adu-urban.de'))->send();
 	}
 }
 ?>

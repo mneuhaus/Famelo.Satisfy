@@ -5,14 +5,16 @@
       <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">Kundenberater</th>
       <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">Einschätzung</th>
       <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">Status</th>
-      <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">Kommentar/Maßnahme</th>
     </tr>
   </thead>
   <tbody>
     <f:for each="{customers}" as="customer">
     <tr>
       <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">
-        {customer}
+        <b>{customer}</b>
+        <f:if condition="{customer.object}">
+        <br />{customer.object}
+        </f:if>
       </td>
       <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">{customer.consultant}</td>
       <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px; text-align:center;">
@@ -21,13 +23,6 @@
                 <f:if condition="{customer.isNew}">Neukunde</f:if>
         <f:if condition="{customer.termination}">Gekündigt zum {customer.termination -> f:format.date(format: 'd.m.Y')}</f:if>
       </td>
-      </td>
-      <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">
-        <f:if condition="{customer.latestRating.comment}">
-        {customer.latestRating.comment}<br />
-        {customer.latestRating.action}<br />
-        {customer.latestRating.created -> f:format.date(format: 'd.m.Y')}
-        </f:if>
       </td>
     </tr>
     </f:for>

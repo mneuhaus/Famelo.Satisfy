@@ -18,7 +18,7 @@
 		<dl>
 			<dt>Kommentar: </dt><dd>{customer.latestRating.comment}</dd>
 			<dt>Maßnahme: </dt><dd>{customer.latestRating.action}</dd>
-			<dt>Datum: </dt> <dd>{customer.latestRating.created -> f:format.date(format: 'd.m.Y')}</dd>
+			<dt>Datum: </dt> <dd>{customer.latestRating.date -> f:format.date(format: 'd.m.Y')}</dd>
 		</dl>
 		</f:if>
 	</td>
