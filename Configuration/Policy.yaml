@@ -12,6 +12,7 @@ resources:
     Category: 'method(Famelo\ADU\Controller\CategoryController->.*Action(.*))'
     Rating: 'method(Famelo\ADU\Controller\RatingsController->.*Action(.*))'
     Everything: 'method(Famelo\ADU\Controller\(?!.*Login).*->.*Action(.*))'
+    Features: 'method(Famelo\Features\Controller\(?!.*Login).*->.*Action(.*))'
 
 roles:
   Kundenberater: []
@@ -32,3 +33,4 @@ acls:
   Administrator:
     methods:
       Everything: GRANT
+      Features: GRANT
