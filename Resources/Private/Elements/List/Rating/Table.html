@@ -9,23 +9,6 @@
   			<input class="search" placeholder="Suchen" />
   		</div>
 
-  		<div class="filter">
-			<label>Selbsteinschätzung</label>
-			<div class="nav-horizontal" data-filter-property="quotient">
-				<ul>
-					<li>
-						<a class="btn" data-filter-set="">Alle</a>
-					</li>
-					<li>
-						<a class="btn" data-filter-set="green">Zufrieden</a>
-					</li>
-					<li>
-						<a class="btn" data-filter-set="red,yellow,orange">Unzufrieden</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-
 		<div class="filter">
 			<label>Kundenberater</label>
 			<div class="nav-horizontal" data-filter="dropdown" data-filter-property="consultant"></div>
@@ -56,7 +39,7 @@
 
 <script type="text/javascript">
     var options = {
-	    valueNames: [ 'name', 'object'],
+	    valueNames: [ 'name', 'object', 'consultant'],
 	    page: 30,
 	    plugins: [
 	        [ 'filtering', {} ],
@@ -69,5 +52,5 @@
 	    ]
     };
     var list = new List('listjs', options);
-    list.sort('sorting');
+    // list.sort('sorting');
 </script>

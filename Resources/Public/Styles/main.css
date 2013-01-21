@@ -8746,7 +8746,8 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
 .badge-red,
 .badge-blue,
 .badge-purple,
-.badge-white {
+.badge-white,
+.badge- {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
@@ -8756,11 +8757,15 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
   width: 30px;
   line-height: 10px;
   box-sizing: border-box;
-  padding: 10px 7px;
+  padding: 9px 5px;
   font-size: 24px;
   color: white;
   font-weight: bold;
   text-decoration: none;
+  float: left;
+  margin-right: 5px;
+  background: #ffffff;
+  border: 1px solid #ddd;
 }
 body [class*=" badge-"] a:hover {
   text-decoration: none;

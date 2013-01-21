@@ -92,15 +92,19 @@ $(document).ready(function(){
 			e.next("a").text(e.attr("data-marker"));
 		}
 	});
+
 	$(".happiness [data-element='prettyCheckable']").change(function(){
 		var radio = $(this);
 		var value = parseInt(radio.val());
+		if (radio.attr('checked') != 'checked') {
+			return;
+		}
 		if (value > 1) {
 			radio.parents("td").find('.form-horizontal').show();
 		} else {
 			radio.parents("td").find('.form-horizontal').hide();
 		}
-	});
+	}).change();
 
 	$('[rel="popover"]').popover({ html: true });
 	$(".validate").validate({

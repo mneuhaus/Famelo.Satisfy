@@ -19,7 +19,9 @@
 	        </f:if>
 	      </td>
 	      <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px; text-align:center;">
-	        <img src="{f:uri.resource(path: customer.currentRatingImage, package: 'Famelo.ADU')}" />
+	      	<img src="{f:uri.resource(path: customer.ratingImageForThisWeek, package: 'Famelo.ADU')}" />
+	      	<img src="{f:uri.resource(path: customer.ratingImageForLastWeek, package: 'Famelo.ADU')}" />
+	      	<img src="{f:uri.resource(path: customer.ratingImageForTwoWeeksAgo, package: 'Famelo.ADU')}" />
 	      <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">
 	                <f:if condition="{customer.isNew}">Neukunde</f:if>
 	        <f:if condition="{customer.termination}">Gekündigt zum {customer.termination -> f:format.date(format: 'd.m.Y')}</f:if>

@@ -28,16 +28,18 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * @return \TYPO3\Flow\Persistence\QueryInterface
 	 * @api
 	 */
-	public function createQuery() {
+	public function createQuery($filtered = TRUE) {
 		$query = parent::createQuery();
-		if (PHP_SAPI === 'cli') {
-			// Full Access
-		} elseif ($this->securityContext->hasRole('Administrator')) {
-			// Full Access
-		} elseif ($this->securityContext->hasRole('Bereichsleiter')) {
-			$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
-		} else {
-			$query->matching($query->equals('consultant', $this->securityContext->getParty()));
+		if ($filtered === TRUE) {
+			if (PHP_SAPI === 'cli') {
+				// Full Access
+			} elseif ($this->securityContext->hasRole('Administrator')) {
+				// Full Access
+			} elseif ($this->securityContext->hasRole('Bereichsleiter')) {
+				$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
+			} else {
+				$query->matching($query->equals('consultant', $this->securityContext->getParty()));
+			}
 		}
 		return $query;
 	}

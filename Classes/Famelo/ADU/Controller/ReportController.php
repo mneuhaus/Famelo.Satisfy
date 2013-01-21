@@ -48,7 +48,11 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 *
 	 * @return void
 	 */
-	public function selfEvaluationAction() {}
+	public function selfEvaluationAction() {
+		$this->view->assign('thisWeek', intval(date('W')));
+		$this->view->assign('lastWeek', intval(date('W')) - 1);
+		$this->view->assign('twoWeeksAgo', intval(date('W')) - 2);
+	}
 
 	public function generateSelfEvaluationAction() {
 		$document = new \Famelo\PDF\Document('Famelo.ADU:CustomerReport');

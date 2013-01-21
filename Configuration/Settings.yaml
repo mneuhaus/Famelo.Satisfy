@@ -12,6 +12,24 @@ TYPO3:
       excludeClasses:
        'Famelo.Faces' : ['.*']
        'fzaninotto.faker' : ['.*']
+       'Behat.Gherkin' : ['.*']
+       'guzzle.guzzle' : ['.*']
+       'symfony.config' : ['.*']
+       'symfony.dependencyinjection' : ['.*']
+       'symfony.browserkit' : ['.*']
+       'symfony.cssselector' : ['.*']
+       'symfony.eventdispatcher' : ['.*']
+       'symfony.finder' : ['.*']
+       'symfony.process' : ['.*']
+       'symfony.translation' : ['.*']
+       'behat.minkbrowserkitdriver': ['.*']
+       'behat.minkzombiedriver': ['.*']
+       'behat.minkselenium2driver': ['.*']
+       'fabpot.goutte': ['.*']
+       'famelo.behat' : ['.*']
+       'famelo.minkextension' : ['.*']
+       'famelo.minkgouttedriver': ['.*']
+       'famelo.poltergeist': ['.*']
 
     i18n:
       # The default locale identifier.

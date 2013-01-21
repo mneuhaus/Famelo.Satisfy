@@ -174,6 +174,10 @@ class Rating {
 		);
 		return $colors[$this->getLevel()];
 	}
+
+	public function getImage() {
+		return 'img/Button-' . ucfirst($this->getColor()) . '.png';
+	}
 }
 
 ?>

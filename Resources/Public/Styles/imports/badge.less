@@ -6,7 +6,8 @@
 .badge-red,
 .badge-blue,
 .badge-purple,
-.badge-white {
+.badge-white,
+.badge- {
     .border-radius(@badge-size);
     display: block;
     background: red;
@@ -14,11 +15,15 @@
     width: @badge-size;
     line-height: 10px;
     box-sizing: border-box;
-    padding: 10px 7px;
+    padding: 9px 5px;
     font-size: 24px;
     color: white;
     font-weight: bold;
     text-decoration: none;
+    float: left;
+    margin-right: 5px;
+    background: #ffffff;
+    border: 1px solid #ddd;
 }
 body [class*=" badge-"] a:hover {
     text-decoration: none;

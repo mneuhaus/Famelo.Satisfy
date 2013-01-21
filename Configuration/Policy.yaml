@@ -10,6 +10,7 @@ resources:
     Customer: 'method(Famelo\ADU\Controller\CustomerController->.*Action(.*))'
     UserManagement: 'method(Famelo\ADU\Controller\UserController->.*Action(.*))'
     Category: 'method(Famelo\ADU\Controller\CategoryController->.*Action(.*))'
+    Rating: 'method(Famelo\ADU\Controller\RatingsController->.*Action(.*))'
     Everything: 'method(Famelo\ADU\Controller\(?!.*Login).*->.*Action(.*))'
 
 roles:
@@ -27,6 +28,7 @@ acls:
     methods:
       UserManagement: GRANT
       Customer: GRANT
+      Rating: GRANT
   Administrator:
     methods:
       Everything: GRANT

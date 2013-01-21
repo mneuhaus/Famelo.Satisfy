@@ -340,6 +340,47 @@ class Customer {
 		return NULL;
 	}
 
+	public function getRatingForThisWeek() {
+		if ($this->ratings->count() > 0) {
+			$currentWeek = intval(date('W'));
+			foreach ($this->ratings as $rating) {
+				$ratingWeek = intval($rating->getCreated()->format('W'));
+				if ($currentWeek == $ratingWeek) {
+					return $rating;
+				}
+			}
+		}
+		return NULL;
+	}
+
+	public function getRatingForLastWeek() {
+		if ($this->ratings->count() > 0) {
+			$currentWeek = intval(date('W')) - 1;
+			foreach ($this->ratings as $rating) {
+				$ratingWeek = intval($rating->getCreated()->format('W'));
+				if ($currentWeek == $ratingWeek) {
+					return $rating;
+				}
+			}
+		}
+		return NULL;
+	}
+
+
+
+	public function getRatingForTwoWeeksAgo() {
+		if ($this->ratings->count() > 0) {
+			$currentWeek = intval(date('W')) - 2;
+			foreach ($this->ratings as $rating) {
+				$ratingWeek = intval($rating->getCreated()->format('W'));
+				if ($currentWeek == $ratingWeek) {
+					return $rating;
+				}
+			}
+		}
+		return NULL;
+	}
+
 	public function getCurrentSurveyColor() {
 		if ($this->getTermination() !== NULL) {
 			return 'purple';
@@ -362,6 +403,39 @@ class Customer {
 
 	public function getCurrentRatingImage() {
 		$color = $this->getCurrentRatingColor();
+		$image = 'img/Button-' . ucfirst($color) . '.png';
+		return $image;
+	}
+
+	public function getRatingImageForThisWeek() {
+		$rating = $this->getRatingForThisWeek();
+		if ($rating instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$color = $rating->getColor();
+		} else {
+			$color = 'white';
+		}
+		$image = 'img/Button-' . ucfirst($color) . '.png';
+		return $image;
+	}
+
+	public function getRatingImageForLastWeek() {
+		$rating = $this->getRatingForLastWeek();
+		if ($rating instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$color = $rating->getColor();
+		} else {
+			$color = 'white';
+		}
+		$image = 'img/Button-' . ucfirst($color) . '.png';
+		return $image;
+	}
+
+	public function getRatingImageForTwoWeeksAgo() {
+		$rating = $this->getRatingForTwoWeeksAgo();
+		if ($rating instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$color = $rating->getColor();
+		} else {
+			$color = 'white';
+		}
 		$image = 'img/Button-' . ucfirst($color) . '.png';
 		return $image;
 	}
@@ -433,6 +507,23 @@ class Customer {
 
 	public function getIsNew() {
 		return $this->getMarker() == 'N';
+	}
+
+	public function getRatingSum() {
+		$thisWeek = $this->getRatingForThisWeek();
+		$lastWeek = $this->getRatingForLastWeek();
+		$twoWeeksAgo = $this->getRatingForTwoWeeksAgo();
+		$sum = 0;
+		if ($thisWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$sum+= $thisWeek->getLevel();
+		}
+		if ($lastWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$sum+= $lastWeek->getLevel();
+		}
+		if ($twoWeeksAgo instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$sum+= $twoWeeksAgo->getLevel();
+		}
+		return $sum;
 	}
 }
 ?>

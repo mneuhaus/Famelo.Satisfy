@@ -11,16 +11,42 @@
 	<td class="consultant hidden-phone">{customer.consultant}</td>
 	<!-- <td class="branch hidden-phone">customer.branch}</td> -->
 	<td>
-		<a class="evaluation badge-{customer.currentRatingColor}">{customer.marker}</a>
+		<span class="evaluation badge-{customer.ratingForThisWeek.color}">{customer.marker}</span>
+		<span class="evaluation badge-{customer.ratingForLastWeek.color}">{customer.marker}</span>
+		<span class="evaluation badge-{customer.ratingForTwoWeeksAgo.color}">{customer.marker}</span>
 	</td>
 	<td>
-		<f:if condition="{customer.latestRating.comment}">
-		<dl>
-			<dt>Kommentar: </dt><dd>{customer.latestRating.comment}</dd>
-			<dt>Maßnahme: </dt><dd>{customer.latestRating.action}</dd>
-			<dt>Datum: </dt> <dd>{customer.latestRating.date -> f:format.date(format: 'd.m.Y')}</dd>
-		</dl>
+		<f:if condition="{customer.ratingForThisWeek.comment}">
+		<p>
+			<dl>
+				<dt>Kommentar: </dt><dd>{customer.ratingForThisWeek.comment}</dd>
+				<dt>Maßnahme: </dt><dd>{customer.ratingForThisWeek.action}</dd>
+				<dt>Datum: </dt> <dd>{customer.ratingForThisWeek.date -> f:format.date(format: 'd.m.Y')}</dd>
+			</dl>
+		</p>
+		</f:if>
+
+		<f:if condition="{customer.ratingForLastWeek.comment}">
+		<p>
+			<b>Letzte Woche: </b>
+			<dl>
+				<dt>Kommentar: </dt><dd>{customer.ratingForLastWeek.comment}</dd>
+				<dt>Maßnahme: </dt><dd>{customer.ratingForLastWeek.action}</dd>
+				<dt>Datum: </dt> <dd>{customer.ratingForLastWeek.date -> f:format.date(format: 'd.m.Y')}</dd>
+			</dl>
+		</p>
+		</f:if>
+
+		<f:if condition="{customer.ratingForTwoWeeksAgo.comment}">
+		<p>
+			<b>Vorletzte Woche: </b>
+			<dl>
+				<dt>Kommentar: </dt><dd>{customer.ratingForTwoWeeksAgo.comment}</dd>
+				<dt>Maßnahme: </dt><dd>{customer.ratingForTwoWeeksAgo.action}</dd>
+				<dt>Datum: </dt> <dd>{customer.ratingForTwoWeeksAgo.date -> f:format.date(format: 'd.m.Y')}</dd>
+			</dl>
+		</p>
 		</f:if>
 	</td>
-	<td class="sorting hidden"><f:if condition="{customer.latestRating.level}"><f:then>{customer.latestRating.level}</f:then><f:else>0</f:else></f:if></td>
+	<td class="sorting hidden">{customer.ratingSum}</td>
 </tr>

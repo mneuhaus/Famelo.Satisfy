@@ -1,5 +1,6 @@
 {namespace cm=TYPO3\Expose\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace a=Famelo\ADU\ViewHelpers}
 
 <div id="listjs">
 
@@ -44,7 +45,10 @@
 				<th>Kunde</th>
 				<th class="hidden-phone">Kundenberater</th>
 				<!-- <th class="hidden-phone">Niederlassung</th> -->
-				<th>Selbsteinschätzung</th>
+				<th>
+					Selbsteinschätzung
+					(KW{a:calendarWeek(delta: 0)}/KW{a:calendarWeek(delta: '-1')}/KW{a:calendarWeek(delta: '-2')})
+				</th>
 				<th>Kommentar/Maßnahme</th>
 			</tr>
 		</thead>

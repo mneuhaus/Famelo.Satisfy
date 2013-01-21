@@ -43,11 +43,11 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function happinessAction() {
-		$query = $this->customerRepository->createQuery();
-		if ($this->securityContext->hasRole('Administrator')) {
-			$query->matching($query->equals('consultant', $this->securityContext->getParty()));
-		}
+		$query = $this->customerRepository->createQuery(FALSE);
+		$query->matching($query->equals('consultant', $this->securityContext->getParty()));
 		$this->view->assign('customers', $query->execute());
+
+		$this->view->assign('week', intval(date('W')));
 	}
 
 	/**
@@ -59,7 +59,11 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	public function saveHappinessAction($ratings) {
 		foreach ($ratings as $identifier => $data) {
 			$customer = $this->customerRepository->findByIdentifier($identifier);
-			$rating = new \Famelo\ADU\Domain\Model\Rating();
+			if ($customer->getRatingForThisWeek() !== NULL) {
+				$rating = $customer->getRatingForThisWeek();
+			} else {
+				$rating = new \Famelo\ADU\Domain\Model\Rating();
+			}
 			if (!isset($data['value'])) {
 				continue;
 			}
@@ -74,7 +78,12 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 				$rating->setDate(new \DateTime($data['date']));
 			}
 			$rating->setCustomer($customer);
-			$this->persistenceManager->add($rating);
+
+			if ($customer->getRatingForThisWeek() !== NULL) {
+				$this->persistenceManager->update($rating);
+			} else {
+				$this->persistenceManager->add($rating);
+			}
 
 			$customer->setSelfEvaluationResult($data['value']);
 			$this->persistenceManager->update($customer);
