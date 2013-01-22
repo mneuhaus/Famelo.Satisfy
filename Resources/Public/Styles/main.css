@@ -8858,28 +8858,28 @@ body [class*=" radio-"] a:hover {
   background: #df001a;
 }
 .radio-c2 .prettyradio a {
-  border-color: #e95d0f;
+  border-color: #df001a;
 }
 .radio-c2 .prettyradio a.checked {
-  background: #e95d0f;
+  background: #df001a;
 }
 .radio-c3 .prettyradio a {
-  border-color: #f29400;
+  border-color: #df001a;
 }
 .radio-c3 .prettyradio a.checked {
-  background: #f29400;
+  background: #df001a;
 }
 .radio-c4 .prettyradio a {
-  border-color: #fabb00;
+  border-color: #f29400;
 }
 .radio-c4 .prettyradio a.checked {
-  background: #fabb00;
+  background: #f29400;
 }
 .radio-c5 .prettyradio a {
-  border-color: #ffdd00;
+  border-color: #f29400;
 }
 .radio-c5 .prettyradio a.checked {
-  background: #ffdd00;
+  background: #f29400;
 }
 .radio-c6 .prettyradio a {
   border-color: #ffed00;
@@ -8888,16 +8888,16 @@ body [class*=" radio-"] a:hover {
   background: #ffed00;
 }
 .radio-c7 .prettyradio a {
-  border-color: #dfdb00;
+  border-color: #ffed00;
 }
 .radio-c7 .prettyradio a.checked {
-  background: #dfdb00;
+  background: #ffed00;
 }
 .radio-c8 .prettyradio a {
-  border-color: #7ab51d;
+  border-color: #009036;
 }
 .radio-c8 .prettyradio a.checked {
-  background: #7ab51d;
+  background: #009036;
 }
 .radio-c9 .prettyradio a {
   border-color: #009036;

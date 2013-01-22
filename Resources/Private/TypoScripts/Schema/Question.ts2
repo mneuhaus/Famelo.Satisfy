@@ -9,6 +9,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Question) < prototype(TYPO
 		}
 		type {
 			label = 'Art'
+			ignore = True
 		}
 	}
 }

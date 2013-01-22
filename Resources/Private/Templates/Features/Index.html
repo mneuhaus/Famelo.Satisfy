@@ -4,13 +4,13 @@
 {namespace feature=Famelo\Features\ViewHelpers}
 
 <f:section name="content">
-	<feature:active feature="AwesomeFeature">
+<!-- 	<feature:active feature="AwesomeFeature">
 		<f:then>
 			AwesomeFeature active
 		</f:then>
 		<f:else>
 			No awesome features active
 		</f:else>
-	</feature:active>
+	</feature:active> -->
 	<e:render.action controller="SameTypeList" type="\Famelo\Features\Domain\Model\Feature" />
 </f:section>
