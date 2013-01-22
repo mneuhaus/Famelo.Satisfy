@@ -1,5 +1,6 @@
 {namespace e=TYPO3\Expose\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace feature=Famelo\Features\ViewHelpers}
 
 <tr>
 	<td class="name">
@@ -48,5 +49,6 @@
 		</p>
 		</f:if>
 	</td>
+	<feature:active feature="Befragung"><td>Befragung</td></feature:active>
 	<td class="sorting hidden">{customer.ratingSum}</td>
 </tr>

@@ -143,29 +143,22 @@ class Survey {
 		foreach ($this->getAnswers() as $answer) {
 			$result += ($answer->getAnswer() * $answer->getQuestion()->getWeight());
 		}
-		$result = $result / 9 * 5;
+		$result = $result / 9;
 		return $result;
 	}
 
 	public function getResultColor() {
 		$colors = array(
-			0 => 'red',
-			1 => 'orange',
-			3 => 'yellow',
-			5 => 'green'
+			'red' => array(0, 0.25),
+			'orange' => array(0.25, 0.5),
+			'yellow' => array(0.5, 0.75),
+			'green' => array(0.75, 1)
 		);
 		$result = $this->getResult();
-		$lastValue = 0;
-		foreach ($colors as $value => $color) {
-				// var_dump($result . '>=' . $lastValue .'&&'. $result .'<='. $value);
-			if ($result == $value) {
+		foreach ($colors as $color => $range) {
+			if ($result >= $result && $result <= $range[1]) {
 				return $color;
 			}
-			if ($result >= $lastValue && $result <= $value) {
-				return $matchingColor;
-			}
-			$lastValue = $value;
-			$matchingColor = $color;
 		}
 	}
 }

@@ -61,7 +61,7 @@
 -
   name: 'Report'
   uriPattern: 'report'
-#  navigation: 'Auswertung'
+  navigation: 'Auswertung'
   defaults:
     '@format': 'html'
     '@action':     'index'
@@ -69,39 +69,39 @@
     '@package': 'Famelo.ADU'
   appendExceedingArguments: true
 
--
-  name: 'Report Surveys'
-  uriPattern: 'report/surveys'
-  navigation: 'Befragungen'
-  feature: 'Befragungen'
-  defaults:
-    '@format': 'html'
-    '@action':     'survey'
-    '@controller': 'Report'
-    '@package': 'Famelo.ADU'
-  appendExceedingArguments: true
+# -
+#   name: 'Report Surveys'
+#   uriPattern: 'report/surveys'
+#   navigation: 'Befragungen'
+#   feature: 'Befragungen'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'survey'
+#     '@controller': 'Report'
+#     '@package': 'Famelo.ADU'
+#   appendExceedingArguments: true
 
--
-  name: 'Report'
-  uriPattern: 'report'
-  navigation: 'Auswertung'
-  defaults:
-    '@format': 'html'
-    '@action':     'selfEvaluation'
-    '@controller': 'Report'
-    '@package': 'Famelo.ADU'
-  appendExceedingArguments: true
+# -
+#   name: 'Report'
+#   uriPattern: 'report'
+#   navigation: 'Auswertung'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'selfEvaluation'
+#     '@controller': 'Report'
+#     '@package': 'Famelo.ADU'
+#   appendExceedingArguments: true
 
--
-  name: 'Report Overview'
-  uriPattern: 'report/overview'
-#  navigation: 'Auswertung'
-  defaults:
-    '@format': 'html'
-    '@action':     'overview'
-    '@controller': 'Report'
-    '@package': 'Famelo.ADU'
-  appendExceedingArguments: true
+# -
+#   name: 'Report Overview'
+#   uriPattern: 'report/overview'
+# #  navigation: 'Auswertung'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'overview'
+#     '@controller': 'Report'
+#     '@package': 'Famelo.ADU'
+#   appendExceedingArguments: true
 
 -
   name: 'Bearbeiten'

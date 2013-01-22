@@ -1,6 +1,7 @@
 {namespace cm=TYPO3\Expose\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 {namespace a=Famelo\ADU\ViewHelpers}
+{namespace feature=Famelo\Features\ViewHelpers}
 
 <div id="listjs">
 
@@ -50,6 +51,7 @@
 					(KW{a:calendarWeek(delta: 0)}/KW{a:calendarWeek(delta: '-1')}/KW{a:calendarWeek(delta: '-2')})
 				</th>
 				<th>Kommentar/Maßnahme</th>
+				<feature:active feature="Befragung"><th>Befragung</th></feature:active>
 			</tr>
 		</thead>
 		<tbody class="list">

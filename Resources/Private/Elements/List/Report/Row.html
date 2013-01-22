@@ -1,22 +1,65 @@
-<f:comment>REVIEWED for release</f:comment>
 {namespace e=TYPO3\Expose\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace feature=Famelo\Features\ViewHelpers}
 
 <tr>
 	<td class="name">
-		{customer}
-	</td>
-	<td>
-		<span class="badge-{customer.currentSurveyColor}"></span>
-	</td>
-	<td>
-		<f:if condition="{customer.latestRating.comment}">
-			<f:then>
-				<a class="evaluation badge-{customer.currentRatingColor}" rel="popover" data-title="Kommentar/Maßnahme" data-content="{customer.latestRating.comment}<br />{customer.latestRating.action}">{customer.currentRatingColor}</a>
-			</f:then>
-			<f:else>
-				<a class="evaluation badge-{customer.currentRatingColor}">{customer.currentRatingColor}</a>
-			</f:else>
+		<b>{customer}</b>
+		<f:if condition="{customer.object}">
+		<br />{customer.object}
 		</f:if>
 	</td>
+	<td class="consultant hidden-phone">{customer.consultant}</td>
+	<!-- <td class="branch hidden-phone">customer.branch}</td> -->
+	<feature:active feature="Befragungen"><td>
+		<f:for each="{customer.surveysForReporting}" as="survey">
+			<f:if condition="{survey}">
+				<f:then>
+					<span class="evaluation badge-{survey.resultColor}">&nbsp;</span>
+				</f:then>
+				<f:else>
+					<span class="evaluation badge-white">&nbsp;</span>
+				</f:else>
+			</f:if>
+		</f:for>
+	</td></feature:active>
+	<td>
+		<span class="evaluation badge-{customer.ratingForThisWeek.color}">{customer.marker}</span>
+		<span class="evaluation badge-{customer.ratingForLastWeek.color}">{customer.marker}</span>
+		<span class="evaluation badge-{customer.ratingForTwoWeeksAgo.color}">{customer.marker}</span>
+	</td>
+	<td>
+		<f:if condition="{customer.ratingForThisWeek.comment}">
+		<p>
+			<dl>
+				<dt>Kommentar: </dt><dd>{customer.ratingForThisWeek.comment}</dd>
+				<dt>Maßnahme: </dt><dd>{customer.ratingForThisWeek.action}</dd>
+				<dt>Datum: </dt> <dd>{customer.ratingForThisWeek.date -> f:format.date(format: 'd.m.Y')}</dd>
+			</dl>
+		</p>
+		</f:if>
+
+		<f:if condition="{customer.ratingForLastWeek.comment}">
+		<p>
+			<b>Letzte Woche: </b>
+			<dl>
+				<dt>Kommentar: </dt><dd>{customer.ratingForLastWeek.comment}</dd>
+				<dt>Maßnahme: </dt><dd>{customer.ratingForLastWeek.action}</dd>
+				<dt>Datum: </dt> <dd>{customer.ratingForLastWeek.date -> f:format.date(format: 'd.m.Y')}</dd>
+			</dl>
+		</p>
+		</f:if>
+
+		<f:if condition="{customer.ratingForTwoWeeksAgo.comment}">
+		<p>
+			<b>Vorletzte Woche: </b>
+			<dl>
+				<dt>Kommentar: </dt><dd>{customer.ratingForTwoWeeksAgo.comment}</dd>
+				<dt>Maßnahme: </dt><dd>{customer.ratingForTwoWeeksAgo.action}</dd>
+				<dt>Datum: </dt> <dd>{customer.ratingForTwoWeeksAgo.date -> f:format.date(format: 'd.m.Y')}</dd>
+			</dl>
+		</p>
+		</f:if>
+	</td>
+	<td class="sorting hidden">{customer.ratingSum}</td>
 </tr>

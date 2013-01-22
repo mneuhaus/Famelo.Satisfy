@@ -382,12 +382,6 @@ class Customer {
 	}
 
 	public function getCurrentSurveyColor() {
-		if ($this->getTermination() !== NULL) {
-			return 'purple';
-		}
-		if ($this->isNew()) {
-			return 'blue';
-		}
 		if (is_object($this->getLatestSurvey())) {
 			return $this->getLatestSurvey()->getResultColor();
 		}
@@ -513,17 +507,39 @@ class Customer {
 		$thisWeek = $this->getRatingForThisWeek();
 		$lastWeek = $this->getRatingForLastWeek();
 		$twoWeeksAgo = $this->getRatingForTwoWeeksAgo();
-		$sum = 0;
+		$values = array();
 		if ($thisWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
-			$sum+= $thisWeek->getLevel();
+			$values[] = $thisWeek->getLevel();
 		}
 		if ($lastWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
-			$sum+= $lastWeek->getLevel();
+			$values[] = $lastWeek->getLevel();
 		}
 		if ($twoWeeksAgo instanceof \Famelo\ADU\Domain\Model\Rating) {
-			$sum+= $twoWeeksAgo->getLevel();
+			$values[] = $twoWeeksAgo->getLevel();
 		}
-		return $sum;
+		foreach ($this->getSurveysForReporting() as $survey) {
+			if ($survey  instanceof \Famelo\ADU\Domain\Model\Survey) {
+				$values[] = $survey->getResult() * 4;
+			}
+		}
+		return ( array_sum($values) / count($values) ) * 10;
+	}
+
+	public function getSurveysForReporting() {
+		$surveys = array(
+			intval(date('W')) => FALSE,
+			intval(date('W')) - 1 => FALSE,
+			intval(date('W')) - 2 => FALSE,
+		);
+		if ($this->surveys->count() > 0) {
+			foreach ($this->surveys as $survey) {
+				$week = intval($survey->getCreated()->format('W'));
+				if (isset($surveys[$week])) {
+					$surveys[$week] = $survey;
+				}
+			}
+		}
+		return $surveys;
 	}
 }
 ?>
