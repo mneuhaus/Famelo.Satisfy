@@ -8,5 +8,9 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Answer) < prototype(TYPO3.
 			label = 'Anmerkung'
 			element = 'Famelo.ADU:SingleLineTextFull'
 		}
+		note {
+			label = 'Notiz vom Kundenberater'
+			element = 'Famelo.ADU:SingleLineTextFull'
+		}
 	}
 }

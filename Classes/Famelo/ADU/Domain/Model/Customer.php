@@ -123,7 +123,17 @@ class Customer {
 	}
 
 	public function __toString() {
+		if ($this->getObject() !== NULL) {
+			return $this->getName() . chr(10) . ' (' . $this->getObject() . ')';
+		}
 		return $this->getName();
+	}
+
+	public function getHtml() {
+		if ($this->getObject() !== NULL) {
+			return '<b>' . $this->getName() . '</b><br />' . $this->getObject();
+		}
+		return '<b>' . $this->getName() . '</b>';
 	}
 
 	public function getIdentity() {
@@ -507,7 +517,7 @@ class Customer {
 		$thisWeek = $this->getRatingForThisWeek();
 		$lastWeek = $this->getRatingForLastWeek();
 		$twoWeeksAgo = $this->getRatingForTwoWeeksAgo();
-		$values = array();
+		$values = array(0.001);
 		if ($thisWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
 			$values[] = $thisWeek->getLevel();
 		}

@@ -14,7 +14,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 		answers {
 			label = 'Fragen'
 			inline {
-				element = 'Famelo.ADU:Answers'
+				element = 'Famelo.ADU:AnswersExtended'
 				multipleMode = false
 			}
 		}
@@ -28,27 +28,70 @@ prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Doma
 	}
 }
 
+
 prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
-	recordList.surveyReport = Famelo.ADU:SurveyReport
-	currentFormat = ${format}
-
-	prototype(TYPO3.Expose:RecordList.FormatSelector) {
-		10 = TYPO3.Expose:RecordList.FormatSelector.Button
-		10.format = 'surveyReport'
-		10.label = 'Diagramme'
-
-		20 = TYPO3.Expose:RecordList.FormatSelector.Button
-		20.format = 'table'
-		20.label = 'Table'
-	}
+	recordList.surveyList = Famelo.ADU:SurveyList
+	currentFormat = 'surveyList'
 }
 
-prototype(Famelo.ADU:SurveyReport) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/List.html'
+prototype(Famelo.ADU:SurveyList) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/Table.html'
 	elements = TYPO3.TypoScript:Collection {
 		collection = ${objects}
 		itemName = 'item'
-		itemRenderer = Famelo.ADU:Element
+		itemRenderer = Famelo.ADU:SurveyRow
 	}
 	objects = ${objects}
 }
+
+prototype(Famelo.ADU:CustomerList) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Customer/Table.html'
+	elements = TYPO3.TypoScript:Collection {
+		collection = ${objects}
+		itemName = 'item'
+		itemRenderer = Famelo.ADU:CustomerRow
+	}
+	objects = ${objects}
+}
+
+
+prototype(Famelo.ADU:SurveyRow) < prototype(TYPO3.Expose:RecordList.Table.DefaultRow) {
+	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/Row.html'
+}
+
+prototype(Famelo.ADU:Survey.New) {
+	prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) {
+		properties {
+			answers {
+				inline {
+					element = 'Famelo.ADU:Answers'
+				}
+			}
+		}
+	}
+}
+
+#prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
+#	recordList.surveyReport = Famelo.ADU:SurveyReport
+#	currentFormat = ${format}
+#
+#	prototype(TYPO3.Expose:RecordList.FormatSelector) {
+#		10 = TYPO3.Expose:RecordList.FormatSelector.Button
+#		10.format = 'surveyReport'
+#		10.label = 'Diagramme'
+#
+#		20 = TYPO3.Expose:RecordList.FormatSelector.Button
+#		20.format = 'table'
+#		20.label = 'Table'
+#	}
+#}
+
+#prototype(Famelo.ADU:SurveyReport) < prototype(TYPO3.TypoScript:Template) {
+#	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/List.html'
+#	elements = TYPO3.TypoScript:Collection {
+#		collection = ${objects}
+#		itemName = 'item'
+#		itemRenderer = Famelo.ADU:Element
+#	}
+#	objects = ${objects}
+#}

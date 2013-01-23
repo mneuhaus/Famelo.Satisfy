@@ -46,7 +46,10 @@
 				<th>Kunde</th>
 				<th class="hidden-phone">Kundenberater</th>
 				<!-- <th class="hidden-phone">Niederlassung</th> -->
-				<feature:active feature="Befragungen"><th>Befragung</th></feature:active>
+				<feature:active feature="Befragungen"><th>
+					Befragung
+					(KW{a:calendarWeek(delta: 0)}/KW{a:calendarWeek(delta: '-1')}/KW{a:calendarWeek(delta: '-2')})
+				</th></feature:active>
 				<th>
 					Selbsteinschätzung
 					(KW{a:calendarWeek(delta: 0)}/KW{a:calendarWeek(delta: '-1')}/KW{a:calendarWeek(delta: '-2')})

@@ -38,7 +38,7 @@ class RatingRepository extends \TYPO3\Flow\Persistence\Repository {
 	 */
 	public function createQuery() {
 		$query = parent::createQuery();
-		$startDate = new \DateTime('11.01.2013');
+		$startDate = new \DateTime('last Friday');
 		$query->matching($query->greaterThan('created', $startDate));
 		$query->setOrderings(array(
 			'created' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING

@@ -30,6 +30,7 @@ TYPO3:
        'famelo.minkextension' : ['.*']
        'famelo.minkgouttedriver': ['.*']
        'famelo.poltergeist': ['.*']
+       'gChartPhp.gChartPhp': ['.*']
 
     i18n:
       # The default locale identifier.
@@ -72,6 +73,12 @@ TYPO3:
             superTypes: ['TYPO3.Expose:InlineStacked']
 
           'Famelo.ADU:AnswersItem':
+            superTypes: ['TYPO3.Expose:InlineStacked']
+
+          'Famelo.ADU:AnswersExtended':
+            superTypes: ['TYPO3.Expose:InlineStacked']
+
+          'Famelo.ADU:AnswersExtendedItem':
             superTypes: ['TYPO3.Expose:InlineStacked']
 
           'TYPO3.Form:DatePicker':

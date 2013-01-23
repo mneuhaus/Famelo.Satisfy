@@ -42,6 +42,12 @@ class Answer {
 	 */
 	protected $comment = '';
 
+	/**
+	 * The comment
+	 * @var string
+	 */
+	protected $note = '';
+
 	public function __toString() {
 		if (is_object($this->question)) {
 			return $this->question->getBody();
@@ -119,6 +125,20 @@ class Answer {
 	 */
 	public function getSurvey() {
 		return $this->survey;
+	}
+
+	/**
+	 * @param string $note
+	 */
+	public function setNote($note) {
+		$this->note = $note;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getNote() {
+		return $this->note;
 	}
 }
 ?>

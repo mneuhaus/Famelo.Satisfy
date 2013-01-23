@@ -10,10 +10,7 @@
 		<f:for each="{customers}" as="customer">
 		<tr>
 			<th>
-				<b>{customer}</b>
-				<f:if condition="{customer.object}">
-				<br />{customer.object}
-				</f:if>
+				{customer.html -> f:format.raw()}
 			</th>
 			<td style="width:250px;">
 				<div>

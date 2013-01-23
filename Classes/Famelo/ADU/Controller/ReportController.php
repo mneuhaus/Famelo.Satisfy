@@ -29,8 +29,10 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function indexAction() {
-		$customers = $this->customerRepository->findAll();
-		$this->view->assign('customers', $customers);
+		$this->view->assign('thisWeek', intval(date('W')));
+		$this->view->assign('lastWeek', intval(date('W')) - 1);
+		$this->view->assign('twoWeeksAgo', intval(date('W')) - 2);
+		$this->view->assign('reportService', new \Famelo\ADU\Services\ReportService());
 	}
 
 	/**
@@ -52,6 +54,7 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$this->view->assign('thisWeek', intval(date('W')));
 		$this->view->assign('lastWeek', intval(date('W')) - 1);
 		$this->view->assign('twoWeeksAgo', intval(date('W')) - 2);
+		$this->view->assign('reportService', new \Famelo\ADU\Services\ReportService());
 	}
 
 	public function generateSelfEvaluationAction() {

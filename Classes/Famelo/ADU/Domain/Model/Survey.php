@@ -39,13 +39,17 @@ class Survey {
 	/**
 	 * The answers
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Answer>
-	 * @ORM\OneToMany(mappedBy="survey", cascade={"persist"})
+	 * @ORM\ManyToMany(cascade={"all"})
 	 */
 	protected $answers;
 
 	public function __construct() {
 		$this->created = new \DateTime();
 		$this->answers = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+
+	public function __toString() {
+		return 'Befragung des Kunden' . $this->getCustomer() . ' vom ' . $this->getCreated()->format('d.m.Y');
 	}
 
 	/**
@@ -121,9 +125,9 @@ class Survey {
 	 * @return void
 	 */
 	public function setAnswers($answers) {
-		foreach ($answers as $answer) {
-			$answer->setSurvey($this);
-		}
+#		foreach ($answers as $answer) {
+#			$answer->setSurvey($this);
+#		}
 		$this->answers = $answers;
 	}
 
@@ -149,10 +153,10 @@ class Survey {
 
 	public function getResultColor() {
 		$colors = array(
-			'red' => array(0, 0.25),
-			'orange' => array(0.25, 0.5),
-			'yellow' => array(0.5, 0.75),
-			'green' => array(0.75, 1)
+			'green' => array(0, 0.25),
+			'yellow' => array(0.25, 0.5),
+			'orange' => array(0.5, 0.75),
+			'red' => array(0.75, 1.1)
 		);
 		$result = $this->getResult();
 		foreach ($colors as $color => $range) {

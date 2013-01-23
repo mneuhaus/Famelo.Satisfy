@@ -14,6 +14,11 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Scope("singleton")
  */
 class SurveyRepository extends \TYPO3\Flow\Persistence\Repository {
+	/**
+	 * @var \Famelo\ADU\Domain\Repository\CustomerRepository
+	 * @Flow\Inject
+	 */
+	protected $customerRepository;
 
 	public function getSurveyResultsByMonth() {
 		$results = array();
@@ -36,6 +41,32 @@ class SurveyRepository extends \TYPO3\Flow\Persistence\Repository {
 		}
 
 		return $results;
+	}
+
+	/**
+	 * Returns a query for objects of this repository
+	 *
+	 * @return \TYPO3\Flow\Persistence\QueryInterface
+	 * @api
+	 */
+	public function createQuery() {
+		$query = parent::createQuery();
+		// $startDate = new \DateTime('last friday');
+		// $query->matching($query->greaterThan('created', $startDate));
+		$query->setOrderings(array(
+			'created' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING
+		));
+
+		$customers = $this->customerRepository->findAll()->toArray();
+
+		$surveys = array();
+		foreach ($query->execute() as $survey) {
+			if (in_array($survey->getCustomer(), $customers)) {
+				$surveys[] = $survey;
+			}
+		}
+
+		return $surveys;
 	}
 }
 ?>

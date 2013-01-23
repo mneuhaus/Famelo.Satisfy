@@ -1,6 +1,12 @@
 <f:layout name="Main" />
 {namespace e=TYPO3\Expose\ViewHelpers}
+{namespace feature=Famelo\Features\ViewHelpers}
 
 <f:section name="content">
+	<feature:active feature="Befragungen">
+		<f:for each="{reportService.branchPieCharts}" as="pieChart">
+			<img src="{pieChart}" />
+		</f:for>
+	</feature:active>
 	<e:render.action controller="SameTypeList" typoScriptPrefix="Famelo.ADU:Report" type="\Famelo\ADU\Domain\Model\Customer" />
 </f:section>
