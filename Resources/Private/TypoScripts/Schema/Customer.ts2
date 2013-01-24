@@ -3,6 +3,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 		ratings.ignore = true
 		selfEvaluationResult.ignore = true
 		created.ignore = true
+		satisfaction.ignore = true
 
 		termination {
 			label = 'Gekündigt zum'

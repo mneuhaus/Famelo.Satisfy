@@ -11,6 +11,12 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 			element = 'TYPO3.Expose:Chosen'
 		}
 
+		contact {
+			label = 'Ansprechpartner'
+			element = 'TYPO3.Expose:Chosen'
+			optionsProvider.class = '\\Famelo\\ADU\\OptionsProvider\\ContactOptionsProvider'
+		}
+
 		answers {
 			label = 'Fragen'
 			inline {

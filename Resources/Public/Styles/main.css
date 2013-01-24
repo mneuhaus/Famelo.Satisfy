@@ -8747,7 +8747,8 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
 .badge-blue,
 .badge-purple,
 .badge-white,
-.badge- {
+.badge-,
+[class*=" badge-"] {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
@@ -8770,6 +8771,27 @@ body .navbar-fixed-bottom .navbar-inner .nav > li > a img {
 body [class*=" badge-"] a:hover {
   text-decoration: none;
   color: white;
+}
+.badge-no1,
+.badge-no2,
+.badge-no3 {
+  background: #dc182d;
+  border-color: #dc182d;
+}
+.badge-no4,
+.badge-no5 {
+  background: #f49320;
+  border-color: #f49320;
+}
+.badge-no6,
+.badge-no7 {
+  background: #f2f124;
+  border-color: #f2f124;
+}
+.badge-no8,
+.badge-no9 {
+  background: #3fd351;
+  border-color: #3fd351;
 }
 .badge-green {
   background: #3fd351;
@@ -8936,6 +8958,7 @@ body [class*=" radio-"] a:hover {
 .survey-new .t3-expose-page > fieldset > .control-group label {
   color: #111;
   width: auto;
+  margin-right: 10px;
   padding-top: 3px;
   margin-bottom: 0;
 }

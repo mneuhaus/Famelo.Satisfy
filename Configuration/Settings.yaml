@@ -92,6 +92,9 @@ TYPO3:
           'Famelo.ADU:SelfEvaluationRating':
             superTypes: ['TYPO3.Form:SingleLineText']
 
+          'Famelo.ADU:SurveyCustomer':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:SingleSelectionMixin']
+
   SwiftMailer:
     transport:
       type: 'Swift_SmtpTransport'

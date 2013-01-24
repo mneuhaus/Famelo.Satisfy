@@ -14,18 +14,25 @@
 			</th>
 			<td style="width:250px;">
 				<div>
-					<label class="radio-green">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="1" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'1'}">checked="checked"</f:if> />
-					</label>
-					<label class="radio-yellow">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="2" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'2'}">checked="checked"</f:if> />
-					</label>
-					<label class="radio-orange">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="3" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'3'}">checked="checked"</f:if> />
-					</label>
-					<label class="radio-red">
-						<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="4" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'4'}">checked="checked"</f:if> />
-					</label>
+					<f:if condition="{customer.isNew}">
+						<f:then>
+							Dieser Kunde kann noch nicht bewertet werden.
+						</f:then>
+						<f:else>
+							<label class="radio-green">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="1" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'1'}">checked="checked"</f:if> />
+							</label>
+							<label class="radio-yellow">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="2" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'2'}">checked="checked"</f:if> />
+							</label>
+							<label class="radio-orange">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="3" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'3'}">checked="checked"</f:if> />
+							</label>
+							<label class="radio-red">
+								<input type="radio" name="ratings[{customer.identity}][value]" data-element="prettyCheckable" value="4" data-marker='{customer.marker}' <f:if condition="{0: customer.ratingForThisWeek.level} == {0:'4'}">checked="checked"</f:if> />
+							</label>
+						</f:else>
+					</f:if>
 				</div>
 				<div class="form-horizontal hide" style="clear:both;">
 					<div class="control-group">

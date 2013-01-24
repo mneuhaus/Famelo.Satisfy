@@ -35,7 +35,7 @@ class Customer {
 	 *
 	 * @var integer
 	 */
-	protected $cycle = 0;
+	protected $cycle = 30;
 
 	/**
 	 * @var \DateTime
@@ -517,7 +517,7 @@ class Customer {
 		}
 	}
 
-	public function isNew() {
+	public function getIsNew() {
 		$now = new \DateTime();
 		return $this->getCreated()->diff($now)->format('%a') <= 30;
 	}
@@ -546,14 +546,10 @@ class Customer {
 		if ($this->getTermination() !== NULL) {
 			return 'K';
 		}
-		if ($this->isNew()) {
+		if ($this->getIsNew()) {
 			return 'N';
 		}
 		return FALSE;
-	}
-
-	public function getIsNew() {
-		return $this->getMarker() == 'N';
 	}
 
 	public function getRatingSum() {

@@ -24,6 +24,14 @@ class Survey {
 	protected $customer;
 
 	/**
+	 * The contact
+	 *
+	 * @var \Famelo\ADU\Domain\Model\Contact
+	 * @ORM\ManyToOne(inversedBy="surveys")
+	 */
+	protected $contact;
+
+	/**
 	 * The created
 	 * @var \DateTime
 	 */
@@ -140,6 +148,25 @@ class Survey {
 	public function addAnswer($answer) {
 		$answer->setSurvey($this);
 		$this->answers->add($answer);
+	}
+
+	/**
+	 * Get the Customer's contact
+	 *
+	 * @return \Famelo\ADU\Domain\Model\Contact The Customer's contact
+	 */
+	public function getContact() {
+		return $this->contact;
+	}
+
+	/**
+	 * Sets this Customer's contact
+	 *
+	 * @param \Famelo\ADU\Domain\Model\Contact $contact The Customer's contact
+	 * @return void
+	 */
+	public function setContact($contact) {
+		$this->contact = $contact;
 	}
 
 	public function getResult() {

@@ -7,7 +7,8 @@
 .badge-blue,
 .badge-purple,
 .badge-white,
-.badge- {
+.badge-,
+[class*=" badge-"] {
     .border-radius(@badge-size);
     display: block;
     background: red;
@@ -28,6 +29,31 @@
 body [class*=" badge-"] a:hover {
     text-decoration: none;
     color: white;
+}
+
+.badge-no1,
+.badge-no2,
+.badge-no3 {
+    background: #dc182d;
+    border-color: #dc182d;
+}
+
+.badge-no4,
+.badge-no5 {
+    background: #f49320;
+    border-color: #f49320;
+}
+
+.badge-no6,
+.badge-no7 {
+    background: #f2f124;
+    border-color: #f2f124;
+}
+
+.badge-no8,
+.badge-no9 {
+    background: #3fd351;
+    border-color: #3fd351;
 }
 
 .badge-green {
