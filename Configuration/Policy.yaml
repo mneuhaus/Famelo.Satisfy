@@ -11,7 +11,10 @@ resources:
     UserManagement: 'method(Famelo\ADU\Controller\UserController->.*Action(.*))'
     Category: 'method(Famelo\ADU\Controller\CategoryController->.*Action(.*))'
     Rating: 'method(Famelo\ADU\Controller\RatingsController->.*Action(.*))'
-    Everything: 'method(Famelo\ADU\Controller\(?!.*Login).*->.*Action(.*))'
+    Branch: 'method(Famelo\ADU\Controller\BranchController->.*Action(.*))'
+    User: 'method(Famelo\ADU\Controller\UserController->.*Action(.*))'
+
+#    Everything: 'method(Famelo\ADU\Controller\(?!.*Login).*->.*Action(.*))'
     Features: 'method(Famelo\Features\Controller\(?!.*Login).*->.*Action(.*))'
 
 roles:
@@ -32,5 +35,6 @@ acls:
       Rating: GRANT
   Administrator:
     methods:
-      Everything: GRANT
+      Branch: GRANT
+      User: GRANT
       Features: GRANT

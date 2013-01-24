@@ -140,5 +140,24 @@ class Answer {
 	public function getNote() {
 		return $this->note;
 	}
+
+	public function getColor() {
+		$colors = array(
+			'green' => array(0, 0.25),
+			'yellow' => array(0.25, 0.5),
+			'orange' => array(0.5, 0.75),
+			'red' => array(0.75, 1.1)
+		);
+		$result = $this->getAnswer() / 9;
+		foreach ($colors as $color => $range) {
+			if ($result >= $result && $result <= $range[1]) {
+				return $color;
+			}
+		}
+	}
+
+	public function getImage() {
+		return 'img/Button-' . ucfirst($this->getColor()) . '.png';
+	}
 }
 ?>

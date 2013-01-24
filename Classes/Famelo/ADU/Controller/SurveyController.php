@@ -117,16 +117,25 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function createAction() {
-		$objects = $this->request->getInternalArgument('__objects');
-		foreach ($objects as $object) {
-			$this->persistenceManager->add($object);
+		$surveys = $this->request->getInternalArgument('__objects');
+		foreach ($surveys as $survey) {
+			$this->persistenceManager->add($survey);
 		}
+
+		$mail = new \Famelo\Messaging\Message();
+		$mail
+			->setFrom(array('no-reply@adu-kundenzufriedenheit.de' => 'ADU Kundenzufriedenheit'))
+			->setSubject('Vielen Dank für Ihre Bewertung')
+			->setMessage('Famelo.ADU:NotifyCustomerAboutSurvey')
+			->assign('survey', $survey);
+
+		$mail->setTo(array($survey->getContact()->getEmail()));
+		$mail->send();
+
 		$this->persistenceManager->persistAll();
 	}
 
 	/**
-	 * Index action
-	 *
 	 * @param \Famelo\ADU\Domain\Model\Survey $survey
 	 * @return void
 	 */
