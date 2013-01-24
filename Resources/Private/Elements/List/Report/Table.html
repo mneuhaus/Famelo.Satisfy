@@ -37,6 +37,22 @@
  			<label>Niederlassung</label>
  			<div class="nav-horizontal" data-filter="dropdown" data-filter-property="branch"></div>
  		</div>
+
+ 		<div class="filter">
+ 			<label>Kommentare anzeigen</label>
+ 			<input type="checkbox" checked="checked" id="show-comments" />
+ 			<script>
+ 			$(document).ready(function(){
+ 				$('#show-comments').change(function(){
+ 					if ($(this).is(':checked')) {
+ 						$('.comments').show();
+ 					} else {
+ 						$('.comments').hide();
+ 					}
+ 				});
+ 			});
+ 			</script>
+ 		</div>
  	</div>
 
 	<table class="table table-striped table-condensed table-bordered list-table" data-klove="container" >
@@ -45,15 +61,12 @@
 				<th>Kunde</th>
 				<th class="hidden-phone">Kundenberater</th>
 				<!-- <th class="hidden-phone">Niederlassung</th> -->
-				<feature:active feature="Befragungen"><th>
-					Befragung
-					(KW{a:calendarWeek(delta: 0)}/KW{a:calendarWeek(delta: '-1')}/KW{a:calendarWeek(delta: '-2')})
-				</th></feature:active>
+				<feature:active feature="Befragungen"><th>Befragung</th></feature:active>
 				<th>
 					Selbsteinschätzung
 					(KW{a:calendarWeek(delta: 0)}/KW{a:calendarWeek(delta: '-1')}/KW{a:calendarWeek(delta: '-2')})
 				</th>
-				<th>Kommentar/Maßnahme</th>
+				<th class="comments">Kommentar/Maßnahme</th>
 			</tr>
 		</thead>
 		<tbody class="list">

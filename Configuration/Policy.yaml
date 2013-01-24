@@ -16,8 +16,8 @@ resources:
 
 roles:
   Kundenberater: []
-  Bereichsleiter: [ Kundenberater ]
-  Administrator: [ Bereichsleiter ]
+  Niederlassungsleiter: [ Kundenberater ]
+  Administrator: [ Niederlassungsleiter ]
 
 acls:
   Kundenberater:
@@ -25,7 +25,7 @@ acls:
       Home: GRANT
       Survey: GRANT
       Report: GRANT
-  Bereichsleiter:
+  Niederlassungsleiter:
     methods:
       UserManagement: GRANT
       Customer: GRANT

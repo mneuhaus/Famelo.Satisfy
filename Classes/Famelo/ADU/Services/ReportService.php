@@ -60,12 +60,14 @@ class ReportService {
 			$piChart->setTitle($branch . ' (' . array_sum($data) . ')');
 			$piChart->addDataSet(array_values($data));
 			$precentages = array();
-			foreach ($data as $key => $value) {
-				$precentages[$key] = intval( ( $value / array_sum($data) ) * 100) . '%';
+			if (array_sum($data) > 0) {
+				foreach ($data as $key => $value) {
+					$precentages[$key] = intval( ( $value / array_sum($data) ) * 100) . '%';
+				}
+				$piChart->setLegend($precentages);
+				$piChart->setColors(array('df001a', 'f29400', 'ffed00', '009036'));
+				$charts[] = str_replace('&amp;', '&', $piChart->getUrl());
 			}
-			$piChart->setLegend($precentages);
-			$piChart->setColors(array('df001a', 'f29400', 'ffed00', '009036'));
-			$charts[] = str_replace('&amp;', '&', $piChart->getUrl());
 		}
 		return $charts;
 	}

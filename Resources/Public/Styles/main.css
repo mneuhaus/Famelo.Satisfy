@@ -8993,6 +8993,9 @@ body [class*=" radio-"] a:hover {
 .t3-expose-recordlist .paging {
   margin-top: 0;
 }
+.t3-expose-recordlist .filter select {
+  width: 180px;
+}
 [class^="icon-"],
 [class*=" icon-"] {
   background-image: url("../components/bootstrap/img/glyphicons-halflings.png");

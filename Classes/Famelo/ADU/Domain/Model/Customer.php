@@ -382,14 +382,15 @@ class Customer {
 	}
 
 	public function getLatestSurvey() {
-		return $this->surveys->first();
+		if ($this->getSurveys()->count() > 0) {
+			return $this->getSurveys()->first();
+		}
+		return NULL;
 	}
 
 	public function getLatestRating() {
-		if ($this->ratings->count() > 0) {
-			return $this->ratings->first();
-		}
-		return NULL;
+		// var_dump($this->getRatings()->count());
+		return $this->getRatings()->first();
 	}
 
 	public function getRatingForThisWeek() {
@@ -572,6 +573,9 @@ class Customer {
 		foreach ($this->getSurveysForReporting() as $survey) {
 			if ($survey  instanceof \Famelo\ADU\Domain\Model\Survey) {
 				$values[] = $survey->getResult() * 4;
+				if ($survey->getResult() > 0.5) {
+					$values[] = $survey->getResult() * 20;
+				}
 			}
 		}
 		return ( array_sum($values) / count($values) ) * 10;

@@ -35,7 +35,7 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 				// Full Access
 			} elseif ($this->securityContext->hasRole('Administrator')) {
 				// Full Access
-			} elseif ($this->securityContext->hasRole('Bereichsleiter')) {
+			} elseif ($this->securityContext->hasRole('Niederlassungsleiter')) {
 				$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
 			} else {
 				$query->matching($query->equals('consultant', $this->securityContext->getParty()));

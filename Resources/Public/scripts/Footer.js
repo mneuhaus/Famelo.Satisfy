@@ -106,8 +106,8 @@ $(document).ready(function(){
 		}
 	}).change();
 
-	$('[rel="popover"]').popover({ html: true });
-	$(".validate").validate({
+	$('[rel="popover"]').popover({ html: true, placement: 'left' });
+	$("form.validate, .validate form").validate({
 		errorContainer: $("#warning"),
 	});
 

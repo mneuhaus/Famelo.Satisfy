@@ -38,7 +38,7 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 		$query = parent::createQuery();
 		if ($this->securityContext->hasRole('Administrator')) {
 			// Full Access
-		} elseif ($this->securityContext->hasRole('Bereichsleiter')) {
+		} elseif ($this->securityContext->hasRole('Niederlassungsleiter')) {
 			$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
 		}
 		return $query;
