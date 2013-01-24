@@ -152,6 +152,22 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 	}
 
 	/**
+	 * Update Data
+	 *
+	 * @return void
+	 */
+	public function statsCommand() {
+		foreach ($this->customerRepository->findAll() as $customer) {
+			// if ($customer->getCreated() === NULL) {
+			// 	$customer->setCreated(new \DateTime());
+			// 	$this->persistenceManager->update($customer);
+			// }
+			$customer->setSatisfaction($customer->getRatingSum());
+			$this->persistenceManager->update($customer);
+		}
+	}
+
+	/**
 	 * Import Fixtures
 	 *
 	 * @param bool $startFresh

@@ -9,8 +9,6 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 			@position = 'after object'
 		}
 
-		cycle.ignore = true
-
 		name {
 			label = 'Name'
 
@@ -21,7 +19,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 		}
 
 		cycle {
-			label = 'Rhytmus'
+			label = 'Befragungs-Rhythmus'
 			element = 'TYPO3.Form:SingleSelectDropdown'
 			optionsProvider {
 				class = 'Array'
@@ -31,6 +29,10 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 					180 = 'Halbjährig'
 				}
 			}
+		}
+
+		cycleStart {
+			label = 'Start des Befragungs-Rhythmus'
 		}
 
 		category.label = 'Kategorie'

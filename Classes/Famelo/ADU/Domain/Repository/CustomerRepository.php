@@ -49,7 +49,7 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 		$query->setOrderings(array(
 			'selfEvaluationResult' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING
 		));
-		$query->matching($query->greaterThan('selfEvaluationResult', 1));
+		$query->matching($query->greaterThan('selfEvaluationResult', 0));
 		return $query->execute();
 	}
 

@@ -38,6 +38,12 @@ class Customer {
 	protected $cycle = 0;
 
 	/**
+	 * @var \DateTime
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	protected $cycleStart;
+
+	/**
 	 * The contact
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Contact
@@ -117,20 +123,28 @@ class Customer {
 	 */
 	protected $selfEvaluationResult = 0;
 
+	/**
+	 * The satisfaction ( higher = better )
+	 *
+	 * @var float
+	 */
+	protected $satisfaction = 0;
+
 	public function __construct() {
 		$this->created = new \DateTime();
+		//$this->cycleStart = new \DateTime();
 		$this->surveys = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	public function __toString() {
-		if ($this->getObject() !== NULL) {
+		if (strlen($this->getObject()) > 0) {
 			return $this->getName() . chr(10) . ' (' . $this->getObject() . ')';
 		}
 		return $this->getName();
 	}
 
 	public function getHtml() {
-		if ($this->getObject() !== NULL) {
+		if (strlen($this->getObject()) > 0) {
 			return '<b>' . $this->getName() . '</b><br />' . $this->getObject();
 		}
 		return '<b>' . $this->getName() . '</b>';
@@ -323,6 +337,34 @@ class Customer {
 	 */
 	public function getObject() {
 		return $this->object;
+	}
+
+	/**
+	 * @param \DateTime $cycleStart
+	 */
+	public function setCycleStart($cycleStart) {
+		$this->cycleStart = $cycleStart;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getCycleStart() {
+		return $this->cycleStart;
+	}
+
+	/**
+	 * @param float $satisfaction
+	 */
+	public function setSatisfaction($satisfaction) {
+		$this->satisfaction = $satisfaction;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getSatisfaction() {
+		return $this->satisfaction;
 	}
 
 	/**

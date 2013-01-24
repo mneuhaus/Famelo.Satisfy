@@ -57,10 +57,13 @@ class ReportService {
 		$charts = array();
 		foreach ($branches as $branch => $data) {
 			$piChart = new \gchart\gPieChart(200, 200);
-			$piChart->setTitle($branch);
+			$piChart->setTitle($branch . ' (' . array_sum($data) . ')');
 			$piChart->addDataSet(array_values($data));
-			// $piChart->setLabels = array('first', 'second', 'third','fourth');
-			// $piChart->setLegend(array('first', 'second', 'third','fourth'));
+			$precentages = array();
+			foreach ($data as $key => $value) {
+				$precentages[$key] = intval( ( $value / array_sum($data) ) * 100) . '%';
+			}
+			$piChart->setLegend($precentages);
 			$piChart->setColors(array('df001a', 'f29400', 'ffed00', '009036'));
 			$charts[] = str_replace('&amp;', '&', $piChart->getUrl());
 		}

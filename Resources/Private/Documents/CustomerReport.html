@@ -1,11 +1,15 @@
 <f:layout name="Document" />
+{namespace a=Famelo\ADU\ViewHelpers}
 
 <f:section name="content">
 	<table style="border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; border-spacing: 0;">
 	  <thead>
 	    <tr>
 	      <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">Kunde</th>
-	      <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">Einschätzung</th>
+	      <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">
+	      	Einschätzung
+	      	(KW{a:calendarWeek(delta: 0)}/KW{a:calendarWeek(delta: '-1')}/KW{a:calendarWeek(delta: '-2')})
+	      </th>
 	      <th style="font-weight: bold; border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">Status</th>
 	    </tr>
 	  </thead>
