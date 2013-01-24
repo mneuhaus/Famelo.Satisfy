@@ -254,6 +254,82 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 		}
 	}
 
+	public function updateFromFixturesCommand() {
+		$customers = array();
+		foreach ($this->customerRepository->findAll() as $customer) {
+			$customers[$customer->getName() . '|' . $customer->getObject()] = $customer;
+			$customers[$customer->getName()] = $customer;
+		}
+		ksort($customers);
+		$fixtures = $this->getFixture('Rhein-Rhur');
+		foreach ($fixtures as $fixture) {
+			$key = $fixture['Knd Name 1'] . '|' . $fixture['Objekt'];
+			unset($customer);
+
+			if (isset($customers[$key])) {
+				$this->outputLine('Object found: ' . $key, array(), 'green');
+				$customer = $customers[$key];
+			} elseif (isset($customers[$fixture['Knd Name 1']])) {
+				$this->outputLine('Object found: ' . $fixture['Knd Name 1'], array(), 'green');
+				$customer = $customers[$fixture['Knd Name 1']];
+			}
+
+			if (isset($customer)) {
+				$cycles = array(
+					'Monatlich' => 30,
+					'Quartalsweise' => 90,
+					'Halbjährlich' => 180,
+					'jährlich' => 365
+				);
+				if (isset($cycles[$fixture['Rythmen']])) {
+					$customer->setCycle($cycles[$fixture['Rythmen']]);
+				}
+
+				$contact = $customer->getContact();
+				if (!$contact instanceof \Famelo\ADU\Domain\Model\Contact) {
+					$contact = new \Famelo\ADU\Domain\Model\Contact();
+					$customer->setContact($contact);
+				}
+				$contact->setFirstname($fixture['Vorname']);
+				$contact->setLastname($fixture['Nachname']);
+				$contact->setEmail($fixture['E-Mail']);
+				$contact->setPhone($fixture['Telefonnummer']);
+
+				$contact = $customer->getAlternativeContact();
+				if (!$contact instanceof \Famelo\ADU\Domain\Model\Contact) {
+					$contact = new \Famelo\ADU\Domain\Model\Contact();
+					$customer->setAlternativeContact($contact);
+				}
+				$contact->setFirstname($fixture['Vorname2']);
+				$contact->setLastname($fixture['Nachname2']);
+				$contact->setEmail($fixture['E-Mail2']);
+				$contact->setPhone($fixture['Telefonnummer2']);
+
+				$this->persistenceManager->update($customer);
+			} else {
+				$this->outputLine('Object not found: ' . $key, array(), 'yellow');
+			}
+		}
+		return;
+		foreach ($customers as $customerData) {
+			if (!isset($references[$customerData['Kundenbetreuer']])) {
+				$this->outputLine('Missing User: ' . $customerData['Kundenbetreuer'], array(), 'yellow');
+				continue;
+			}
+			$user = $references[$customerData['Kundenbetreuer']];
+
+			$customer = new \Famelo\ADU\Domain\Model\Customer();
+			$customer->setName($customerData['Name']);
+			$customer->setObject($customerData['Objekt']);
+			$customer->setCategory($this->categoryRepository->getOrCreate(trim($customerData['Kategorie'])));
+			$customer->setConsultant($user);
+			$customer->setBranch($user->getBranch());
+			$created = new \DateTime('01.12.2012');
+			$customer->setCreated($created);
+			$this->persistenceManager->add($customer);
+		}
+	}
+
 	public function removeAllEntities($entity) {
 		$this->outputLine('Removing all entities of type: ' . $entity, array(), 'red');
 		$query = $this->persistenceManager->createQueryForType($entity);

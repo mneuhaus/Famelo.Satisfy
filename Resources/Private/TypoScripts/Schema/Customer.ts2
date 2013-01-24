@@ -26,8 +26,9 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 				class = 'Array'
 				options {
 					30 = 'Monatlich'
-					90 = 'Quartal'
-					180 = 'Halbjährig'
+					90 = 'Quartalsweise'
+					180 = 'Halbjährlich'
+					365 = 'jährlich'
 				}
 			}
 		}
