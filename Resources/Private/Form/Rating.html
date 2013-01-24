@@ -1,5 +1,6 @@
 <f:form.hidden property="{element.identifier}" id="{element.uniqueIdentifier}" />
 <div class="rating">
+	<img src="{f:uri.resource(path: 'img/happy.png', package: 'Famelo.ADU')}" style="float: left; margin-right: 5px;"/>
 	<label class="radio-c9">
 		<f:form.radio property="{element.identifier}" class="prettyCheckable" value="1" />
 	</label>
@@ -27,4 +28,5 @@
 	<label class="radio-c1">
 		<f:form.radio property="{element.identifier}" class="prettyCheckable" value="9" />
 	</label>
+	<img src="{f:uri.resource(path: 'img/sad.png', package: 'Famelo.ADU')}" style="float: left; margin-right: 5px;" />
 </div>
