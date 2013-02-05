@@ -20,6 +20,16 @@ class CustomerController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function indexAction() {}
+
+	/**
+	 * Index action
+	 *
+	 * @param \Famelo\ADU\Domain\Model\Customer $customer
+	 * @return void
+	 */
+	public function showAction($customer) {
+		$this->view->assign('customer', $customer);
+	}
 }
 
 ?>
