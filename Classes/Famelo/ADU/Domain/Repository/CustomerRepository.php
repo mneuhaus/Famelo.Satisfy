@@ -30,6 +30,11 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 	 */
 	public function createQuery($filtered = TRUE) {
 		$query = parent::createQuery();
+		$threshold = new \DateTime('-30d');
+		$query->matching($query->logicalOr(
+			$query->greaterThan('termination', $threshold),
+			$query->equals('termination', NULL)
+		));
 		if ($filtered === TRUE) {
 			if (PHP_SAPI === 'cli') {
 				// Full Access
