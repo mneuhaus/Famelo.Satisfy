@@ -2,4 +2,20 @@
 {namespace e=TYPO3\Expose\ViewHelpers}
 <f:section name="field">
 	<f:form.select property="{element.identifier}" id="{element.uniqueIdentifier}" options="{element.properties.options}" class="xlarge chosen" errorClass="{element.properties.elementErrorClassAttribute}" />
+	<script>
+		var customerContacts = {
+			foo: ''<f:for each="{element.properties.options}" as="customer">,
+		"{customer.identity}": ["{customer.contact.identity}", "{customer.alternativeContact.identity}"]</f:for>
+		};
+		$(document).ready(function(){
+			$("#form-objects_0_customer").chosen().change(function(){
+				var customerIdentity = $(this).val();
+				var target = $("#form-objects_0_contact");
+				target.find('option').addClass('hidden');
+				target.find('option[value="' + customerContacts[customerIdentity][0] + '"]').removeClass('hidden');
+				target.find('option[value="' + customerContacts[customerIdentity][1] + '"]').removeClass('hidden');
+				target.trigger("liszt:updated");
+			});
+		});
+	</script>
 </f:section>

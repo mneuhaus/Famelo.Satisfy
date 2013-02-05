@@ -9027,6 +9027,14 @@ body [class*=" radio-"] a:hover {
 .t3-expose-recordlist .filter select {
   width: 180px;
 }
+tr.error,
+tr.error th {
+  color: #b94a48;
+}
+.table-striped tbody tr.error:nth-child(even) td,
+.table-striped tbody tr.error:nth-child(even) th {
+  color: #b94a48;
+}
 [class^="icon-"],
 [class*=" icon-"] {
   background-image: url("../components/bootstrap/img/glyphicons-halflings.png");

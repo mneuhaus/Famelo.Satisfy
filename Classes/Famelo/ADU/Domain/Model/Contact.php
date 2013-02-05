@@ -44,6 +44,10 @@ class Contact {
 		return $this->getFirstname() . ' ' . $this->getLastname();
 	}
 
+	public function getIdentity() {
+		return $this->Persistence_Object_Identifier;
+	}
+
 	/**
 	 * Get the Contact's firstname
 	 *

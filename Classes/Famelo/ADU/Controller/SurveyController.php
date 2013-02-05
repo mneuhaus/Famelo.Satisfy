@@ -52,8 +52,21 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 */
 	public function happinessAction() {
 		$query = $this->customerRepository->createQuery(FALSE);
-		$query->matching($query->equals('consultant', $this->securityContext->getParty()));
+
+		$threshold = new \DateTime('-30d');
+		$query->matching($query->logicalAnd(
+			$query->equals('consultant', $this->securityContext->getParty()),
+			$query->logicalOr(
+				$query->greaterThan('termination', $threshold),
+				$query->equals('termination', NULL)
+			)
+		));
+
 		$this->view->assign('customers', $query->execute());
+
+		foreach ($query->execute() as $customer) {
+			// var_dump($customer->__toString());
+		}
 
 		$this->view->assign('week', intval(date('W')));
 	}

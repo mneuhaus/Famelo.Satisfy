@@ -8,7 +8,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 
 		customer {
 			label = 'Kunde'
-			element = 'TYPO3.Expose:Chosen'
+			element = 'Famelo.ADU:SurveyCustomer'
 		}
 
 		contact {
