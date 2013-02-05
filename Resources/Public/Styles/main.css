@@ -9008,6 +9008,14 @@ body [class*=" radio-"] a:hover {
 .survey-new .rating .labels:after {
   clear: both;
 }
+.survey-new .t3-expose-page > fieldset > .control-group.more-information {
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.survey-new .t3-expose-page > fieldset > .control-group.more-information input {
+  margin-top: -3px;
+}
 .t3-expose-recordlist .bar {
   margin-bottom: 20px;
   margin-top: 0px;

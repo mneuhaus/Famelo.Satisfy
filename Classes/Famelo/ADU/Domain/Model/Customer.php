@@ -48,6 +48,7 @@ class Customer {
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Contact
 	 * @ORM\ManyToOne(inversedBy="customers", cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $contact;
 
@@ -56,6 +57,7 @@ class Customer {
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Contact
 	 * @ORM\ManyToOne(inversedBy="alternative_customers", cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $alternativeContact;
 
@@ -64,6 +66,7 @@ class Customer {
 	 *
 	 * @var \Famelo\ADU\Domain\Model\Category
 	 * @ORM\ManyToOne(inversedBy="customers")
+	 * @Flow\Lazy
 	 */
 	protected $category;
 
@@ -91,6 +94,7 @@ class Customer {
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Survey>
 	 * @ORM\OneToMany(mappedBy="customer", cascade={"persist"})
 	 * @ORM\OrderBy({"created" = "DESC"})
+	 * @Flow\Lazy
 	 */
 	protected $surveys;
 
@@ -350,7 +354,11 @@ class Customer {
 	 * @return \DateTime
 	 */
 	public function getCycleStart() {
-		return $this->cycleStart;
+		if (intval($this->cycleStart->format('Y')) > 0) {
+			return $this->cycleStart;
+		}
+
+		return $this->getCreated();
 	}
 
 	/**
@@ -394,6 +402,11 @@ class Customer {
 	}
 
 	public function getRatingForThisWeek() {
+		if (!$this->getActive()) {
+			$rating = new \Famelo\ADU\Domain\Model\Rating();
+			$rating->setLevel(4);
+			return $rating;
+		}
 		if ($this->ratings->count() > 0) {
 			$currentWeek = intval(date('W'));
 			foreach ($this->ratings as $rating) {
@@ -407,6 +420,11 @@ class Customer {
 	}
 
 	public function getRatingForLastWeek() {
+		if (!$this->getActive()) {
+			$rating = new \Famelo\ADU\Domain\Model\Rating();
+			$rating->setLevel(4);
+			return $rating;
+		}
 		if ($this->ratings->count() > 0) {
 			$currentWeek = intval(date('W')) - 1;
 			foreach ($this->ratings as $rating) {
@@ -422,6 +440,11 @@ class Customer {
 
 
 	public function getRatingForTwoWeeksAgo() {
+		if (!$this->getActive()) {
+			$rating = new \Famelo\ADU\Domain\Model\Rating();
+			$rating->setLevel(4);
+			return $rating;
+		}
 		if ($this->ratings->count() > 0) {
 			$currentWeek = intval(date('W')) - 2;
 			foreach ($this->ratings as $rating) {
@@ -519,7 +542,7 @@ class Customer {
 
 	public function getIsNew() {
 		$now = new \DateTime();
-		return $this->getCreated()->diff($now)->format('%a') <= 30;
+		return $this->getCycleStart()->diff($now)->format('%a') <= 42;
 	}
 
 	public function isSatisfied() {
@@ -561,10 +584,10 @@ class Customer {
 			$values[] = $thisWeek->getLevel();
 		}
 		if ($lastWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
-			$values[] = $lastWeek->getLevel();
+			// $values[] = $lastWeek->getLevel();
 		}
 		if ($twoWeeksAgo instanceof \Famelo\ADU\Domain\Model\Rating) {
-			$values[] = $twoWeeksAgo->getLevel();
+			// $values[] = $twoWeeksAgo->getLevel();
 		}
 		foreach ($this->getSurveysForReporting() as $survey) {
 			if ($survey  instanceof \Famelo\ADU\Domain\Model\Survey) {
@@ -592,6 +615,14 @@ class Customer {
 			}
 		}
 		return $surveys;
+	}
+
+	public function getActive() {
+		if ($this->getTermination() === NULL && !$this->getIsNew()) {
+			return TRUE;
+		}
+
+		return FALSE;
 	}
 }
 ?>

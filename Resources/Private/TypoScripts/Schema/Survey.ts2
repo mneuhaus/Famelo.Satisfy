@@ -24,6 +24,15 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 				multipleMode = false
 			}
 		}
+
+		moreSecurity {
+			label = 'Sicherheit'
+			element = 'Famelo.ADU:MoreInformation'
+		}
+
+		moreService {
+			label = 'Personaldienstleistung'
+		}
 	}
 }
 

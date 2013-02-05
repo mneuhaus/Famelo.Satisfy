@@ -95,6 +95,12 @@ TYPO3:
           'Famelo.ADU:SurveyCustomer':
             superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:SingleSelectionMixin']
 
+          'Famelo.ADU:MoreInformation':
+            superTypes: ['TYPO3.Form:FormElement']
+            properties:
+              elementClassAttribute: 'add-on'
+              value: 1
+
   SwiftMailer:
     transport:
       type: 'Swift_SmtpTransport'

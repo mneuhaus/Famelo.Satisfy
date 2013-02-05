@@ -20,6 +20,7 @@ class Survey {
 	 * The customer
 	 * @var \Famelo\ADU\Domain\Model\Customer
 	 * @ORM\ManyToOne(cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $customer;
 
@@ -41,6 +42,7 @@ class Survey {
 	 * The rating
 	 * @var \Famelo\ADU\Domain\Model\Rating
 	 * @ORM\OneToOne(cascade={"persist"})
+	 * @Flow\Lazy
 	 */
 	protected $rating;
 
@@ -48,8 +50,21 @@ class Survey {
 	 * The answers
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Answer>
 	 * @ORM\ManyToMany(cascade={"all"})
+	 * @Flow\Lazy
 	 */
 	protected $answers;
+
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $moreSecurity = FALSE;
+
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $moreService = FALSE;
 
 	public function __construct() {
 		$this->created = new \DateTime();
@@ -133,9 +148,6 @@ class Survey {
 	 * @return void
 	 */
 	public function setAnswers($answers) {
-#		foreach ($answers as $answer) {
-#			$answer->setSurvey($this);
-#		}
 		$this->answers = $answers;
 	}
 
@@ -167,6 +179,35 @@ class Survey {
 	 */
 	public function setContact($contact) {
 		$this->contact = $contact;
+	}
+
+
+	/**
+	 * @param boolean $moreSecurity
+	 */
+	public function setMoreSecurity($moreSecurity) {
+		$this->moreSecurity = $moreSecurity;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getMoreSecurity() {
+		return $this->moreSecurity;
+	}
+
+	/**
+	 * @param boolean $moreService
+	 */
+	public function setMoreService($moreService) {
+		$this->moreService = $moreService;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getMoreService() {
+		return $this->moreService;
 	}
 
 	public function getResult() {

@@ -31,6 +31,14 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	protected $customerRepository;
 
 	/**
+	 * The branchRepository
+	 *
+	 * @var \Famelo\ADU\Domain\Repository\BranchRepository
+	 * @Flow\Inject
+	 */
+	protected $branchRepository;
+
+	/**
 	 * Index action
 	 *
 	 * @return void
@@ -103,7 +111,11 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 */
 	public function newAction() {
 		$survey = new \Famelo\ADU\Domain\Model\Survey();
-		foreach ($this->securityContext->getParty()->getBranch()->getMatchingQuestions() as $question) {
+		$branch = $this->securityContext->getParty()->getBranch();
+		if (!$branch instanceof \Famelo\ADU\Domain\Model\Branch) {
+			$branch = $this->branchRepository->findOneByName('ADU');
+		}
+		foreach ($branch->getMatchingQuestions() as $question) {
 			$answer = new \Famelo\ADU\Domain\Model\Answer();
 			$answer->setQuestion($question);
 			$survey->addAnswer($answer);
@@ -122,6 +134,19 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$this->persistenceManager->add($survey);
 		}
 
+		if ($survey->getMoreSecurity() || $survey->getMoreService()) {
+			$mail = new \Famelo\Messaging\Message();
+			$mail
+				->setFrom(array('no-reply@adu-kundenzufriedenheit.de' => 'ADU Kundenzufriedenheit'))
+				->setSubject('Anfrage nach mehr Informationen')
+				->setMessage('Famelo.ADU:MoreInformation')
+				->assign('survey', $survey);
+
+			// $mail->setTo(array('b.janz@adu-urban.de'));
+			$mail->setTo(array('mneuhaus@famelo.com'));
+			$mail->send();
+		}
+
 		$mail = new \Famelo\Messaging\Message();
 		$mail
 			->setFrom(array('no-reply@adu-kundenzufriedenheit.de' => 'ADU Kundenzufriedenheit'))
@@ -129,7 +154,9 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			->setMessage('Famelo.ADU:NotifyCustomerAboutSurvey')
 			->assign('survey', $survey);
 
-		$mail->setTo(array($survey->getContact()->getEmail()));
+		// $mail->setTo(array($survey->getContact()->getEmail()));
+		// $mail->setTo(array('b.janz@adu-urban.de'));
+		$mail->setTo(array('mneuhaus@famelo.com'));
 		$mail->send();
 
 		$this->persistenceManager->persistAll();

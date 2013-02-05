@@ -4,7 +4,7 @@
 // @codekit-prepend "../components/famelo/components/scripts/off-canvas.js"
 // @codekit-prepend "../components/bootstrap-datepicker/js/bootstrap-datepicker.js"
 // @codekit-prepend "../components/bootstrap-datepicker/js/locales/bootstrap-datepicker.de.js"
-// @codekit-prepend "../components/flexie/flexie.min.js"
+// @codekit-prepend "../components/flexie/flexie.js"
 // @codekit-prepend "../components/prettycheckable/prettyCheckable.js"
 // @codekit-prepend "../components/jquery.validation/lib/jquery.metadata.js"
 // @codekit-prepend "../components/jquery.validation/jquery.validate.js"
