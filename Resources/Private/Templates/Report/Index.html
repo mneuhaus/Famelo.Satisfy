@@ -1,8 +1,11 @@
 <f:layout name="Main" />
 {namespace e=TYPO3\Expose\ViewHelpers}
 {namespace feature=Famelo\Features\ViewHelpers}
-
+{namespace c=Community\CacheExtensions\ViewHelpers}
 <f:section name="content">
+	<c:cache identifier="Report_Index" classes="\Famelo\ADU\Domain\Model\Customer">
+	</c:cache>
+
 	<feature:active feature="Befragungen">
 		<f:for each="{reportService.branchPieCharts}" as="pieChart">
 			<img src="{pieChart}" />
