@@ -4,7 +4,7 @@
 
 <tr>
 	<td class="name">
-		<f:link.action action='customer' controller="Report" arguments="{customer: customer}" useMainRequest="1">{customer}</f:link.action>
+		<f:link.action action='customer' controller="Report" arguments="{customer: customer}" useParentRequest="1">{customer}</f:link.action>
 	</td>
 	<td class="consultant hidden-phone">{customer.consultant}</td>
 	<td class="branch hidden-phone">{customer.branch}</td>
