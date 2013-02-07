@@ -36,34 +36,27 @@ class RatingRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * @return \TYPO3\Flow\Persistence\QueryInterface
 	 * @api
 	 */
-	public function createQuery() {
+	public function createQuery($filtered = TRUE) {
 		$query = parent::createQuery();
-		$startDate = new \DateTime('last Friday');
-		$query->matching($query->greaterThan('created', $startDate));
-		$query->setOrderings(array(
-			'created' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING
-		));
+		if ($filtered === TRUE) {
+			$startDate = new \DateTime('last Friday');
+			$query->matching($query->greaterThan('created', $startDate));
+			$query->setOrderings(array(
+				'created' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING
+			));
 
-		$customers = $this->customerRepository->findAll()->toArray();
+			$customers = $this->customerRepository->findAll()->toArray();
 
-		$ratings = array();
-		foreach ($query->execute() as $rating) {
-			if (in_array($rating->getCustomer(), $customers)) {
-				$identifier = $this->persistenceManager->getIdentifierByObject($rating->getCustomer());
-				$ratings[] = $rating;
+			$ratings = array();
+			foreach ($query->execute() as $rating) {
+				if (in_array($rating->getCustomer(), $customers)) {
+					$identifier = $this->persistenceManager->getIdentifierByObject($rating->getCustomer());
+					$ratings[] = $rating;
+				}
 			}
+
+			return $ratings;
 		}
-
-		return $ratings;
-
-		// $customer = $this->customerRepository->findByIdentifier('032a6635-306b-4b7b-8f6e-fd0edba6c461');
-		// $query->matching($query->in('customer', array($customer)));
-
-		// foreach ($query->execute() as $rating) {
-		// 	var_dump($rating->getAction() . ': ' . $rating->getCustomer()->__toString() . ' (' . $rating->getCustomer()->getConsultant()->__toString() . ')');
-		// }
-
-		// exit();
 		return $query;
 	}
 

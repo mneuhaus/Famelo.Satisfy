@@ -577,27 +577,21 @@ class Customer {
 
 	public function getRatingSum() {
 		$thisWeek = $this->getRatingForThisWeek();
-		$lastWeek = $this->getRatingForLastWeek();
-		$twoWeeksAgo = $this->getRatingForTwoWeeksAgo();
-		$values = array(0.001);
+		$values = array();
 		if ($thisWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
 			$values[] = $thisWeek->getLevel();
 		}
-		if ($lastWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
-			// $values[] = $lastWeek->getLevel();
-		}
-		if ($twoWeeksAgo instanceof \Famelo\ADU\Domain\Model\Rating) {
-			// $values[] = $twoWeeksAgo->getLevel();
-		}
-		foreach ($this->getSurveysForReporting() as $survey) {
-			if ($survey  instanceof \Famelo\ADU\Domain\Model\Survey) {
+		$survey = $this->getLatestSurvey();
+		if ($survey instanceof \Famelo\ADU\Domain\Model\Survey) {
+			$values[] = $survey->getResult() * 4;
+			if ($survey->getResult() > 0.5) {
 				$values[] = $survey->getResult() * 4;
-				if ($survey->getResult() > 0.5) {
-					$values[] = $survey->getResult() * 20;
-				}
 			}
 		}
-		return ( array_sum($values) / count($values) ) * 10;
+		if (count($values) > 0) {
+			return ( array_sum($values) / count($values) ) * 10;
+		}
+		return 0.0001;
 	}
 
 	public function getSurveysForReporting() {
