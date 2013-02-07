@@ -66,7 +66,9 @@ class SurveyRepository extends \TYPO3\Flow\Persistence\Repository {
 			}
 		}
 
-		return $surveys;
+		$query = new \Famelo\ADU\Domain\ArrayQuery();
+		$query->setArray($surveys);
+		return $query;
 	}
 }
 ?>

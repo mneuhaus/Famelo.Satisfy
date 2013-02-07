@@ -54,8 +54,9 @@ class RatingRepository extends \TYPO3\Flow\Persistence\Repository {
 					$ratings[] = $rating;
 				}
 			}
-
-			return $ratings;
+			$query = new \Famelo\ADU\Domain\ArrayQuery();
+			$query->setArray($ratings);
+			return $query;
 		}
 		return $query;
 	}
