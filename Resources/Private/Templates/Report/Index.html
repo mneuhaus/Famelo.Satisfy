@@ -5,7 +5,7 @@
 {namespace c=Community\CacheExtensions\ViewHelpers}
 
 <f:section name="content">
-	<c:cache classes="\Famelo\ADU\Domain\Model\Customer" identifier="Reporting">
+	<c:cache classes="\Famelo\ADU\Domain\Model\Customer" identifier="Reporting"></c:cache>
 
 		<feature:active feature="Befragungen">
 			<f:for each="{reportService.branchPieCharts}" as="pieChart">
@@ -181,7 +181,6 @@
 		    	<ul class="paging clearfix"></ul>
 		  	</div>
 		</div>
-	</c:cache>
 
 
 	<script type="text/javascript">
