@@ -354,7 +354,7 @@ class Customer {
 	 * @return \DateTime
 	 */
 	public function getCycleStart() {
-		if (intval($this->cycleStart->format('Y')) > 0) {
+		if (is_object($this->cycleStart) && intval($this->cycleStart->format('Y')) > 0) {
 			return $this->cycleStart;
 		}
 
@@ -538,6 +538,13 @@ class Customer {
 		if ($this->termination instanceof \DateTime && $this->termination->getTimestamp() > -62169987600) {
 			return $this->termination;
 		}
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function getIsTerminated() {
+		return $this->getTermination() !== NULL;
 	}
 
 	public function getIsNew() {
