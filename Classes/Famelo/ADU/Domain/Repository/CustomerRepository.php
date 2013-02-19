@@ -62,6 +62,9 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 				$customers[] = $customer;
 			}
 		}
+		usort($customers, function($a, $b){
+			return $a->getRatingSum() < $b->getRatingSum();
+		});
 		return $customers;
 	}
 
