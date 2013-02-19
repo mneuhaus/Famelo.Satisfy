@@ -3,7 +3,7 @@
 {namespace c=Community\CacheExtensions\ViewHelpers}
 
 <f:section name="content">
-	<c:cache classes="\Famelo\ADU\Domain\Model\Customer">
+	<c:cache classes="\Famelo\ADU\Domain\Model\Customer" identifier="Editing" useRequest="1">
+		<e:render.action controller="List" type="\Famelo\ADU\Domain\Model\Customer" />
 	</c:cache>
-	<e:render.action controller="List" type="\Famelo\ADU\Domain\Model\Customer" />
 </f:section>
