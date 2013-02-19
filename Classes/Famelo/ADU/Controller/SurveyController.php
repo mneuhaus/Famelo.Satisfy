@@ -156,7 +156,7 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 				->assign('survey', $survey);
 
 			// $mail->setTo(array('b.janz@adu-urban.de'));
-			$mail->setTo(array('mneuhaus@famelo.com'));
+			$mail->setTo(array('m.keller@adu-urban.de'));
 			$mail->send();
 		}
 
@@ -167,9 +167,9 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			->setMessage('Famelo.ADU:NotifyCustomerAboutSurvey')
 			->assign('survey', $survey);
 
-		// $mail->setTo(array($survey->getContact()->getEmail()));
+		$mail->setTo(array($survey->getContact()->getEmail()));
 		// $mail->setTo(array('b.janz@adu-urban.de'));
-		$mail->setTo(array('mneuhaus@famelo.com'));
+		// $mail->setTo(array('mneuhaus@famelo.com'));
 		$mail->send();
 
 		$this->persistenceManager->persistAll();
