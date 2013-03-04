@@ -9,7 +9,7 @@ namespace Famelo\ADU\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * Survey controller for the Famelo.ADU package 
+ * Survey controller for the Famelo.ADU package
  *
  * @Flow\Scope("singleton")
  */
@@ -107,6 +107,7 @@ class SurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			}
 
 			$customer->setSelfEvaluationResult($data['value']);
+			$customer->calculateSelfEvaluationResult();
 			$this->persistenceManager->update($customer);
 		}
 	}

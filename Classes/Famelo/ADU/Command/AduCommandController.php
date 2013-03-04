@@ -158,7 +158,8 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 */
 	public function statsCommand() {
 		foreach ($this->customerRepository->findAll() as $customer) {
-			$customer->setSatisfaction(intval($customer->getRatingSum()));
+			// $customer->setSatisfaction(intval($customer->getRatingSum()));
+			$customer->calculateSelfEvaluationResult();
 			$this->persistenceManager->update($customer);
 		}
 	}

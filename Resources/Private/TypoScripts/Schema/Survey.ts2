@@ -26,12 +26,12 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 		}
 
 		moreSecurity {
-			label = 'Sicherheit'
+			label = 'A.D.U. SICHERHEITSDIENSTE'
 			element = 'Famelo.ADU:MoreInformation'
 		}
 
 		moreService {
-			label = 'Personaldienstleistung'
+			label = 'A.D.U. PERSONALSERVICE'
 		}
 	}
 }

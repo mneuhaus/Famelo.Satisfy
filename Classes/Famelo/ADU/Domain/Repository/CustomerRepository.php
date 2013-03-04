@@ -41,9 +41,19 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 			} elseif ($this->securityContext->hasRole('Administrator')) {
 				// Full Access
 			} elseif ($this->securityContext->hasRole('Niederlassungsleiter')) {
-				$query->matching($query->equals('branch', $this->securityContext->getParty()->getBranch()));
+				$query->matching(
+					$query->logicalAnd(
+						$query->getConstraint(),
+						$query->equals('branch', $this->securityContext->getParty()->getBranch())
+					)
+				);
 			} else {
-				$query->matching($query->equals('consultant', $this->securityContext->getParty()));
+				$query->matching(
+					$query->logicalAnd(
+						$query->getConstraint(),
+						$query->equals('consultant', $this->securityContext->getParty())
+					)
+				);
 			}
 		}
 		return $query;
@@ -62,9 +72,9 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 				$customers[] = $customer;
 			}
 		}
-		usort($customers, function($a, $b){
-			return $a->getRatingSum() < $b->getRatingSum();
-		});
+		// usort($customers, function($a, $b){
+		// 	return $a->getRatingSum() < $b->getRatingSum();
+		// });
 		return $customers;
 	}
 

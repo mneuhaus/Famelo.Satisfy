@@ -6,6 +6,11 @@
 
 <f:section name="content">
 	<c:cache classes="\Famelo\ADU\Domain\Model\Customer" identifier="Reporting"></c:cache>
+		<div class="pull-right" style="margin-bottom: 20px; overflow: hidden;">
+			<f:link.action action="generateSelfEvaluation" controller="Report" class="btn">
+				PDF Generieren
+			</f:link.action>
+		</div>
 
 		<feature:active feature="Befragungen">
 			<f:for each="{reportService.branchPieCharts}" as="pieChart">
@@ -14,7 +19,7 @@
 		</feature:active>
 		<!-- <_e:render.action controller="List" typoScriptPrefix="Famelo.ADU:Report" type="\Famelo\ADU\Domain\Model\Customer" /> -->
 
-		<div id="listjs">
+		<div id="listjs" style="clear: both;">
 
 		  	<div class="filter-bar">
 		  		<div class="filter">

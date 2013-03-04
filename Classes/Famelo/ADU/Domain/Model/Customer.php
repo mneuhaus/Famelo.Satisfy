@@ -101,7 +101,7 @@ class Customer {
 	/**
 	 * The branch
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\ADU\Domain\Model\Rating>
-	 * @ORM\OneToMany(targetEntity="\Famelo\ADU\Domain\Model\Rating", mappedBy="customer")
+	 * @ORM\OneToMany(targetEntity="\Famelo\ADU\Domain\Model\Rating", mappedBy="customer", cascade={"all"})
 	 * @ORM\OrderBy({"created" = "DESC"})
 	 * @Flow\Lazy
 	 */
@@ -396,6 +396,23 @@ class Customer {
 		return NULL;
 	}
 
+	public function calculateSelfEvaluationResult() {
+		$rating = $this->getLatestRating();
+		$level = 1;
+
+		if ($rating instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$level = $rating->getLevel();
+		}
+
+		if ($this->getIsTerminated()) {
+			$level = 3.8;
+		} elseif ($this->getIsNew()) {
+			$level = 3.9;
+		}
+
+		$this->setSelfEvaluationResult($level);
+	}
+
 	public function getLatestRating() {
 		// var_dump($this->getRatings()->count());
 		return $this->getRatings()->first();
@@ -586,7 +603,7 @@ class Customer {
 		$thisWeek = $this->getRatingForThisWeek();
 		$values = array();
 		if ($thisWeek instanceof \Famelo\ADU\Domain\Model\Rating) {
-			$values[] = $thisWeek->getLevel();
+			$values[] = $this->getSelfEvaluationResult();
 		}
 		$survey = $this->getLatestSurvey();
 		if ($survey instanceof \Famelo\ADU\Domain\Model\Survey) {

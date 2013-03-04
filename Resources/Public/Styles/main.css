@@ -8503,6 +8503,22 @@ body,
   max-width: none;
   width: 160px;
 }
+/* iPad [portrait + landscape] */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  body,
+  .off-canvas {
+    min-height: 100% !important;
+    height: auto !important;
+  }
+}
+/* iPhone [portrait + landscape] */
+@media only screen and (max-device-width: 480px) {
+  body,
+  .off-canvas {
+    min-height: 100% !important;
+    height: auto !important;
+  }
+}
 .table th {
   background: #f3f3f3;
   color: #777;
@@ -8572,6 +8588,9 @@ td > dl {
 }
 .form-horizontal {
   margin-top: 10px;
+}
+.form-horizontal select {
+  width: 200px;
 }
 body .navbar-fixed-top,
 body .navbar-fixed-bottom {
