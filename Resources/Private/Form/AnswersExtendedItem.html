@@ -11,9 +11,11 @@
 				<b>Kommentar des Kunden:</b> {inline.elements.comment.defaultValue}
 			</div>
 			</f:if>
+
 			<div class="comment" style="margin-top: 10px;">
 				<form:renderRenderable renderable="{inline.elements.note}" />
 			</div>
+			<form:renderRenderable renderable="{inline.elements.__identity}" />
 		</div>
 	</div>
 </div>
