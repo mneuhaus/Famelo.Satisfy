@@ -17,7 +17,7 @@
 	    <f:for each="{customers}" as="customer">
 	    <tr>
 	      <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">
-	        <b>{customer}</b>
+	        <b>{customer.name}</b>
 	        <f:if condition="{customer.object}">
 	        <br />{customer.object}
 	        </f:if>
