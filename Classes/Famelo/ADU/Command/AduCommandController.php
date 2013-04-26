@@ -70,6 +70,14 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $persistenceManager;
 
 	/**
+	 * @Flow\Inject
+	 * @var \Doctrine\Common\Persistence\ObjectManager
+	 */
+	protected $entityManager;
+
+
+
+	/**
 	 * Create a new User for the ADU Package
 	 *
 	 * The comment of this command method is also used for TYPO3 Flow's help screens. The first line should give a very short
@@ -91,6 +99,15 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 		$this->accountRepository->add($account);
 	}
 
+	public function emptyTable($table) {
+		try {
+			$rsm = new \Doctrine\ORM\Query\ResultSetMapping();
+			$results = $this->entityManager->createNativeQuery('DELETE FROM ' . $table, $rsm)->execute();
+		} catch(\Exception $e) {
+
+		}
+	}
+
 	/**
 	 * Create a new User for the ADU Package
 	 *
@@ -99,41 +116,112 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function fakeDataCommand() {
-		$branches = array(
-			'Rhein/Ruhr',
-			'Hannover',
-			'OWL/Hessen'
-		);
+		// $this->emptyTable('famelo_adu_domain_model_user');
+		// $this->emptyTable('famelo_adu_domain_model_customer');
+		// $this->emptyTable('famelo_adu_domain_model_rating');
+		// $this->emptyTable('famelo_adu_domain_model_branch_questions_join');
+		// $this->emptyTable('famelo_adu_domain_model_branch');
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\Branch');
+
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\Rating');
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\Answer');
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\Survey');
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\Question');
+		// $this->removeAllEntities('\TYPO3\Flow\Security\Account');
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\User');
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\Customer');
+		// $this->removeAllEntities('\Famelo\ADU\Domain\Model\Contact');
+
 		$faker = \Faker\Factory::create('de_DE');
 
-		foreach ($branches as $branchName) {
-			$branch = new \Famelo\ADU\Domain\Model\Branch();
-			$branch->setName($branchName);
-			$this->persistenceManager->add($branch);
+		$questions = array(
+			'Sind sie mit unserer Arbeit zu frieden?' => 0.7,
+			'Ist die Arbeit immer Termingerecht erledigt worden?' => 0.3
+		);
 
-			for ($i = 0; $i < 25; $i++) {
-				$customer = new \Famelo\ADU\Domain\Model\Customer();
-				$customer->setBranch($branch);
-				$customer->setName($faker->company);
+		$branch = new \Famelo\ADU\Domain\Model\Branch();
+		$branch->setName('Rhein/Rhur');
+		$this->persistenceManager->add($branch);
 
-				$contact = new \Famelo\ADU\Domain\Model\Contact();
-				$contact->setFirstname($faker->firstName);
-				$contact->setLastname($faker->lastName);
-				$contact->setPhone($faker->phoneNumber);
-				$contact->setEmail($faker->email);
-				$customer->setContact($contact);
-				$this->persistenceManager->add($contact);
+		$questionsFixtures = array(
+			'Sind sie mit unserer Arbeit zu frieden?' => 0.7,
+			'Ist die Arbeit immer Termingerecht erledigt worden?' => 0.3
+		);
+		$questions = array();
+		foreach ($questionsFixtures as $body => $weight) {
+			$question = new \Famelo\ADU\Domain\Model\Question();
+			$question->setBody($body);
+			$question->setWeight($weight);
+			$question->setType('');
+			$questions[] = $question;
+			$this->persistenceManager->add($question);
+		}
+		$branch->setQuestions($questions);
 
-				$contact = new \Famelo\ADU\Domain\Model\Contact();
-				$contact->setFirstname($faker->firstName);
-				$contact->setLastname($faker->lastName);
-				$contact->setPhone($faker->phoneNumber);
-				$contact->setEmail($faker->email);
-				$customer->setAlternativeContact($contact);
-				$this->persistenceManager->add($contact);
+		$users = array(
+			'administrator' => array(
+				'username' => 'administrator',
+				'password' => 'admin',
+				'firstName' => 'Administrator',
+				'lastName' => '',
+				'email' => 'marc.neuhaus@neuland-medien.de',
+				'role' => 'Administrator',
+				'branch' => 'Rhein/Ruhr'
+			),
+			'Niederlassungsleiter' => array(
+				'username' => 'toni',
+				'password' => 'tester',
+				'firstName' => 'Toni',
+				'lastName' => 'Tester',
+				'email' => 'marc.neuhaus@neuland-medien.de',
+				'role' => 'Niederlassungsleiter',
+				'branch' => 'Rhein/Ruhr'
+			)
+		);
 
-				$this->persistenceManager->add($customer);
-			}
+		foreach ($users as $userFixture) {
+			$roles = array($userFixture['role']);
+			$authenticationProviderName = 'ADUProvider';
+			$account = $this->accountFactory->createAccountWithPassword($userFixture['username'], $userFixture['password'], $roles, $authenticationProviderName);
+			$this->persistenceManager->add($account);
+
+			$user = new \Famelo\ADU\Domain\Model\User();
+			$user->setAccounts(array($account));
+			$user->setEmail($userFixture['email']);
+			$user->setBranch($branch);
+
+			$name = new \TYPO3\Party\Domain\Model\PersonName('', $userFixture['firstName'], $userFixture['lastName']);
+			$user->setName($name);
+
+			$this->persistenceManager->add($user);
+			$users[$userFixture['role']] = $user;
+		}
+
+		for ($i = 0; $i < 8; $i++) {
+			$customer = new \Famelo\ADU\Domain\Model\Customer();
+			$customer->setBranch($branch);
+			$customer->setName($faker->company);
+			$customer->setObject($faker->address);
+			$customer->setCreated(new \DateTime('01.01.2013'));
+			$customer->setConsultant($users['Niederlassungsleiter']);
+
+			$contact = new \Famelo\ADU\Domain\Model\Contact();
+			$contact->setFirstname($faker->firstName);
+			$contact->setLastname($faker->lastName);
+			$contact->setPhone($faker->phoneNumber);
+			$contact->setEmail($faker->email);
+			$customer->setContact($contact);
+			$this->persistenceManager->add($contact);
+
+			$contact = new \Famelo\ADU\Domain\Model\Contact();
+			$contact->setFirstname($faker->firstName);
+			$contact->setLastname($faker->lastName);
+			$contact->setPhone($faker->phoneNumber);
+			$contact->setEmail($faker->email);
+			$customer->setAlternativeContact($contact);
+			$this->persistenceManager->add($contact);
+
+			$this->persistenceManager->add($customer);
 		}
 	}
 
@@ -251,14 +339,20 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 		}
 	}
 
-	public function updateFromFixturesCommand() {
+	/**
+	 * Import Fixtures
+	 *
+	 * @param string $fixture
+	 * @return void
+	 */
+	public function updateFromFixturesCommand($fixture) {
 		$customers = array();
 		foreach ($this->customerRepository->findAll() as $customer) {
 			$customers[$customer->getName() . '|' . $customer->getObject()] = $customer;
 			$customers[$customer->getName()] = $customer;
 		}
 		ksort($customers);
-		$fixtures = $this->getFixture('Rhein-Rhur');
+		$fixtures = $this->getFixture($fixture);
 		foreach ($fixtures as $fixture) {
 			$key = $fixture['Knd Name 1'] . '|' . $fixture['Objekt'];
 			unset($customer);
