@@ -134,6 +134,14 @@ class Customer {
 	 */
 	protected $satisfaction = 0;
 
+	/**
+	 * The reportService
+	 *
+	 * @var \Famelo\ADU\Services\ReportService
+	 * @Flow\Inject
+	 */
+	protected $reportService;
+
 	public function __construct() {
 		$this->created = new \DateTime();
 		//$this->cycleStart = new \DateTime();
@@ -641,6 +649,10 @@ class Customer {
 		}
 
 		return FALSE;
+	}
+
+	public function getScore() {
+		return $this->reportService->getScore($this);
 	}
 }
 ?>

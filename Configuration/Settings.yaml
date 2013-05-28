@@ -1,9 +1,3 @@
-Famelo:
-  Kundenbefragung:
-    E-Mails:
-      MoreInformation:
-        - mneuhaus@famelo.com
-
 TYPO3:
   Flow:
     security:
@@ -116,3 +110,9 @@ TYPO3:
         username: 'p182917p1'
         password: 'larivai97'
         encryption: 'ssl'
+Famelo:
+  Kundenbefragung:
+    E-Mails:
+      MoreInformation:
+        - mneuhaus@famelo.com
+

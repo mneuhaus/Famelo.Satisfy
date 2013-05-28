@@ -23,13 +23,20 @@
 	        </f:if>
 	      </td>
 	      <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px; text-align:center;">
-	      	<img src="{f:uri.resource(path: customer.ratingImageForThisWeek, package: 'Famelo.ADU')}" />
-	      	<img src="{f:uri.resource(path: customer.ratingImageForLastWeek, package: 'Famelo.ADU')}" />
-	      	<img src="{f:uri.resource(path: customer.ratingImageForTwoWeeksAgo, package: 'Famelo.ADU')}" />
-	      <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">
-	                <f:if condition="{customer.isNew}">Neukunde</f:if>
-	        <f:if condition="{customer.termination}">Gekündigt zum {customer.termination -> f:format.date(format: 'd.m.Y')}</f:if>
+			<a:rating customer="{customer}">
+				<f:if condition="{rating}">
+					<f:then>
+						<img src="{f:uri.resource(path: rating.image, package: 'Famelo.ADU')}" />
+					</f:then>
+					<f:else>
+						<img src="{f:uri.resource(path: 'img/Button-white.png', package: 'Famelo.ADU')}" />
+					</f:else>
+				</f:if>
+			</a:rating>
 	      </td>
+	      <td style="border-left: 1px solid #DDD; border-top: 1px solid #DDD; padding: 4px 5px;">
+			<f:if condition="{customer.isNew}">Neukunde</f:if>
+			<f:if condition="{customer.termination}">Gekündigt zum {customer.termination -> f:format.date(format: 'd.m.Y')}</f:if>
 	      </td>
 	    </tr>
 	    </f:for>

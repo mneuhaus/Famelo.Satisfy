@@ -7,7 +7,7 @@
 <f:section name="content">
 	<c:cache classes="\Famelo\ADU\Domain\Model\Customer" identifier="Reporting"></c:cache>
 		<div class="pull-right" style="margin-bottom: 20px; overflow: hidden;">
-			<f:link.action action="generateSelfEvaluation" controller="Report" class="btn">
+			<f:link.action action="generateSelfEvaluation" controller="Report" class="btn" arguments="{date: date}">
 				PDF Generieren
 			</f:link.action>
 		</div>
@@ -69,7 +69,7 @@
 				</thead>
 				<tbody class="list">
 					<f:for each="{customers}" as="customer">
-					<c:cache object="{customer}" identifier="ReportingRow">
+					<c:cache object="{customer}" identifier="ReportingRow" forceRender="1" >
 					<tr>
 						<td class="name">{customer.html -> f:format.raw()}</td>
 						<td class="consultant hidden-phone">{customer.consultant}</td>
@@ -102,7 +102,11 @@
 							</f:if>
 						</td></feature:active>
 						<td>
-							<f:if condition="{customer.ratingForThisWeek.color}">
+							<a:rating customer="{customer}">
+								<f:render partial="Rating" arguments="{rating: rating, customer: customer}" />
+							</a:rating>
+
+<!-- 							<f:if condition="{customer.ratingForThisWeek.color}">
 								<f:then>
 									<span class="evaluation badge-{customer.ratingForThisWeek.color}"
 										rel="popover"
@@ -160,22 +164,24 @@
 								<f:else>
 									<span class="evaluation badge-{customer.ratingForTwoWeeksAgo.color}">{customer.marker}</span>
 								</f:else>
-							</f:if>
+							</f:if> -->
 						</td>
 						<td class="comments">
-							<f:if condition="{customer.ratingForThisWeek.comment}">
-							<p>
-								<dl>
-									<dt>Kommentar: </dt><dd>{customer.ratingForThisWeek.comment}</dd>
-									<dt>Maßnahme: </dt><dd>{customer.ratingForThisWeek.action}</dd>
-									<dt>Datum: </dt> <dd>{customer.ratingForThisWeek.date -> f:format.date(format: 'd.m.Y')}</dd>
-								</dl>
-							</p>
-							</f:if>
-							<f:link.action class="hidden" action="Show" controller="Customer" package="Famelo.ADU" arguments="{customer: customer}">Mehr Informationen</f:link.action>
+							<a:rating customer="{customer}" weeks="1">
+								<f:if condition="{rating.comment}">
+								<p>
+									<dl>
+										<dt>Kommentar: </dt><dd>{rating.comment}</dd>
+										<dt>Maßnahme: </dt><dd>{rating.action}</dd>
+										<dt>Datum: </dt> <dd>{rating.date -> f:format.date(format: 'd.m.Y')}</dd>
+									</dl>
+								</p>
+								</f:if>
+								<f:link.action class="hidden" action="Show" controller="Customer" package="Famelo.ADU" arguments="{customer: customer}">Mehr Informationen</f:link.action>
+							</a:rating>
 						</td>
 						<td class="branch hidden">{customer.branch}</td>
-						<td class="sorting hidden">{customer.ratingSum}</td>
+						<td class="sorting hidden"><a:ratingSum customer="{customer}" /></td>
 					</tr>
 					</c:cache>
 					</f:for>

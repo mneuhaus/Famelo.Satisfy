@@ -24,16 +24,26 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	protected $customerRepository;
 
 	/**
+	 * The reportService
+	 *
+	 * @var \Famelo\ADU\Services\ReportService
+	 * @Flow\Inject
+	 */
+	protected $reportService;
+
+	/**
 	 * Index action
 	 *
+	 * @param string $date
 	 * @return void
 	 */
-	public function indexAction() {
-		$this->view->assign('thisWeek', intval(date('W')));
-		$this->view->assign('lastWeek', intval(date('W')) - 1);
-		$this->view->assign('twoWeeksAgo', intval(date('W')) - 2);
-		$this->view->assign('reportService', new \Famelo\ADU\Services\ReportService());
+	public function indexAction($date = NULL) {
+		if ($date !== NULL) {
+			$this->reportService->setDateTime(new \DateTime($date));
+		}
 
+		$this->view->assign('date', $this->reportService->getDateTime()->format('d.m.Y'));
+		$this->view->assign('reportService', $this->reportService);
 		$customers = $this->customerRepository->findAll();
 		$this->view->assign('customers', $customers);
 	}
@@ -54,13 +64,21 @@ class ReportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function selfEvaluationAction() {
-		$this->view->assign('thisWeek', intval(date('W')));
-		$this->view->assign('lastWeek', intval(date('W')) - 1);
-		$this->view->assign('twoWeeksAgo', intval(date('W')) - 2);
-		$this->view->assign('reportService', new \Famelo\ADU\Services\ReportService());
+		$this->view->assign('thisWeek', intval($date->format('W')));
+		$this->view->assign('lastWeek', intval($date->format('W')) - 1);
+		$this->view->assign('twoWeeksAgo', intval($date->format('W')) - 2);
+		$this->view->assign('reportService', $this->reportService);
 	}
 
-	public function generateSelfEvaluationAction() {
+	/**
+	 * @param string $date
+	 * @return void
+	 */
+	public function generateSelfEvaluationAction($date) {
+		if ($date !== NULL) {
+			$this->reportService->setDateTime(new \DateTime($date));
+		}
+
 		$document = new \Famelo\PDF\Document('Famelo.ADU:CustomerReport');
 		$document->assign('customers', $this->customerRepository->findUnsatisfied());
 		$document->download('Bericht ' . date('d.m.Y') . '.pdf');

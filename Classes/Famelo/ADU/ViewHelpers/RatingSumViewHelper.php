@@ -15,7 +15,7 @@ use TYPO3\Flow\Annotations as Flow;
 
 /**
  */
-class CalendarWeekViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class RatingSumViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * The reportService
@@ -26,11 +26,11 @@ class CalendarWeekViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHe
 	protected $reportService;
 
 	/**
-	 * @param integer $delta
+	 * @param object $customer
 	 * @return string Rendered string
 	 */
-	public function render($delta = 0) {
-		return intval($this->reportService->getDateTime()->format('W')) + $delta;
+	public function render($customer) {
+		return $this->reportService->getScore($customer);
 	}
 }
 

@@ -15,7 +15,7 @@ use TYPO3\Flow\Annotations as Flow;
 
 /**
  */
-class CalendarWeekViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class RatingViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * The reportService
@@ -26,11 +26,21 @@ class CalendarWeekViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHe
 	protected $reportService;
 
 	/**
-	 * @param integer $delta
+	 * @param object $customer
+	 * @param integer $weeks
 	 * @return string Rendered string
 	 */
-	public function render($delta = 0) {
-		return intval($this->reportService->getDateTime()->format('W')) + $delta;
+	public function render($customer, $weeks = 3) {
+		$week = $this->reportService->getDateTime()->format('W');
+		$output = '';
+		while ($weeks > 0) {
+			$this->templateVariableContainer->add('rating', $this->reportService->getRatingForWeek($customer, $week));
+			$output .= $this->renderChildren();
+			$this->templateVariableContainer->remove('rating');
+			$weeks--;
+			$week--;
+		}
+		return $output;
 	}
 }
 

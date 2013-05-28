@@ -17,6 +17,7 @@ use TYPO3\Flow\Annotations as Flow;
  * Manipulate the context variable "objects", which we expect to be a QueryResultInterface;
  * taking the "page" context variable into account (on which page we are currently).
  *
+ * @Flow\Scope("singleton")
  */
 class ReportService {
 	/**
@@ -26,6 +27,23 @@ class ReportService {
 	 * @Flow\Inject
 	 */
 	protected $customerRepository;
+
+	/**
+	 * @var \DateTime
+	 */
+	protected $datetime = NULL;
+
+	public function __construct() {
+		$this->datetime = new \DateTime();
+	}
+
+	public function setDateTime($datetime) {
+		$this->datetime = $datetime;
+	}
+
+	public function getDateTime() {
+		return $this->datetime;
+	}
 
 	public function getBranchPieCharts() {
 		$customers = $this->customerRepository->findAll();
@@ -70,6 +88,69 @@ class ReportService {
 			}
 		}
 		return $charts;
+	}
+
+	public function getScore($customer) {
+		$week = $this->getDateTime()->format('W');
+
+		$values = array();
+
+		// Self Evaluation result
+		$rating = $this->getRatingForWeek($customer, $week);
+		if ($rating instanceof \Famelo\ADU\Domain\Model\Rating) {
+			$level = $rating->getLevel();
+
+			if ($customer->getIsTerminated()) {
+				$level = 3.8;
+			} elseif ($customer->getIsNew()) {
+				$level = 3.9;
+			}
+
+			$values[] = $level;
+		}
+
+		// Survey result
+		$survey = $this->getSurveyForWeek($customer, $week);
+		if ($survey instanceof \Famelo\ADU\Domain\Model\Survey) {
+			$values[] = $survey->getResult() * 4;
+			if ($survey->getResult() > 0.5) {
+				$values[] = $survey->getResult() * 4;
+			}
+		}
+
+		if (count($values) > 0) {
+			return ( array_sum($values) / count($values) ) * 10;
+		}
+		return 0.0001;
+	}
+
+	public function getRatingForWeek($customer, $week) {
+		if (!$customer->getActive()) {
+			$rating = new \Famelo\ADU\Domain\Model\Rating();
+			$rating->setLevel(4);
+			return $rating;
+		}
+		if ($customer->getRatings()->count() > 0) {
+			foreach ($customer->getRatings() as $rating) {
+				$ratingWeek = intval($rating->getCreated()->format('W'));
+				if ($week == $ratingWeek) {
+					return $rating;
+				}
+			}
+		}
+		return NULL;
+	}
+
+	public function getSurveyForWeek($customer, $week) {
+		if ($customer->getSurveys()->count() > 0) {
+			foreach ($customer->getSurveys() as $survey) {
+				$surveyWeek = intval($survey->getCreated()->format('W'));
+				if ($week == $surveyWeek) {
+					return $survey;
+				}
+			}
+		}
+		return NULL;
 	}
 }
 ?>

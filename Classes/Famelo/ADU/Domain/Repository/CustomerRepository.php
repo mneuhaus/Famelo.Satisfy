@@ -66,7 +66,7 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 		));
 		$customers = array();
 		foreach ($query->execute() as $customer) {
-			if ($customer->getRatingSum() > 20 ) {
+			if ($customer->getScore() > 20 ) {
 				if ($customer->getIsTerminated()) {
 					$customers[$customer->getName()] = $customer;
 				} else {
@@ -74,6 +74,9 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 				}
 			}
 		}
+		usort($customers, function($left, $right) {
+			return $left->getScore() < $right->getScore();
+		});
 		return $customers;
 	}
 
