@@ -92,7 +92,7 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function createUserCommand($username, $password) {
-		$roles = array('Administrator');
+		$roles = array('Famelo.ADU:Administrator');
 		$authenticationProviderName = 'ADUProvider';
 
 		$account = $this->accountFactory->createAccountWithPassword($username, $password, $roles, $authenticationProviderName);

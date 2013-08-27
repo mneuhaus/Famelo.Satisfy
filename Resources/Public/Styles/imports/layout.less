@@ -1,3 +1,7 @@
+.off-canvas {
+	padding-left: 200px;
+}
+
 [role="main"] {
 	background: #FFFFFF;
 	padding: 0;
@@ -15,10 +19,16 @@
 [role="left"] {
 	background: #fafafa;
 	border-right: 3px solid #f1f1f1;
-	padding: 0px 10px 0px;
+	padding: 0px 0px 0px;
+	margin-left: -200px;
+	width: 200px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	overflow: auto;
 
 	.left-inner {
-		margin: 60px 0 20px;
+		margin: 60px 10px 20px;
 	}
 
 	.nav-vertical {
