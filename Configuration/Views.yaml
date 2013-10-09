@@ -1,11 +1,13 @@
-TYPO3:
-  Expose:
-    options:
-      typoScriptPathPatterns:
-        10_Famelo.ADU: resource://Famelo.ADU/Private/TypoScripts/
+Famelo.Features:
+  requestFilter: 'isPackage("Famelo.Features")'
+  options:
+    layoutRootPathPattern: resource://Famelo.ADU/Private/Layouts/
+    templatePathAndFilename: resource://Famelo.ADU/Private/Templates/Features/Index.html
 
-Famelo:
-  Features:
-    options:
-      layoutRootPathPattern: resource://Famelo.ADU/Private/Layouts/
-      templatePathAndFilename: resource://Famelo.ADU/Private/Templates/Features/Index.html
+TYPO3.Expose:
+  requestFilter: 'isPackage("TYPO3.Expose")'
+  options:
+    typoScriptPathPatterns:
+      - 'resource://TYPO3.Expose/Private/TypoScripts/'
+      - 'resource://Famelo.ADU/Private/TypoScripts/'
+      - 'resource://Famelo.Features/Private/TypoScripts/'

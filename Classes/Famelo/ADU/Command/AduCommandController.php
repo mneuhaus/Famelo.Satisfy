@@ -165,7 +165,7 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 				'firstName' => 'Administrator',
 				'lastName' => '',
 				'email' => 'marc.neuhaus@neuland-medien.de',
-				'role' => 'Administrator',
+				'role' => 'Famelo.ADU:Administrator',
 				'branch' => 'Rhein/Ruhr'
 			),
 			'Niederlassungsleiter' => array(
@@ -174,7 +174,7 @@ class AduCommandController extends \TYPO3\Flow\Cli\CommandController {
 				'firstName' => 'Toni',
 				'lastName' => 'Tester',
 				'email' => 'marc.neuhaus@neuland-medien.de',
-				'role' => 'Niederlassungsleiter',
+				'role' => 'Famelo.ADU:Niederlassungsleiter',
 				'branch' => 'Rhein/Ruhr'
 			)
 		);

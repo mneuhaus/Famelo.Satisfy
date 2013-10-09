@@ -10,4 +10,4 @@ prototype(Famelo.ADU:Null) {
 	value = ''
 }
 
-prototype(TYPO3.Expose:RecordList) >>
+// prototype(TYPO3.Expose:RecordList) >>
