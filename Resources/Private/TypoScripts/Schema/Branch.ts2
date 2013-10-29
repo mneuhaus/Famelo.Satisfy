@@ -1,4 +1,4 @@
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Branch) < prototype(TYPO3.Expose:Schema) {
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Branch) < prototype(TYPO3.Expose:Schema) {
 	properties {
 		children.ignore = true
 
@@ -6,7 +6,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Branch) < prototype(TYPO3.
 			label = 'Bezeichnung'
 		}
 		branch {
-			label = 'Übergeordnete Niederlassung'
+			label = 'Übergeordnete Kategorie'
 		}
 		questions {
 			label = 'Fragen'

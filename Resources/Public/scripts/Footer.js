@@ -1,28 +1,25 @@
-// @codekit-prepend "../components/bootstrap/js/bootstrap-dropdown.js"
-// @codekit-prepend "../components/bootstrap/js/bootstrap-tooltip.js"
-// @codekit-prepend "../components/bootstrap/js/bootstrap-popover.js"
-// @codekit-prepend "../components/famelo/components/scripts/off-canvas.js"
-// @codekit-prepend "../components/bootstrap-datepicker/js/bootstrap-datepicker.js"
-// @codekit-prepend "../components/bootstrap-datepicker/js/locales/bootstrap-datepicker.de.js"
-// @codekit-prepend "../components/flexie/flexie.js"
-// @codekit-prepend "../components/prettycheckable/prettyCheckable.js"
-// @codekit-prepend "../components/jquery.validation/lib/jquery.metadata.js"
-// @codekit-prepend "../components/jquery.validation/jquery.validate.js"
-// @codekit-prepend "../components/jquery.validation/localization/messages_de.js"
+// @codekit-prepend "../Components/bootstrap/js/dropdown.js"
+// @codekit-prepend "../Components/bootstrap/js/tooltip.js"
+// @codekit-prepend "../Components/bootstrap/js/popover.js"
+// @codekit-prepend "../Components/famelo/components/scripts/off-canvas.js"
+// @codekit-prepend "../Components/prettycheckable/prettyCheckable.js"
+// @codekit-prepend "../Components/jquery.validation/lib/jquery.metadata.js"
+// @codekit-prepend "../Components/jquery.validation/jquery.validate.js"
+// @codekit-prepend "../Components/jquery.validation/localization/messages_de.js"
 
 // https://raw.github.com/DmitryBaranovskiy/raphael/300aa589f5a0ba7fce667cd62c7cdda0bd5ad904/raphael-min.js
-// codekit-prepend "components/morris.js/morris.min.js"
-// codekit-prepend "components/raty/js/jquery.raty.js"
-// codekit-prepend "components/peity/jquery.peity.min.js"
+// codekit-prepend "Components/morris.js/morris.min.js"
+// codekit-prepend "Components/raty/js/jquery.raty.js"
+// codekit-prepend "Components/peity/jquery.peity.min.js"
 
 $(document).ready(function(){
-	$("[data-canvas-toggle]").click(function(){
-		$(".off-canvas").toggleClass("off-canvas-active");
-		return false;
+	$(".off-canvas-toggle").click(function(e){
+		e.preventDefault();
+		$(".off-canvas").toggleClass("active");
 	});
 
-	$("[role='main']").click(function(){
-		$(".off-canvas").removeClass("off-canvas-active");
+	$(".off-canvas-main").click(function(){
+		$(".off-canvas").removeClass("active");
 	});
 
 	$("[data-element='prettyCheckable'], .prettyCheckable").prettyCheckable();
@@ -53,9 +50,4 @@ $(document).ready(function(){
 	});
 
 	$('.dropdown-toggle').dropdown();
-
-	$('[data-date-format]').datepicker({
-		language: 'de',
-		format: 'dd.mm.yyyy'
-	});
 });

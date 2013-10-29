@@ -1,4 +1,4 @@
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Rating) < prototype(TYPO3.Expose:Schema) {
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Rating) < prototype(TYPO3.Expose:Schema) {
 	properties {
 		created.ignore = TRUE
 		action{
@@ -12,43 +12,43 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Rating) < prototype(TYPO3.
 		date.label = 'Datum'
 		customer {
 			label = 'Kunde/Objekt'
-			element = 'Famelo.ADU:CustomerString'
+			element = 'Famelo.Satisfy:CustomerString'
 		}
 		level {
 			label = 'Einschätzung'
 			@position = 'after customer'
-			element = 'Famelo.ADU:SelfEvaluationRating'
+			element = 'Famelo.Satisfy:SelfEvaluationRating'
 		}
 
 	}
 }
 
-prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Rating) {
+prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Rating) {
 	// Custom Settings for the RecordList
 }
 
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Rating).prototype(TYPO3.Expose:RecordList) {
-	recordList.RatingList = Famelo.ADU:RatingList
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Rating).prototype(TYPO3.Expose:RecordList) {
+	recordList.RatingList = Famelo.Satisfy:RatingList
 	currentFormat = 'RatingList'
 	bottomRegion {
-		limits = Famelo.ADU:Null
-		paginator = Famelo.ADU:Null
+		limits = Famelo.Satisfy:Null
+		paginator = Famelo.Satisfy:Null
 	}
 }
 
-prototype(Famelo.ADU:RatingList) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Rating/Table.html'
+prototype(Famelo.Satisfy:RatingList) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Rating/Table.html'
 	rows = TYPO3.TypoScript:Collection {
 		collection = ${objects}
 		itemName = 'item'
-		itemRenderer = Famelo.ADU:RatingRow
+		itemRenderer = Famelo.Satisfy:RatingRow
 	}
 	objects = ${objects}
 	localControllerLinks = TYPO3.Expose:LocalControllerLinks
 }
 
-prototype(Famelo.ADU:RatingRow) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Rating/Row.html'
+prototype(Famelo.Satisfy:RatingRow) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Rating/Row.html'
 	rating = ${item}
 	type = ${type}
 	controllerLinks = TYPO3.Expose:LocalControllerLinks

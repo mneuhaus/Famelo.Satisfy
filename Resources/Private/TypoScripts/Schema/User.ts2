@@ -1,4 +1,4 @@
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User) < prototype(TYPO3.Expose:Schema) {
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.User) < prototype(TYPO3.Expose:Schema) {
 	properties {
 		customers.ignore = true
 		role.ignore = true
@@ -35,7 +35,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User) < prototype(TYPO3.Ex
 	}
 }
 
-prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User) {
+prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.User) {
 	properties {
 		name.ignore = true
 		#branch.ignore = true
@@ -46,21 +46,21 @@ prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Doma
 }
 
 
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.User).prototype(TYPO3.Expose:RecordList) {
-	recordList.userList = Famelo.ADU:UserList
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.User).prototype(TYPO3.Expose:RecordList) {
+	recordList.userList = Famelo.Satisfy:UserList
 	currentFormat = 'userList'
 	bottomRegion {
-		limits = Famelo.ADU:Null
-		paginator = Famelo.ADU:Null
+		limits = Famelo.Satisfy:Null
+		paginator = Famelo.Satisfy:Null
 	}
 }
 
-prototype(Famelo.ADU:UserList) < prototype(Famelo.ADU:CustomerList) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/User/Table.html'
-	elements.itemRenderer = Famelo.ADU:UserRow
+prototype(Famelo.Satisfy:UserList) < prototype(Famelo.Satisfy:CustomerList) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/User/Table.html'
+	elements.itemRenderer = Famelo.Satisfy:UserRow
 }
 
-prototype(Famelo.ADU:UserRow) < prototype(Famelo.ADU:CustomerRow) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/User/Row.html'
+prototype(Famelo.Satisfy:UserRow) < prototype(Famelo.Satisfy:CustomerRow) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/User/Row.html'
 	user = ${item}
 }

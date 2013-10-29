@@ -1,5 +1,5 @@
 <f:layout name="Document" />
-{namespace a=Famelo\ADU\ViewHelpers}
+{namespace a=Famelo\Satisfy\ViewHelpers}
 
 <f:section name="content">
 	<table>
@@ -11,7 +11,7 @@
 	<f:for each="{survey.answers}" as="answer">
 		<tr>
 			<td>{answer.question}</td>
-			<td><img src="{f:uri.resource(path: answer.image, package: 'Famelo.ADU')}" /></td>
+			<td><img src="{f:uri.resource(path: answer.image, package: 'Famelo.Satisfy')}" /></td>
 			<td>{answer.comment}</td>
 		</tr>
 	</f:for>

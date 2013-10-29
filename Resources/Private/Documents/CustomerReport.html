@@ -1,5 +1,5 @@
 <f:layout name="Document" />
-{namespace a=Famelo\ADU\ViewHelpers}
+{namespace a=Famelo\Satisfy\ViewHelpers}
 
 <f:section name="content">
 	<table style="border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; border-spacing: 0;">
@@ -26,10 +26,10 @@
 			<a:rating customer="{customer}">
 				<f:if condition="{rating}">
 					<f:then>
-						<img src="{f:uri.resource(path: rating.image, package: 'Famelo.ADU')}" />
+						<img src="{f:uri.resource(path: rating.image, package: 'Famelo.Satisfy')}" />
 					</f:then>
 					<f:else>
-						<img src="{f:uri.resource(path: 'img/Button-white.png', package: 'Famelo.ADU')}" />
+						<img src="{f:uri.resource(path: 'img/Button-white.png', package: 'Famelo.Satisfy')}" />
 					</f:else>
 				</f:if>
 			</a:rating>

@@ -1,4 +1,4 @@
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.Expose:Schema) {
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Survey) < prototype(TYPO3.Expose:Schema) {
 	properties {
 		rating.ignore = true
 
@@ -8,26 +8,26 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 
 		customer {
 			label = 'Kunde'
-			element = 'Famelo.ADU:SurveyCustomer'
+			element = 'Famelo.Satisfy:SurveyCustomer'
 		}
 
 		contact {
 			label = 'Ansprechpartner'
 			element = 'TYPO3.Expose:Chosen'
-			optionsProvider.class = '\\Famelo\\ADU\\OptionsProvider\\ContactOptionsProvider'
+			optionsProvider.class = '\\Famelo\\Satisfy\\OptionsProvider\\ContactOptionsProvider'
 		}
 
 		answers {
 			label = 'Fragen'
 			inline {
-				element = 'Famelo.ADU:AnswersExtended'
+				element = 'Famelo.Satisfy:AnswersExtended'
 				multipleMode = false
 			}
 		}
 
 		moreSecurity {
 			label = 'A.D.U. SICHERHEITSDIENSTE'
-			element = 'Famelo.ADU:MoreInformation'
+			element = 'Famelo.Satisfy:MoreInformation'
 		}
 
 		moreService {
@@ -36,7 +36,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) < prototype(TYPO3.
 	}
 }
 
-prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) {
+prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Survey) {
 	properties {
 		answers.ignore = true
 		created.ignore = false
@@ -44,50 +44,50 @@ prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Doma
 }
 
 
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
-	recordList.surveyList = Famelo.ADU:SurveyList
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
+	recordList.surveyList = Famelo.Satisfy:SurveyList
 	currentFormat = 'surveyList'
 }
 
-prototype(Famelo.ADU:SurveyList) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/Table.html'
+prototype(Famelo.Satisfy:SurveyList) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Survey/Table.html'
 	elements = TYPO3.TypoScript:Collection {
 		collection = ${objects}
 		itemName = 'item'
-		itemRenderer = Famelo.ADU:SurveyRow
+		itemRenderer = Famelo.Satisfy:SurveyRow
 	}
 	objects = ${objects}
 }
 
-prototype(Famelo.ADU:CustomerList) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Customer/Table.html'
+prototype(Famelo.Satisfy:CustomerList) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Customer/Table.html'
 	elements = TYPO3.TypoScript:Collection {
 		collection = ${objects}
 		itemName = 'item'
-		itemRenderer = Famelo.ADU:CustomerRow
+		itemRenderer = Famelo.Satisfy:CustomerRow
 	}
 	objects = ${objects}
 }
 
 
-prototype(Famelo.ADU:SurveyRow) < prototype(TYPO3.Expose:RecordList.Table.DefaultRow) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/Row.html'
+prototype(Famelo.Satisfy:SurveyRow) < prototype(TYPO3.Expose:RecordList.Table.DefaultRow) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Survey/Row.html'
 }
 
-prototype(Famelo.ADU:Survey.New) {
-	prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey) {
+prototype(Famelo.Satisfy:Survey.New) {
+	prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Survey) {
 		properties {
 			answers {
 				inline {
-					element = 'Famelo.ADU:Answers'
+					element = 'Famelo.Satisfy:Answers'
 				}
 			}
 		}
 	}
 }
 
-#prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
-#	recordList.surveyReport = Famelo.ADU:SurveyReport
+#prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Survey).prototype(TYPO3.Expose:RecordList) {
+#	recordList.surveyReport = Famelo.Satisfy:SurveyReport
 #	currentFormat = ${format}
 #
 #	prototype(TYPO3.Expose:RecordList.FormatSelector) {
@@ -101,12 +101,12 @@ prototype(Famelo.ADU:Survey.New) {
 #	}
 #}
 
-#prototype(Famelo.ADU:SurveyReport) < prototype(TYPO3.TypoScript:Template) {
-#	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Survey/List.html'
+#prototype(Famelo.Satisfy:SurveyReport) < prototype(TYPO3.TypoScript:Template) {
+#	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Survey/List.html'
 #	elements = TYPO3.TypoScript:Collection {
 #		collection = ${objects}
 #		itemName = 'item'
-#		itemRenderer = Famelo.ADU:Element
+#		itemRenderer = Famelo.Satisfy:Element
 #	}
 #	objects = ${objects}
 #}

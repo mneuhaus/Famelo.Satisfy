@@ -1,5 +1,5 @@
 {
-    "name": "famelo/adu",
+    "name": "famelo/satisfy",
     "type": "typo3-flow-package",
     "description": "",
     "require": {
@@ -7,7 +7,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Famelo\\ADU": "Classes"
+            "Famelo\\Satisfy": "Classes"
         }
     }
 }

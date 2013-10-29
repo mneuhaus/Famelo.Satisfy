@@ -1,0 +1,60 @@
+prototype(TYPO3.Form:Namespaces) < prototype(TYPO3.TypoScript:RawArray) {
+  satisfy = 'Famelo.Satisfy:Fields'
+}
+
+prototype(Famelo.Satisfy:Fields) < prototype(TYPO3.TypoScript:RawArray) {
+  Rating = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:SingleLineText'
+  }
+
+  SingleLineTextFull = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:SingleLineText'
+  }
+
+  Comment = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:SingleLineText'
+  }
+
+  HiddenCustomer = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:Hidden'
+  }
+
+  HiddenQuestion = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:Hidden'
+  }
+
+  Answers = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:InlineStacked'
+  }
+  AnswersItem = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:InlineStacked'
+  }
+
+  AnswersExtended = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:InlineStacked'
+  }
+  AnswersExtendedItem = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:InlineStacked'
+  }
+
+  CustomerString = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:ReadOnlyFormElement'
+  }
+
+  SelfEvaluationRating = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:SingleLineText'
+  }
+
+  SurveyCustomer = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:FormElement'
+    superTypes.2 = 'TYPO3.Form:SingleSelectionMixin'
+  }
+
+  MoreInformation = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:FormElement'
+    properties {
+      elementClassAttribute = 'add-on'
+      value = 1
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {namespace e=TYPO3\Expose\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 {namespace feature=Famelo\Features\ViewHelpers}
-{namespace a=Famelo\ADU\ViewHelpers}
+{namespace a=Famelo\Satisfy\ViewHelpers}
 
 <tr>
 	<td class="name">{customer.html -> f:format.raw()}</td>
@@ -105,7 +105,7 @@
 			</dl>
 		</p>
 		</f:if>
-		<f:link.action class="hidden" action="Show" controller="Customer" package="Famelo.ADU" arguments="{customer: customer}">Mehr Informationen</f:link.action>
+		<f:link.action class="hidden" action="Show" controller="Customer" package="Famelo.Satisfy" arguments="{customer: customer}">Mehr Informationen</f:link.action>
 	</td>
 	<td class="branch hidden">{customer.branch}</td>
 	<td class="sorting hidden">{customer.ratingSum}</td>

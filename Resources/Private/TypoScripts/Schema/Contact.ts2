@@ -1,4 +1,4 @@
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Contact) < prototype(TYPO3.Expose:Schema) {
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Contact) < prototype(TYPO3.Expose:Schema) {
 	properties {
 		firstname.label = 'Vorname'
 		lastname.label = 'Nachname'

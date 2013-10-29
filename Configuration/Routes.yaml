@@ -15,7 +15,7 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Standard'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
 
 ######################################
 # Survey                             #
@@ -29,7 +29,7 @@
     '@format': 'html'
     '@action':     'new'
     '@controller': 'Survey'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 -
@@ -41,7 +41,7 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Survey'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 -
@@ -52,7 +52,7 @@
     '@format': 'html'
     '@action':     'happiness'
     '@controller': 'Survey'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 ######################################
@@ -66,7 +66,7 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Report'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 # -
@@ -78,7 +78,7 @@
 #     '@format': 'html'
 #     '@action':     'survey'
 #     '@controller': 'Report'
-#     '@package': 'Famelo.ADU'
+#     '@package': 'Famelo.Satisfy'
 #   appendExceedingArguments: true
 
 # -
@@ -89,7 +89,7 @@
 #     '@format': 'html'
 #     '@action':     'selfEvaluation'
 #     '@controller': 'Report'
-#     '@package': 'Famelo.ADU'
+#     '@package': 'Famelo.Satisfy'
 #   appendExceedingArguments: true
 
 # -
@@ -100,7 +100,7 @@
 #     '@format': 'html'
 #     '@action':     'overview'
 #     '@controller': 'Report'
-#     '@package': 'Famelo.ADU'
+#     '@package': 'Famelo.Satisfy'
 #   appendExceedingArguments: true
 
 -
@@ -111,7 +111,7 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Standard'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
 
 ######################################
 # Ratings                            #
@@ -125,7 +125,7 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Ratings'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 ######################################
@@ -134,12 +134,12 @@
 -
   name: 'Banches'
   uriPattern: 'edit/branch'
-  navigation: 'Niederlassungen'
+  navigation: 'Kategorien'
   defaults:
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Branch'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 ######################################
@@ -153,7 +153,7 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Category'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 
@@ -168,7 +168,7 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'Customer'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
 ######################################
@@ -182,9 +182,8 @@
     '@format': 'html'
     '@action':     'index'
     '@controller': 'User'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
-
 
 ######################################
 # Login/logout                       #
@@ -196,7 +195,7 @@
     '@format': 'html'
     '@controller': 'Login'
     '@action':     'index'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'
 
 -
   name: 'Logout'
@@ -205,4 +204,4 @@
     '@format': 'html'
     '@controller': 'Login'
     '@action':     'logout'
-    '@package': 'Famelo.ADU'
+    '@package': 'Famelo.Satisfy'

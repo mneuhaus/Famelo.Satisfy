@@ -1,4 +1,4 @@
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO3.Expose:Schema) {
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Customer) < prototype(TYPO3.Expose:Schema) {
 	properties {
 		ratings.ignore = true
 		selfEvaluationResult.ignore = true
@@ -58,7 +58,7 @@ prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) < prototype(TYPO
 		surveys.ignore = true
 	}
 }
-prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer) {
+prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Customer) {
 	properties {
 		cycle.ignore = true
 		consultant.ignore = true
@@ -67,68 +67,68 @@ prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.ADU.Doma
 	}
 }
 
-#prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer).prototype(TYPO3.Expose:RecordList) {
-#	recordList.customerList = Famelo.ADU:List
+#prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Customer).prototype(TYPO3.Expose:RecordList) {
+#	recordList.customerList = Famelo.Satisfy:List
 #	#currentFormat = 'customerList'
 #}
 
-#prototype(Famelo.ADU:List) < prototype(TYPO3.TypoScript:Template) {
-#	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Customer/List.html'
+#prototype(Famelo.Satisfy:List) < prototype(TYPO3.TypoScript:Template) {
+#	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Customer/List.html'
 #	elements = TYPO3.TypoScript:Collection {
 #		collection = ${objects}
 #		itemName = 'item'
-#		itemRenderer = Famelo.ADU:Element
+#		itemRenderer = Famelo.Satisfy:Element
 #	}
 #	objects = ${objects}
 #}
 
-#prototype(Famelo.ADU:Element) < prototype(TYPO3.TypoScript:Template) {
-#	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Customer/Element.html'
+#prototype(Famelo.Satisfy:Element) < prototype(TYPO3.TypoScript:Template) {
+#	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Customer/Element.html'
 #	item = ${item}
 #	type = ${type}
-#	controllerLinks = Famelo.ADU:Customer.Links
+#	controllerLinks = Famelo.Satisfy:Customer.Links
 #}
 
-#prototype(Famelo.ADU:Customer.Links) < prototype(TYPO3.Expose:LocalControllerLinks) {
+#prototype(Famelo.Satisfy:Customer.Links) < prototype(TYPO3.Expose:LocalControllerLinks) {
 #	30 = TYPO3.Expose:LocalControllerLink {
 #		label = 'Umfrage durchführen'
-#		controller = 'Famelo\\ADU\\Controller\\SurveyController'
+#		controller = 'Famelo\\Satisfy\\Controller\\SurveyController'
 #		action = 'New'
 #		arguments.customer = ${item}
 #	}
 #}
 
-prototype(TYPO3.Expose:Schema:Famelo.ADU.Domain.Model.Customer).prototype(TYPO3.Expose:RecordList) {
-	recordList.customerList = Famelo.ADU:CustomerList
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Customer).prototype(TYPO3.Expose:RecordList) {
+	recordList.customerList = Famelo.Satisfy:CustomerList
 	currentFormat = 'customerList'
 	bottomRegion {
-		limits = Famelo.ADU:Null
-		paginator = Famelo.ADU:Null
+		limits = Famelo.Satisfy:Null
+		paginator = Famelo.Satisfy:Null
 	}
 }
 
-prototype(Famelo.ADU:CustomerList) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Customer/Table.html'
+prototype(Famelo.Satisfy:CustomerList) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Customer/Table.html'
 	elements = TYPO3.TypoScript:Collection {
 		collection = ${objects}
 		itemName = 'item'
-		itemRenderer = Famelo.ADU:CustomerRow
+		itemRenderer = Famelo.Satisfy:CustomerRow
 	}
 	objects = ${objects}
 }
 
-prototype(Famelo.ADU:CustomerRow) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Customer/Row.html'
+prototype(Famelo.Satisfy:CustomerRow) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Customer/Row.html'
 	customer = ${item}
 	type = ${type}
-	controllerLinks = Famelo.ADU:Customer.Links
+	controllerLinks = Famelo.Satisfy:Customer.Links
 }
 
-prototype(Famelo.ADU:Customer).prototype(TYPO3.Expose:RecordList) {
-	recordList.Customer = Famelo.ADU:Customer
+prototype(Famelo.Satisfy:Customer).prototype(TYPO3.Expose:RecordList) {
+	recordList.Customer = Famelo.Satisfy:Customer
 	currentFormat = 'Customer'
 }
 
-prototype(Famelo.ADU:Customer.Links) < prototype(TYPO3.Expose:LocalControllerLinks) {
+prototype(Famelo.Satisfy:Customer.Links) < prototype(TYPO3.Expose:LocalControllerLinks) {
 	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\ArrayImplementation'
 }

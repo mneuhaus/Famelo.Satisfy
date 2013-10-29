@@ -1,41 +1,41 @@
-prototype(Famelo.ADU:Report) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Report/Table.html'
+prototype(Famelo.Satisfy:Report) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Report/Table.html'
 	elements = TYPO3.TypoScript:Collection {
 		collection = ${objects}
 		itemName = 'item'
-		itemRenderer = Famelo.ADU:ReportRow
+		itemRenderer = Famelo.Satisfy:ReportRow
 	}
 	objects = ${objects}
 }
 
-prototype(Famelo.ADU:ReportRow) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Famelo.ADU/Private/Elements/List/Report/Row.html'
+prototype(Famelo.Satisfy:ReportRow) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/List/Report/Row.html'
 	customer = ${item}
 	type = ${type}
-	controllerLinks = Famelo.ADU:Customer.Links
+	controllerLinks = Famelo.Satisfy:Customer.Links
 }
 
-prototype(Famelo.ADU:Report.ReportLinks) < prototype(TYPO3.Expose:GlobalControllerLinks) {
+prototype(Famelo.Satisfy:Report.ReportLinks) < prototype(TYPO3.Expose:GlobalControllerLinks) {
 	10 = TYPO3.Expose:ControllerLink
 	10.label = 'PDF Generieren'
 	10.action = 'generateSelfEvaluation'
-	10.controller = 'Famelo\\ADU\\Controller\\ReportController'
+	10.controller = 'Famelo\\Satisfy\\Controller\\ReportController'
 	10.arguments.type = ${type}
 }
 
-prototype(Famelo.ADU:Report).prototype(TYPO3.Expose:RecordList) {
-	recordList.report = Famelo.ADU:Report
+prototype(Famelo.Satisfy:Report).prototype(TYPO3.Expose:RecordList) {
+	recordList.report = Famelo.Satisfy:Report
 	currentFormat = 'report'
 	bottomRegion {
-		limits = Famelo.ADU:Null
-		paginator = Famelo.ADU:Null
+		limits = Famelo.Satisfy:Null
+		paginator = Famelo.Satisfy:Null
 	}
 	topRegion {
-		controllerLinks = Famelo.ADU:Report.ReportLinks
+		controllerLinks = Famelo.Satisfy:Report.ReportLinks
 	}
 }
 
-prototype(Famelo.ADU:Null) {
+prototype(Famelo.Satisfy:Null) {
 	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\ValueImplementation'
 	value = ''
 }

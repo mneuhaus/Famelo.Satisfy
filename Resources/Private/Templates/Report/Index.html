@@ -1,11 +1,11 @@
 <f:layout name="Main" />
 {namespace e=TYPO3\Expose\ViewHelpers}
 {namespace feature=Famelo\Features\ViewHelpers}
-{namespace a=Famelo\ADU\ViewHelpers}
+{namespace a=Famelo\Satisfy\ViewHelpers}
 {namespace c=Community\CacheExtensions\ViewHelpers}
 
 <f:section name="content">
-	<c:cache classes="\Famelo\ADU\Domain\Model\Customer" identifier="Reporting"></c:cache>
+	<c:cache classes="\Famelo\Satisfy\Domain\Model\Customer" identifier="Reporting"></c:cache>
 		<div class="pull-right" style="margin-bottom: 20px; overflow: hidden;">
 			<f:link.action action="generateSelfEvaluation" controller="Report" class="btn" arguments="{date: date}">
 				PDF Generieren
@@ -17,7 +17,7 @@
 				<img src="{pieChart}" />
 			</f:for>
 		</feature:active>
-		<!-- <_e:render.action controller="List" typoScriptPrefix="Famelo.ADU:Report" type="\Famelo\ADU\Domain\Model\Customer" /> -->
+		<!-- <_e:render.action controller="List" typoScriptPrefix="Famelo.Satisfy:Report" type="\Famelo\Satisfy\Domain\Model\Customer" /> -->
 
 		<div id="listjs" style="clear: both;">
 
@@ -177,7 +177,7 @@
 									</dl>
 								</p>
 								</f:if>
-								<f:link.action class="hidden" action="Show" controller="Customer" package="Famelo.ADU" arguments="{customer: customer}">Mehr Informationen</f:link.action>
+								<f:link.action class="hidden" action="Show" controller="Customer" package="Famelo.Satisfy" arguments="{customer: customer}">Mehr Informationen</f:link.action>
 							</a:rating>
 						</td>
 						<td class="branch hidden">{customer.branch}</td>

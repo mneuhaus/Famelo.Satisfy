@@ -1,0 +1,3 @@
+-
+  name: Befragungen
+  condition: hasRole('Famelo.Satisfy:Administrator')

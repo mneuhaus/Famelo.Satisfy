@@ -1,8 +1,8 @@
 <?php
-namespace Famelo\ADU\Tests\Unit\Domain\Model;
+namespace Famelo\Satisfy\Tests\Unit\Domain\Model;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "Famelo.ADU".            *
+ * This script belongs to the TYPO3 Flow package "Famelo.Satisfy".            *
  *                                                                        *
  *                                                                        */
 

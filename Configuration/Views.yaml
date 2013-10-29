@@ -1,13 +1,19 @@
-Famelo.Features:
+-
   requestFilter: 'isPackage("Famelo.Features")'
   options:
-    layoutRootPathPattern: resource://Famelo.ADU/Private/Layouts/
-    templatePathAndFilename: resource://Famelo.ADU/Private/Templates/Features/Index.html
+    layoutRootPathPattern: resource://Famelo.Satisfy/Private/Layouts/
+    templatePathAndFilename: resource://Famelo.Satisfy/Private/Templates/Features/Index.html
 
-TYPO3.Expose:
+-
   requestFilter: 'isPackage("TYPO3.Expose")'
   options:
     typoScriptPathPatterns:
       - 'resource://TYPO3.Expose/Private/TypoScripts/'
-      - 'resource://Famelo.ADU/Private/TypoScripts/'
+      - 'resource://Famelo.Satisfy/Private/TypoScripts/'
       - 'resource://Famelo.Features/Private/TypoScripts/'
+
+-
+  requestFilter: 'isPackage("Famelo.Impersonate")'
+  options:
+    layoutRootPathPattern: resource://Famelo.Satisfy/Private/Layouts/
+    templatePathAndFilename: resource://Famelo.Satisfy/Private/Templates/Impersonate/Index.html

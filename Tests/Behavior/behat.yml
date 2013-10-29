@@ -1,0 +1,16 @@
+# Behat distribution configuration
+#
+# Override with behat.yml for local configuration.
+#
+default:
+  paths:
+    features: Features
+    bootstrap: %behat.paths.features%/Bootstrap
+  extensions:
+    Behat\MinkExtension\Extension:
+      files_path: features/Resources
+      show_cmd: 'open %s'
+      selenium2: ~
+      goutte: ~
+
+      base_url: http://adu.live/

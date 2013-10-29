@@ -16,15 +16,9 @@
 	}
 }
 
-[role="left"] {
+.off-canvas-left {
 	background: #fafafa;
 	border-right: 3px solid #f1f1f1;
-	padding: 0px 0px 0px;
-	margin-left: -200px;
-	width: 200px;
-	position: fixed;
-	top: 0;
-	bottom: 0;
 	overflow: auto;
 
 	.left-inner {
@@ -53,12 +47,12 @@
 		}
 
 		a.warning {
-		    background: @orange;
+		    background: @brand-warning;
 		    color: white;
 		}
 
 		a.warning:hover {
-		    background: lighten(@orange, 2%);
+		    background: lighten(@brand-warning, 2%);
 		    color: white;
 		}
 

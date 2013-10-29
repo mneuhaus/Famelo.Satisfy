@@ -4,23 +4,25 @@
 
 resources:
   methods:
-    Home: 'method(Famelo\ADU\Controller\StandardController->.*Action(.*))'
-    Survey: 'method(Famelo\ADU\Controller\SurveyController->.*Action(.*))'
-    Report: 'method(Famelo\ADU\Controller\ReportController->.*Action(.*))'
-    Customer: 'method(Famelo\ADU\Controller\CustomerController->.*Action(.*))'
-    UserManagement: 'method(Famelo\ADU\Controller\UserController->.*Action(.*))'
-    Category: 'method(Famelo\ADU\Controller\CategoryController->.*Action(.*))'
-    Rating: 'method(Famelo\ADU\Controller\RatingsController->.*Action(.*))'
-    Branch: 'method(Famelo\ADU\Controller\BranchController->.*Action(.*))'
-    User: 'method(Famelo\ADU\Controller\UserController->.*Action(.*))'
+    Home: 'method(Famelo\Satisfy\Controller\StandardController->.*Action(.*))'
+    Survey: 'method(Famelo\Satisfy\Controller\SurveyController->.*Action(.*))'
+    Report: 'method(Famelo\Satisfy\Controller\ReportController->.*Action(.*))'
+    Customer: 'method(Famelo\Satisfy\Controller\CustomerController->.*Action(.*))'
+    UserManagement: 'method(Famelo\Satisfy\Controller\UserController->.*Action(.*))'
+    Category: 'method(Famelo\Satisfy\Controller\CategoryController->.*Action(.*))'
+    Rating: 'method(Famelo\Satisfy\Controller\RatingsController->.*Action(.*))'
+    Branch: 'method(Famelo\Satisfy\Controller\BranchController->.*Action(.*))'
+    User: 'method(Famelo\Satisfy\Controller\UserController->.*Action(.*))'
 
-#    Everything: 'method(Famelo\ADU\Controller\(?!.*Login).*->.*Action(.*))'
+#    Everything: 'method(Famelo\Satisfy\Controller\(?!.*Login).*->.*Action(.*))'
     Features: 'method(Famelo\Features\Controller\(?!.*Login).*->.*Action(.*))'
+    Impersonate: 'method(Famelo\Impersonate\Controller\(?!.*Login).*->.*Action(.*))'
 
 roles:
   Kundenberater: []
   Niederlassungsleiter: [ Kundenberater ]
-  Administrator: [ Niederlassungsleiter ]
+  Verwaltung: [ Niederlassungsleiter ]
+  Administrator: [ Verwaltung ]
 
 acls:
   Kundenberater:
@@ -28,13 +30,15 @@ acls:
       Home: GRANT
       Survey: GRANT
       Report: GRANT
+      Impersonate: GRANT
   Niederlassungsleiter:
     methods:
       UserManagement: GRANT
       Customer: GRANT
       Rating: GRANT
-  Administrator:
+  Verwaltung:
     methods:
       Branch: GRANT
       User: GRANT
       Features: GRANT
+  Administrator: []

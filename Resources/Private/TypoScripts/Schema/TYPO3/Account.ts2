@@ -27,14 +27,14 @@ prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Exp
 }
 
 # string formatter expects the "value" to contain the object to be converted
-prototype(TYPO3.Expose:StringFormatter) {
-	toString.condition = ${q(value).is('[instanceof TYPO3\Flow\Security\Account]')}
-	toString.type = 'TYPO3.Expose:StringFormatter.Account'
-	toString.@position = 10
-	@override.formFieldType = ${value.accountIdentifier}
-}
+# prototype(TYPO3.Expose:StringFormatter) {
+# 	toString.condition = ${q(value).is('[instanceof TYPO3\Flow\Security\Account]')}
+# 	toString.type = 'TYPO3.Expose:StringFormatter.Account'
+# 	toString.@position = 10
+# 	@override.formFieldType = ${value.accountIdentifier}
+# }
 
-prototype(TYPO3.Expose:StringFormatter.Account) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://TYPO3.Expose/Private/Elements/StringFormatter/String.html'
-	value = ${value.accountIdentifier}
-}
+# prototype(TYPO3.Expose:StringFormatter.Account) < prototype(TYPO3.TypoScript:Template) {
+# 	templatePath = 'resource://TYPO3.Expose/Private/Elements/StringFormatter/String.html'
+# 	value = ${value.accountIdentifier}
+# }
