@@ -10,7 +10,6 @@
     typoScriptPathPatterns:
       - 'resource://TYPO3.Expose/Private/TypoScripts/'
       - 'resource://Famelo.Satisfy/Private/TypoScripts/'
-      - 'resource://Famelo.Features/Private/TypoScripts/'
 
 -
   requestFilter: 'isPackage("Famelo.Impersonate")'
