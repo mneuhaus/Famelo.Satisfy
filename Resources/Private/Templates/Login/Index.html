@@ -41,15 +41,14 @@
   <div>
 
     <f:form action="authenticate" method="post" class="form-signin">
-      <!-- <h2 class="form-signin-heading">Please sign in</h2> -->
-      <p><f:flashMessages class="flashmessages" /></p>
-      <f:form.textfield name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" tabindex="1" class="input-block-level" placeholder="Benutzername"/>
+      <div class="form-group">
+        <f:form.textfield name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" tabindex="1" class="form-control" placeholder="Benutzername"/>
+      </div>
 
-      <input type="password" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" class="input-block-level" tabindex="2" placeholder="Passwort">
+      <div class="form-group">
+        <input type="password" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" class="form-control" tabindex="2" placeholder="Passwort">
+      </div>
 
-      <!-- <label class="checkbox">
-        <input type="checkbox" value="remember-me"> Remember me
-      </label> -->
       <f:form.button class="btn btn-large btn-primary">Login</f:form.button>
     </f:form>
 
