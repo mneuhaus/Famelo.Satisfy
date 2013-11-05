@@ -2,6 +2,12 @@
     "name": "famelo/satisfy",
     "type": "typo3-flow-package",
     "description": "",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:mneuhaus/Fixtures.git"
+        }
+    ],
     "require": {
         "typo3/flow": "*",
         "famelo/vodoo": "*",
