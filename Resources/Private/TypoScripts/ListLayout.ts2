@@ -1,13 +1,1 @@
-prototype(TYPO3.Expose:RecordList) {
-	bottomRegion {
-		limits = Famelo.Satisfy:Null
-		paginator = Famelo.Satisfy:Null
-	}
-}
-
-prototype(Famelo.Satisfy:Null) {
-	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\ValueImplementation'
-	value = ''
-}
-
-// prototype(TYPO3.Expose:RecordList) >>
+prototype(TYPO3.Expose:Schema.NameCase).node >

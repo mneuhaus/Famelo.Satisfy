@@ -6,7 +6,10 @@ namespace Famelo\Satisfy\Command;
  *                                                                        *
  *                                                                        */
 
+use DavidBadura\Fixtures\FixtureManager\FixtureManager;
 use Famelo\Common\Command\AbstractInteractiveCommandController;
+use Famelo\Common\Utilities\Settings;
+use Famelo\Messaging\Message;
 use Famelo\Satisfy\Domain\Model\User;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Party\Domain\Model\PersonName;
@@ -48,11 +51,24 @@ class SatisfyCommandController extends AbstractInteractiveCommandController {
 	 */
 	protected $userRepository;
 
+
+	/**
+	 * @Flow\Inject
+	 * @var \Famelo\Satisfy\Domain\Repository\CampaignRepository
+	 */
+	protected $campaignRepository;
+
 	/**
 	 * @Flow\Inject
 	 * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
 	 */
 	protected $persistenceManager;
+
+	/**
+	 * @Flow\Inject
+	 * @var \Doctrine\Common\Persistence\ObjectManager
+	 */
+	protected $entityManager;
 
 	/**
 	 * Create a new User for the Satisfy Package
@@ -84,6 +100,29 @@ class SatisfyCommandController extends AbstractInteractiveCommandController {
 
 		$user->addAccount($account);
 		$this->userRepository->update($user);
+	}
+
+	public function sendMailSurveysCommand() {
+		$campaigns = $this->campaignRepository->findAll();
+		$now = new \DateTime();
+		foreach ($campaigns as $campaign) {
+			if ($now < $campaign->getStart()) {
+				continue;
+			}
+			foreach ($campaign->getMailSurveys() as $survey) {
+				if ($survey->getSent() === NULL) {
+					$message = new Message();
+					$message->setFrom(Settings::get('Famelo.Satisfy.Email'))
+						->setTo(array('mneuhaus@famelo.com'))
+						->setSubject($campaign->getSubject())
+						->setMessage('Famelo.Satisfy:MailSurvey')
+						->assign('campaign', $campaign)
+						->assign('survey', $survey)
+						->send();
+					usleep(1000000 + 0.05);
+				}
+			}
+		}
 	}
 }
 

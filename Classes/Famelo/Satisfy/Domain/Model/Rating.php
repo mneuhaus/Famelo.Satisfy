@@ -55,7 +55,6 @@ class Rating {
 	protected $level;
 
 	/**
-	* TODO: Document this Method! ( __construct )
 	*/
 	public function __construct() {
 		$this->created = new \DateTime();

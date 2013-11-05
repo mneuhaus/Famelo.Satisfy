@@ -1,0 +1,16 @@
+{namespace form=TYPO3\Form\ViewHelpers}
+<div class="satisfy-result">
+	<div class="media">
+		<div class="media-body">
+			<div class="row">
+				<div class="result-question col-md-8">
+					{inline.elements.question.defaultValue}
+					<form:renderRenderable renderable="{inline.elements.question}" />
+				</div>
+				<div class="col-md-4"><form:renderRenderable renderable="{inline.elements.data}" /></div>
+
+				<form:renderRenderable renderable="{inline.elements.__identity}" />
+			</div>
+		</div>
+	</div>
+</div>

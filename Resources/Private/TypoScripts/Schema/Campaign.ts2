@@ -1,0 +1,47 @@
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Campaign) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		name.label = 'Name der Kampagne'
+		start.label = 'Start der Kampagne'
+		type.ignore = true
+		subject.label = 'E-Mail Betreff'
+		body {
+			label = 'E-Mail Text'
+			element = 'TYPO3.Form:MultiLineText'
+		}
+		intro {
+			label = 'Einleitungstext'
+			element = 'TYPO3.Form:MultiLineText'
+		}
+		questions {
+			label = 'Fragen'
+			inline {
+				element = 'TYPO3.Expose:InlineTabular'
+			}
+		}
+		contacts {
+			label = 'Ansprechpartner'
+		}
+		customers {
+			label = 'Firmen'
+		}
+
+		mailSurveys.label = 'Befragungen'
+	}
+}
+
+prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Campaign) {
+	properties {
+		type.ignore = true
+		subject.ignore = true
+		body.ignore = true
+		questions.ignore = true
+		contacts.ignore = true
+		customers.ignore = true
+		intro.ignore = true
+		mailSurveys.ignore = true
+	}
+}
+
+prototype(TYPO3.Expose:LocalControllerLinks) {
+	10.controller = 'Famelo\\Satisfy\\Controller\\Campaign\\DetailController'
+}

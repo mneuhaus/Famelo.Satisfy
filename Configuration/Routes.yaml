@@ -17,43 +17,63 @@
     '@controller': 'Standard'
     '@package': 'Famelo.Satisfy'
 
-######################################
-# Survey                             #
-######################################
 -
-  name: 'Survey'
-  uriPattern: 'survey'
-  navigation: 'Befragung'
-  feature: 'Befragungen'
-  defaults:
-    '@format': 'html'
-    '@action':     'new'
-    '@controller': 'Survey'
-    '@package': 'Famelo.Satisfy'
-  appendExceedingArguments: true
-
--
-  name: 'Edit Surveys'
-  uriPattern: 'edit/survey'
-  navigation: 'Befragungen'
-  feature: 'Befragungen'
+  name: 'Mail Survey'
+  uriPattern: 'mail-survey'
   defaults:
     '@format': 'html'
     '@action':     'index'
-    '@controller': 'Survey'
+    '@controller': 'MailSurvey'
+    '@package': 'Famelo.Satisfy'
+
+######################################
+# Survey                             #
+######################################
+# -
+#   name: 'Survey'
+#   uriPattern: 'survey'
+#   navigation: 'Befragung'
+#   feature: 'Befragungen'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'new'
+#     '@controller': 'Survey'
+#     '@package': 'Famelo.Satisfy'
+#   appendExceedingArguments: true
+
+-
+  name: 'Campaigns'
+  uriPattern: 'campaign'
+  navigation: 'Kampagnen'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'Campaign'
     '@package': 'Famelo.Satisfy'
   appendExceedingArguments: true
 
--
-  name: 'General Happiness'
-  uriPattern: 'selbsteinschaetzung'
-  navigation: 'Selbsteinschätzung'
-  defaults:
-    '@format': 'html'
-    '@action':     'happiness'
-    '@controller': 'Survey'
-    '@package': 'Famelo.Satisfy'
-  appendExceedingArguments: true
+# -
+#   name: 'Edit Surveys'
+#   uriPattern: 'edit/survey'
+#   navigation: 'Befragungen'
+#   feature: 'Befragungen'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'index'
+#     '@controller': 'Survey'
+#     '@package': 'Famelo.Satisfy'
+#   appendExceedingArguments: true
+
+# -
+#   name: 'General Happiness'
+#   uriPattern: 'selbsteinschaetzung'
+#   navigation: 'Selbsteinschätzung'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'happiness'
+#     '@controller': 'Survey'
+#     '@package': 'Famelo.Satisfy'
+#   appendExceedingArguments: true
 
 ######################################
 # Report                             #
@@ -117,16 +137,16 @@
 # Ratings                            #
 ######################################
 
--
-  name: 'Ratings'
-  uriPattern: 'edit/ratings'
-  navigation: 'Selbsteinschätzungen'
-  defaults:
-    '@format': 'html'
-    '@action':     'index'
-    '@controller': 'Ratings'
-    '@package': 'Famelo.Satisfy'
-  appendExceedingArguments: true
+# -
+#   name: 'Ratings'
+#   uriPattern: 'edit/ratings'
+#   navigation: 'Selbsteinschätzungen'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'index'
+#     '@controller': 'Ratings'
+#     '@package': 'Famelo.Satisfy'
+#   appendExceedingArguments: true
 
 ######################################
 # Branch                             #
@@ -145,16 +165,16 @@
 ######################################
 # Kategorien                         #
 ######################################
--
-  name: 'Categories'
-  uriPattern: 'edit/categories'
-  navigation: 'Kategorien'
-  defaults:
-    '@format': 'html'
-    '@action':     'index'
-    '@controller': 'Category'
-    '@package': 'Famelo.Satisfy'
-  appendExceedingArguments: true
+# -
+#   name: 'Categories'
+#   uriPattern: 'edit/categories'
+#   navigation: 'Kategorien'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'index'
+#     '@controller': 'Category'
+#     '@package': 'Famelo.Satisfy'
+#   appendExceedingArguments: true
 
 
 ######################################

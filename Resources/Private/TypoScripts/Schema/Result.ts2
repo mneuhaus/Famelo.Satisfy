@@ -1,0 +1,10 @@
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Result) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		question {
+			element = "TYPO3.Form:HiddenField"
+		}
+		data {
+			element = "Famelo.Satisfy:ColorRating"
+		}
+	}
+}

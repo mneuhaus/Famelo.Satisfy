@@ -6,10 +6,11 @@ prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Question) < prototype(
 		}
 		weight {
 			label = 'Gewichtung'
+			ignore = true
 		}
 		type {
 			label = 'Art'
-			ignore = True
+			ignore = true
 		}
 	}
 }

@@ -1,0 +1,40 @@
+{namespace e=TYPO3\Expose\ViewHelpers}
+{namespace s=Famelo\Satisfy\ViewHelpers}
+<div class="t3-expose t3-expose-detail">
+	<f:for each="{objects}" as="object">
+		<h4>{object.name}</h4>
+
+		<dl class="dl-horizontal pull-right">
+			<dt>Start: </dt>
+			<dd>{object.start -> e:formatAsString()}</dd>
+		</dl>
+
+		<table class="table table-bordered">
+			<tr>
+				<th>Firma</th>
+				<th>Ansprechpartner</th>
+				<th>Versand am</th>
+				<th>Ergebnis</th>
+			</tr>
+			<f:for each="{object.mailSurveys}" as="mailSurvey">
+				<s:wrap object="{mailSurvey}" wrapper="\Famelo\Satisfy\Domain\Wrapper\Survey" as="survey">
+				<tr>
+					<td>{mailSurvey.contact.customer}</td>
+					<td>{mailSurvey.contact}</td>
+					<td>{mailSurvey.sent -> e:formatAsString()}</td>
+					<td>
+						<table>
+						<f:for each="{mailSurvey.results}" as="result">
+							<tr>
+								<td>{result.question}</td>
+								<td><span class="circle circle-{result.data}"></span></td>
+							</tr>
+						</f:for>
+						</table>
+					</td>
+				</tr>
+				</s:wrap>
+			</f:for>
+		</table>
+	</f:for>
+</div>

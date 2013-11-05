@@ -1,0 +1,13 @@
+prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.MailSurvey) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		contact.ignore = true
+		sent.ignore = true
+		answered.ignore = true
+		campaign.ignore = true
+		results {
+			inline {
+				element = 'Famelo.Satisfy:InlineResult'
+			}
+		}
+	}
+}

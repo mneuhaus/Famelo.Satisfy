@@ -1,0 +1,13 @@
+#
+# TYPO3.Expose:RecordList
+# -----------------------
+#
+# Renders objects into a table or other form with ControllerLinks
+#
+Famelo.Satisfy.DetailController.Index = Famelo.Satisfy:DetailController
+prototype(Famelo.Satisfy:DetailController) < prototype(TYPO3.TypoScript:Template) {
+	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\TemplateImplementation'
+	templatePath = 'resource://Famelo.Satisfy/Private/Elements/Detail/Campaign/Index.html'
+	objects = ${objects}
+	type = ${className}
+}

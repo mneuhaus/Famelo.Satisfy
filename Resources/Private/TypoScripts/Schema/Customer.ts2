@@ -4,6 +4,9 @@ prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Customer) < prototype(
 		selfEvaluationResult.ignore = true
 		created.ignore = true
 		satisfaction.ignore = true
+		contact.ignore = true
+		object.ignore = true
+		category.ignore = true
 
 		termination {
 			label = 'Gekündigt zum'
@@ -39,17 +42,10 @@ prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Customer) < prototype(
 
 		category.label = 'Kategorie'
 		consultant.label = 'Kundenbetreuer'
-		branch.label = 'Niederlassung'
+		branch.label = 'Kategorie'
 
-		contact {
+		contacts {
 			label = 'Ansprechpartner'
-			inline {
-				element = 'TYPO3.Expose:InlineSeamless'
-			}
-		}
-
-		alternativeContact {
-			label = 'stellv. Ansprechpartner'
 			inline {
 				element = 'TYPO3.Expose:InlineSeamless'
 			}
@@ -62,8 +58,9 @@ prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Satisfy.
 	properties {
 		cycle.ignore = true
 		consultant.ignore = true
-		contact.ignore = true
-		alternativeContact.ignore = true
+		contacts.ignore = true
+		termination.ignore = true
+		cycleStart.ignore = true
 	}
 }
 

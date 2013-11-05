@@ -23,6 +23,13 @@ prototype(Famelo.Satisfy:Fields) < prototype(TYPO3.TypoScript:RawArray) {
     superTypes.1 = 'TYPO3.Form:Hidden'
   }
 
+  Result = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:InlineStacked'
+  }
+  ResultItem = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:InlineStacked'
+  }
+
   Answers = TYPO3.Form:Field {
     superTypes.1 = 'TYPO3.Form:InlineStacked'
   }
@@ -56,5 +63,16 @@ prototype(Famelo.Satisfy:Fields) < prototype(TYPO3.TypoScript:RawArray) {
       elementClassAttribute = 'add-on'
       value = 1
     }
+  }
+
+  InlineResult = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Expose:InlineStacked'
+  }
+  InlineResultItem = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Expose:InlineStacked'
+  }
+
+  ColorRating = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:SingleLineText'
   }
 }

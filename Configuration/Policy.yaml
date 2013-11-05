@@ -6,6 +6,7 @@ resources:
   methods:
     Home: 'method(Famelo\Satisfy\Controller\StandardController->.*Action(.*))'
     Survey: 'method(Famelo\Satisfy\Controller\SurveyController->.*Action(.*))'
+    Campaign: 'method(Famelo\Satisfy\Controller\CampaignController->.*Action(.*))'
     Report: 'method(Famelo\Satisfy\Controller\ReportController->.*Action(.*))'
     Customer: 'method(Famelo\Satisfy\Controller\CustomerController->.*Action(.*))'
     UserManagement: 'method(Famelo\Satisfy\Controller\UserController->.*Action(.*))'
@@ -30,6 +31,7 @@ acls:
       Home: GRANT
       Survey: GRANT
       Report: GRANT
+      Campaign: GRANT
       Impersonate: GRANT
   Niederlassungsleiter:
     methods:

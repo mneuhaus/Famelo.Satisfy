@@ -10,9 +10,10 @@
 
     <f:base />
 
-    <link rel="stylesheet" href="{a:uri(path:'Styles/Main.Less', output: 'Styles/Main.css', filters: 'less', package: 'Famelo.Satisfy')}">
+    <link rel="stylesheet" href="{a:uri(path:'Styles/Main.less', output: 'Styles/Main.css', filters: 'less', package: 'Famelo.Satisfy')}">
 
     <script src="{f:uri.resource(path: 'js/jquery.1.7.1.min.js', package: 'TYPO3.Expose')}"></script>
+    <script src="{a:uri(path:'Scripts/Header.js', output: 'Scripts/Header.min.js', package: 'Famelo.Satisfy')}"></script>
 
     <!-- Le fav and touch icons -->
     <link rel="apple-touch-icon" href="{f:uri.resource(path: 'img/apple-touch-icon-ipad.png', package: 'Famelo.Satisfy')}" />
@@ -24,6 +25,6 @@
 
   <body>
     <f:render section="content" />
-
+    <script src="{a:uri(path:'Scripts/Footer.js', output: 'Scripts/Footer.min.js', package: 'Famelo.Satisfy')}"></script>
   </body>
 </html>

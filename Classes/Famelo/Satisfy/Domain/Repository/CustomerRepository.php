@@ -38,7 +38,7 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 			));
 			if (PHP_SAPI === 'cli') {
 				// Full Access
-			} elseif ($this->securityContext->hasRole('Administrator')) {
+			} elseif ($this->securityContext->hasRole('Famelo.Satisfy:Verwaltung')) {
 				// Full Access
 			} elseif ($this->securityContext->hasRole('Niederlassungsleiter')) {
 				$query->matching(

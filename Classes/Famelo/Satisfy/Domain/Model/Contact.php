@@ -32,13 +32,21 @@ class Contact {
 	 * The phone
 	 * @var string
 	 */
-	protected $phone;
+	protected $phone = '';
 
 	/**
 	 * The e-mail
 	 * @var string
 	 */
 	protected $email;
+
+	/**
+	 * The contact
+	 *
+	 * @var \Famelo\Satisfy\Domain\Model\Customer
+	 * @ORM\ManyToOne(inversedBy="contacts")
+	 */
+	protected $customer;
 
 	public function __toString() {
 		return $this->getFirstname() . ' ' . $this->getLastname();
@@ -124,5 +132,18 @@ class Contact {
 		$this->email = $email;
 	}
 
+	/**
+	 * @param \Famelo\Satisfy\Domain\Model\Customer $customer
+	 */
+	public function setCustomer($customer) {
+		$this->customer = $customer;
+	}
+
+	/**
+	 * @return \Famelo\Satisfy\Domain\Model\Customer
+	 */
+	public function getCustomer() {
+		return $this->customer;
+	}
 }
 ?>

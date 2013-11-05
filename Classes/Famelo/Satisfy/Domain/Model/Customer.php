@@ -28,7 +28,7 @@ class Customer {
 	 *
 	 * @var string
 	 */
-	protected $object;
+	protected $object = '';
 
 	/**
 	 * The cycle
@@ -53,13 +53,13 @@ class Customer {
 	protected $contact;
 
 	/**
-	 * The alternative contact
+	 * The contact
 	 *
-	 * @var \Famelo\Satisfy\Domain\Model\Contact
-	 * @ORM\ManyToOne(inversedBy="alternative_customers", cascade={"persist"})
+	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\Contact>
+	 * @ORM\OneToMany(mappedBy="customer", cascade={"persist"})
 	 * @Flow\Lazy
 	 */
-	protected $alternativeContact;
+	protected $contacts;
 
 	/**
 	 * The category
@@ -300,6 +300,20 @@ class Customer {
 	 */
 	public function setBranch($branch) {
 		$this->branch = $branch;
+	}
+
+	/**
+	 * @param \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\Contact> $contacts
+	 */
+	public function setContacts($contacts) {
+		$this->contacts = $contacts;
+	}
+
+	/**
+	 * @return \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\Contact>
+	 */
+	public function getContacts() {
+		return $this->contacts;
 	}
 
 	/**

@@ -26,13 +26,13 @@ class Question {
 	 * The weight
 	 * @var float
 	 */
-	protected $weight;
+	protected $weight = 1;
 
 	/**
 	 * The type
 	 * @var string
 	 */
-	protected $type;
+	protected $type = '';
 
 	public function __toString() {
 		return $this->getBody();

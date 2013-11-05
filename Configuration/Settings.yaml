@@ -1,4 +1,24 @@
+Famelo:
+  Satisfy:
+    Email:
+      "mneuhaus@famelo.com": Famelo.Satisfy
+
+  Kundenbefragung:
+    E-Mails:
+      MoreInformation:
+        - mneuhaus@famelo.com
+
+  Impersonate:
+    Role: Famelo.Satisfy:Administrator
+
 TYPO3:
+  SwiftMailer:
+    transport:
+      type: 'Swift_SmtpTransport'
+      options:
+        host: 'mail51.mittwald.de'
+        username: 'p208340p1'
+        password: 'comatio78'
   Flow:
     security:
       authentication:
@@ -8,6 +28,10 @@ TYPO3:
             entryPoint: 'WebRedirect'
             entryPointOptions:
               uri: login
+    i18n:
+      # The default locale identifier.
+      defaultLocale: de
+
     object:
       excludeClasses:
        'Famelo.Faces' : ['.*']
@@ -22,6 +46,8 @@ TYPO3:
        'symfony.finder' : ['.*']
        'symfony.process' : ['.*']
        'symfony.translation' : ['.*']
+       'davidbadura.fixtures' : ['.*']
+       'DavidBadura.Fixtures' : ['.*']
        'behat.minkbrowserkitdriver': ['.*']
        'behat.minkzombiedriver': ['.*']
        'behat.minkselenium2driver': ['.*']
@@ -31,32 +57,3 @@ TYPO3:
        'famelo.minkgouttedriver': ['.*']
        'famelo.poltergeist': ['.*']
        'gChartPhp.gChartPhp': ['.*']
-
-    i18n:
-      # The default locale identifier.
-      defaultLocale: de
-
-  # Form:
-  #   presets:
-  #     expose:
-  #       javaScripts:
-  #         raty:
-  #           source: 'resource://Famelo.Satisfy/Public/components/raty/js/jquery.raty.min.js'
-
-  SwiftMailer:
-    transport:
-      type: 'Swift_SmtpTransport'
-      options:
-        host: 'mail.Satisfy-kundenzufriedenheit.com'
-        port: '465'
-        username: 'p182917p1'
-        password: 'larivai97'
-        encryption: 'ssl'
-Famelo:
-  Kundenbefragung:
-    E-Mails:
-      MoreInformation:
-        - mneuhaus@famelo.com
-
-  Impersonate:
-    Role: Famelo.Satisfy:Administrator
