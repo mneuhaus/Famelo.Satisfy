@@ -5,7 +5,16 @@
     "require": {
         "typo3/flow": "*",
         "famelo/vodoo": "*",
-        "famelo/messaging": "*"
+        "famelo/messaging": "*",
+        "famelo/impersonate": "*",
+        "flowpack/behat": "*",
+        "famelo/common": "*",
+        "twbs/bootstrap": "3.0.0",
+        "leafo/lessphp": "*",
+        "typo3/asset": "*",
+        "leafo/scssphp": "*",
+        "davidbadura/fixtures": "*",
+        "typo3/jobqueue-common": "*"
     },
     "autoload": {
         "psr-0": {
