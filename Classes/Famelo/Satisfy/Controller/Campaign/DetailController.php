@@ -45,9 +45,11 @@ class DetailController extends \TYPO3\Expose\Controller\AbstractController {
 		$this->view->assign('className', $type);
 		$this->view->assign('objects', $objects);
 
-		// foreach ($objects as $object) {
-		// 	$this->mailSurveyService->prepare($object);
-		// }
+		foreach ($objects as $object) {
+			if (count($object->getMailSurveys()) === 0) {
+				$this->mailSurveyService->prepare($object);
+			}
+		}
 	}
 }
 
