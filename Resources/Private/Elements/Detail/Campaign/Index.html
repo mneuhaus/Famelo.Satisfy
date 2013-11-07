@@ -19,7 +19,10 @@
 			<f:for each="{object.mailSurveys}" as="mailSurvey">
 				<s:wrap object="{mailSurvey}" wrapper="\Famelo\Satisfy\Domain\Wrapper\Survey" as="survey">
 				<tr>
-					<td>{mailSurvey.contact.customer}</td>
+					<td>
+						{mailSurvey.contact.customer} <br />
+						<f:link.action action="index" controller="MailSurvey" package="Famelo.Satisfy" arguments="{survey: mailSurvey}" useParentRequest="1">Link zur Befragung</f:link.action>
+					</td>
 					<td>{mailSurvey.contact}</td>
 					<td>{mailSurvey.sent -> e:formatAsString()}</td>
 					<td>
