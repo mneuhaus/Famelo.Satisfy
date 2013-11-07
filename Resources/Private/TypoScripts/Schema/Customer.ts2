@@ -7,6 +7,7 @@ prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Customer) < prototype(
 		contact.ignore = true
 		object.ignore = true
 		category.ignore = true
+		branch.ignore = true
 
 		termination {
 			label = 'Gekündigt zum'

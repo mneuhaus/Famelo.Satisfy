@@ -36,25 +36,25 @@ class CustomerRepository extends \TYPO3\Flow\Persistence\Repository {
 				$query->greaterThan('termination', $threshold),
 				$query->equals('termination', NULL)
 			));
-			if (PHP_SAPI === 'cli') {
-				// Full Access
-			} elseif ($this->securityContext->hasRole('Famelo.Satisfy:Verwaltung')) {
-				// Full Access
-			} elseif ($this->securityContext->hasRole('Niederlassungsleiter')) {
-				$query->matching(
-					$query->logicalAnd(
-						$query->getConstraint(),
-						$query->equals('branch', $this->securityContext->getParty()->getBranch())
-					)
-				);
-			} else {
-				$query->matching(
-					$query->logicalAnd(
-						$query->getConstraint(),
-						$query->equals('consultant', $this->securityContext->getParty())
-					)
-				);
-			}
+			// if (PHP_SAPI === 'cli') {
+			// 	// Full Access
+			// } elseif ($this->securityContext->hasRole('Famelo.Satisfy:Verwaltung')) {
+			// 	// Full Access
+			// } elseif ($this->securityContext->hasRole('Niederlassungsleiter')) {
+			// 	$query->matching(
+			// 		$query->logicalAnd(
+			// 			$query->getConstraint(),
+			// 			$query->equals('branch', $this->securityContext->getParty()->getBranch())
+			// 		)
+			// 	);
+			// } else {
+			// 	$query->matching(
+			// 		$query->logicalAnd(
+			// 			$query->getConstraint(),
+			// 			$query->equals('consultant', $this->securityContext->getParty())
+			// 		)
+			// 	);
+			// }
 		}
 		return $query;
 	}
