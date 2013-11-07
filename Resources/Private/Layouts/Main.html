@@ -30,23 +30,23 @@
   </head>
 
   <body>
-    <s:user>
+    <s:user as="currentUser">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <a href="#" class="btn off-canvas-toggle pull-left visible-xs"><i class="fa fa-reorder"></i></a>
-        <ul class="nav pull-right">
+
+        <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" id="user-menu" data-toggle="dropdown">
-              {user.party.name}
+              {currentUser.party.name}<b class="caret"></b>
             </a>
-            <ul class="dropdown-menu">
-              <li>
-                <f:link.action action="changePassword" controller="login" package="Famelo.Satisfy" id="changePassword">Passwort ändern</f:link.action>
-              </li>
-              <li>
-                <f:link.action action="logout" controller="login" package="Famelo.Satisfy" id="logout">Abmelden</f:link.action>
-              </li>
-            </ul>
+          <ul class="dropdown-menu" role="menu">
+<!--             <li>
+              <f:link.action action="changePassword" controller="login" package="Famelo.Satisfy" id="changePassword">Passwort ändern</f:link.action>
+            </li> -->
+            <li>
+              <f:link.action action="logout" controller="login" package="Famelo.Satisfy" id="logout">Abmelden</f:link.action>
+            </li>
+          </ul>
           </li>
         </ul>
       </div>

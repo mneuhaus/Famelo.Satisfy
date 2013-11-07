@@ -50,6 +50,7 @@ class DetailController extends \TYPO3\Expose\Controller\AbstractController {
 				$this->mailSurveyService->prepare($object);
 			}
 		}
+		$this->persistenceManager->persistAll();
 	}
 }
 

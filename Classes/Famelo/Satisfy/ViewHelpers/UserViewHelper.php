@@ -29,6 +29,9 @@ class UserViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 	 * @return string Rendered string
 	 */
 	public function render($as = 'user') {
+		if ($this->templateVariableContainer->exists($as)) {
+			return $this->renderChildren();
+		}
 		$this->templateVariableContainer->add($as, $this->securityContext->getAccount());
 		$output = $this->renderChildren();
 		$this->templateVariableContainer->remove($as);

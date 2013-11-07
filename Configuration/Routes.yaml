@@ -78,16 +78,16 @@
 ######################################
 # Report                             #
 ######################################
--
-  name: 'Report'
-  uriPattern: 'report'
-  navigation: 'Auswertung'
-  defaults:
-    '@format': 'html'
-    '@action':     'index'
-    '@controller': 'Report'
-    '@package': 'Famelo.Satisfy'
-  appendExceedingArguments: true
+# -
+#   name: 'Report'
+#   uriPattern: 'report'
+#   navigation: 'Auswertung'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'index'
+#     '@controller': 'Report'
+#     '@package': 'Famelo.Satisfy'
+#   appendExceedingArguments: true
 
 # -
 #   name: 'Report Surveys'
@@ -151,16 +151,16 @@
 ######################################
 # Branch                             #
 ######################################
--
-  name: 'Banches'
-  uriPattern: 'edit/branch'
-  navigation: 'Kategorien'
-  defaults:
-    '@format': 'html'
-    '@action':     'index'
-    '@controller': 'Branch'
-    '@package': 'Famelo.Satisfy'
-  appendExceedingArguments: true
+# -
+#   name: 'Banches'
+#   uriPattern: 'edit/branch'
+#   navigation: 'Kategorien'
+#   defaults:
+#     '@format': 'html'
+#     '@action':     'index'
+#     '@controller': 'Branch'
+#     '@package': 'Famelo.Satisfy'
+#   appendExceedingArguments: true
 
 ######################################
 # Kategorien                         #
