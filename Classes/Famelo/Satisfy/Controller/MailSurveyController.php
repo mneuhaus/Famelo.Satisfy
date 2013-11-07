@@ -45,7 +45,7 @@ class MailSurveyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$surveys = $this->request->getInternalArgument('__objects');
 		foreach ($surveys as $survey) {}
 
-		$survey->setCreated(new \DateTime());
+		$survey->setAnswered(new \DateTime());
 
 		foreach ($survey->getResults() as $result) {
 			$result->setDate(new \DateTime());
