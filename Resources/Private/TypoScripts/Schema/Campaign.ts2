@@ -3,6 +3,7 @@ prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Campaign) < prototype(
 		name.label = 'Name der Kampagne'
 		start.label = 'Start der Kampagne'
 		type.ignore = true
+		mailSurveys.ignore = true
 		subject.label = 'E-Mail Betreff'
 		body {
 			label = 'E-Mail Text'

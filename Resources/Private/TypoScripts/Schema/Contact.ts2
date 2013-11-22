@@ -4,5 +4,6 @@ prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Contact) < prototype(T
 		lastname.label = 'Nachname'
 		phone.label = 'Telefon'
 		email.label = 'E-Mail'
+		customer.ignore = true
 	}
 }
