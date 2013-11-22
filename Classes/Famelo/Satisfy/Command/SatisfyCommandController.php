@@ -71,6 +71,12 @@ class SatisfyCommandController extends AbstractInteractiveCommandController {
 	protected $entityManager;
 
 	/**
+	 * @var \Famelo\Satisfy\Services\MailSurveyService
+	 * @Flow\Inject
+	 */
+	protected $mailSurveyService;
+
+	/**
 	 * Create a new User for the Satisfy Package
 	 *
 	 * @return void
@@ -105,21 +111,28 @@ class SatisfyCommandController extends AbstractInteractiveCommandController {
 	public function sendMailSurveysCommand() {
 		$campaigns = $this->campaignRepository->findAll();
 		$now = new \DateTime();
+
 		foreach ($campaigns as $campaign) {
 			if ($now < $campaign->getStart()) {
 				continue;
 			}
+
+			$this->mailSurveyService->prepare($campaign);
+
 			foreach ($campaign->getMailSurveys() as $survey) {
 				if ($survey->getSent() === NULL) {
 					$message = new Message();
 					$message->setFrom(Settings::get('Famelo.Satisfy.Email'))
-						->setTo(array('mneuhaus@famelo.com'))
+						->setTo(array($survey->getContact()->getEmail()))
 						->setSubject($campaign->getSubject())
-						->setMessage('Famelo.Satisfy:MailSurvey')
+						->setTemplateSource($campaign->getBody())
 						->assign('campaign', $campaign)
 						->assign('survey', $survey)
 						->send();
 					usleep(1000000 + 0.05);
+
+					$survey->setSent($now);
+					$this->persistenceManager->update($survey);
 				}
 			}
 		}
