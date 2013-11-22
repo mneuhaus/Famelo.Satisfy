@@ -52,7 +52,8 @@ class Campaign {
 	/**
 	 * The questions
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\Question>
-	 * @ORM\ManyToMany(cascade={"all"})
+	 * @ORM\ManyToMany(cascade={"all"}, orphanRemoval=true)
+     * @ORM\JoinTable(joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")})
 	 */
 	protected $questions;
 
