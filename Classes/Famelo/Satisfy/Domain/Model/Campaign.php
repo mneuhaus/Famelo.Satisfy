@@ -41,11 +41,13 @@ class Campaign {
 
 	/**
 	 * @var string
+	 * @ORM\Column(type="text")
 	 */
 	protected $body;
 
 	/**
 	 * @var string
+	 * @ORM\Column(type="text")
 	 */
 	protected $intro;
 
