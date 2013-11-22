@@ -38,7 +38,15 @@ class MailSurveyService {
 			}
 		}
 
-		foreach ($contacts as $contact) {
+		$existing = array();
+		foreach ($campaign->getMailSurveys() as $survey) {
+			$existing[] = $this->persistenceManager->getIdentifierByObject($survey->getContact());
+		}
+
+		foreach ($contacts as $identifier => $contact) {
+			if (in_array($identifier, $existing)) {
+				continue;
+			}
 			$mailSurvey = new MailSurvey();
 			$mailSurvey->setContact($contact);
 			$mailSurvey->setCampaign($campaign);
