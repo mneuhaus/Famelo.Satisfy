@@ -225,3 +225,18 @@
     '@controller': 'Login'
     '@action':     'logout'
     '@package': 'Famelo.Satisfy'
+
+-
+  name: 'MailSurvey'
+  uriPattern: 'mail-survey'
+  defaults:
+    '@format': 'html'
+    '@action':     'index'
+    '@controller': 'MailSurvey'
+    '@package': 'Famelo.Satisfy'
+    '--expose':
+      '@controller': 'New'
+      '@package': 'TYPO3.Expose'
+      '@format':  'html'
+      '@type': '\\Famelo\\Satisfy\\Domain\\Model\\Campaign'
+  appendExceedingArguments: true
