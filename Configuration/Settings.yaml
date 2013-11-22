@@ -1,24 +1,8 @@
 Famelo:
-  Satisfy:
-    Email:
-      "mneuhaus@famelo.com": Famelo.Satisfy
-
-  Kundenbefragung:
-    E-Mails:
-      MoreInformation:
-        - mneuhaus@famelo.com
-
   Impersonate:
     Role: Famelo.Satisfy:Administrator
 
 TYPO3:
-  SwiftMailer:
-    transport:
-      type: 'Swift_SmtpTransport'
-      options:
-        host: 'mail51.mittwald.de'
-        username: 'p208340p1'
-        password: 'comatio78'
   Flow:
     security:
       authentication:

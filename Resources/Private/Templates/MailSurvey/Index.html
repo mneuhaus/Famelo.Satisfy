@@ -42,7 +42,7 @@
   </style>
   <div class="survey">
     <h3>{survey.campaign.name}</h3>
-    <p>{survey.campaign.intro}</p>
+    <f:format.nl2br>{survey.campaign.intro}</f:format.nl2br>
     <hr />
     <e:render.form object="{survey}" callbackAction="create" />
   </div>
