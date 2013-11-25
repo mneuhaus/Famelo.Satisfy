@@ -121,6 +121,7 @@ class SatisfyCommandController extends AbstractInteractiveCommandController {
 
 			foreach ($campaign->getMailSurveys() as $survey) {
 				if ($survey->getSent() === NULL) {
+					echo 'Sending mail to: ' . $survey->getContact()->getEmail() . chr(10);
 					$message = new Message();
 					$message->setFrom(Settings::get('Famelo.Satisfy.Email'))
 						->setTo(array($survey->getContact()->getEmail()))
@@ -133,6 +134,7 @@ class SatisfyCommandController extends AbstractInteractiveCommandController {
 
 					$survey->setSent($now);
 					$this->persistenceManager->update($survey);
+					$this->persistenceManager->persistAll();
 				}
 			}
 		}

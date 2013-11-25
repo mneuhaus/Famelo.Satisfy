@@ -7240,7 +7240,10 @@ body {
   overflow: auto;
 }
 .off-canvas-left .left-inner {
-  margin: 60px 10px 20px;
+  margin: 20px 10px 20px;
+}
+.off-canvas-left .left-inner img {
+  margin-bottom: 20px;
 }
 .off-canvas-left .nav-vertical a {
   color: #6f6f6f;

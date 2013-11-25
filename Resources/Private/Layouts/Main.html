@@ -14,12 +14,12 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="apple-touch-icon" href="{f:uri.resource(path: 'img/apple-touch-icon-ipad.png', package: 'Famelo.Satisfy')}" />
+<!--     <link rel="apple-touch-icon" href="{f:uri.resource(path: 'img/apple-touch-icon-ipad.png', package: 'Famelo.Satisfy')}" />
     <link href="{f:uri.resource(path: 'img/apple-touch-icon-ipad.png', package: 'Famelo.Satisfy')}" rel="apple-touch-icon-precomposed" sizes="72x72">
     <link href="{f:uri.resource(path: 'img/apple-touch-icon-iphone4.png', package: 'Famelo.Satisfy')}" rel="apple-touch-icon-precomposed" sizes="114x114">
-    <link href="{f:uri.resource(path: 'img/apple-touch-icon-ipad3.png', package: 'Famelo.Satisfy')}" rel="apple-touch-icon-precomposed" sizes="144x144">
-    <link rel="icon" href="{f:uri.resource(path: 'img/favicon.ico', package: 'Famelo.Satisfy')}" type="image/x-icon">
-    <link rel="shortcut icon" href="{f:uri.resource(path: 'img/favicon.ico', package: 'Famelo.Satisfy')}" type="image/x-icon">
+    <link href="{f:uri.resource(path: 'img/apple-touch-icon-ipad3.png', package: 'Famelo.Satisfy')}" rel="apple-touch-icon-precomposed" sizes="144x144"> -->
+    <link rel="icon" href="{f:uri.resource(path: settings.Favicon)}" type="image/x-icon">
+    <link rel="shortcut icon" href="{f:uri.resource(path: settings.Favicon)}" type="image/x-icon">
 
     <link rel="stylesheet" href="{f:uri.resource(path:'components/chosen/chosen/chosen.css', package: 'TYPO3.Expose')}">
     <link rel="stylesheet" href="{a:uri(path:'Styles/Main.scss', output: 'Styles/Main.css', filters: 'compass', package: 'TYPO3.Expose')}">
@@ -55,6 +55,7 @@
     <div class="off-canvas">
       <div class="off-canvas-left">
         <div class="left-inner">
+          <img src="{f:uri.resource(path: settings.Logo)}" alt="Logo" width="100%" />
           <ul class="nav nav-vertical">
             <n:navigation as="items">
               <f:for each="{items}" as="item">
