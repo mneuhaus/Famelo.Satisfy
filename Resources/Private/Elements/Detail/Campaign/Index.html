@@ -4,6 +4,10 @@
 	<f:for each="{objects}" as="object">
 		<h4>{object.name}</h4>
 
+		<div class="clearfix">
+			<f:link.action action="campaignCsv" controller="Export" package="Famelo.Satisfy" arguments="{campaign: object}" class="btn btn-default pull-right">CSV Exportieren</f:link.action>
+		</div>
+
 		<dl class="dl-horizontal pull-right">
 			<dt>Start: </dt>
 			<dd>{object.start -> e:formatAsString()}</dd>
