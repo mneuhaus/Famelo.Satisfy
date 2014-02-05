@@ -306,6 +306,9 @@ class Customer {
 	 * @param \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\Contact> $contacts
 	 */
 	public function setContacts($contacts) {
+		foreach ($contacts as $contact) {
+			$contact->setCustomer($this);
+		}
 		$this->contacts = $contacts;
 	}
 
