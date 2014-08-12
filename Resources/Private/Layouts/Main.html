@@ -19,8 +19,8 @@
     <link href="{f:uri.resource(path: 'img/apple-touch-icon-iphone4.png', package: 'Famelo.Satisfy')}" rel="apple-touch-icon-precomposed" sizes="114x114">
     <link href="{f:uri.resource(path: 'img/apple-touch-icon-ipad3.png', package: 'Famelo.Satisfy')}" rel="apple-touch-icon-precomposed" sizes="144x144"> -->
     <f:if condition="{settings.Favicon}">
-        <link rel="icon" href="{f:uri.resource(path: settings.Favicon)}" type="image/x-icon">
-        <link rel="shortcut icon" href="{f:uri.resource(path: settings.Favicon)}" type="image/x-icon">
+        <link rel="icon" href="{settings.Favicon}" type="image/x-icon">
+        <link rel="shortcut icon" href="{settings.Favicon}" type="image/x-icon">
     </f:if>
 
     <link rel="stylesheet" href="{f:uri.resource(path:'components/chosen/chosen/chosen.css', package: 'TYPO3.Expose')}">
