@@ -1,0 +1,5 @@
+<f:layout name="TYPO3.Form:Field" />
+{namespace e=TYPO3\Expose\ViewHelpers}
+<f:section name="field">
+	<f:form.textarea property="{element.identifier}" id="{element.uniqueIdentifier}" class="{element.properties.elementClassAttribute} trumbowyg" placeholder="{element.label -> f:format.nl2br()}" errorClass="{element.properties.elementErrorClassAttribute}" value="{element.defaultValue}" />
+</f:section>

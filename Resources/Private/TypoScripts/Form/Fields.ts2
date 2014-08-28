@@ -15,6 +15,11 @@ prototype(Famelo.Satisfy:Fields) < prototype(TYPO3.TypoScript:RawArray) {
     superTypes.1 = 'TYPO3.Form:SingleLineText'
   }
 
+  FluidEditor = TYPO3.Form:Field {
+    superTypes.1 = 'TYPO3.Form:SingleLineText'
+    implementationClassName = 'Famelo\\Satisfy\\Form\\Elements\\FluidEditor'
+  }
+
   HiddenCustomer = TYPO3.Form:Field {
     superTypes.1 = 'TYPO3.Form:Hidden'
   }

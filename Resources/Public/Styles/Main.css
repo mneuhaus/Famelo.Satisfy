@@ -1,3 +1,4 @@
+@import "../Components/trumbowyg/trumbowyg/design/css/trumbowyg.css";
 article,
 aside,
 details,
@@ -7339,4 +7340,9 @@ body {
 .circle-green {
   background: #3fd351;
   border-color: #2ab53b;
+}
+.trumbowyg-box,
+.editor {
+  width: auto;
+  margin: 0;
 }

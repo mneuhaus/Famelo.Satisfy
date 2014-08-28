@@ -128,6 +128,7 @@ class SatisfyCommandController extends AbstractInteractiveCommandController {
 						->setSubject($campaign->getSubject())
 						->setTemplateSource($campaign->getBody())
 						->assign('campaign', $campaign)
+						->assign('contact', $survey->getContact())
 						->assign('survey', $survey)
 						->send();
 					usleep(1000000 + 0.05);

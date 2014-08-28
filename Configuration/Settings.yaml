@@ -1,6 +1,10 @@
 Famelo:
   Impersonate:
     Role: Famelo.Satisfy:Administrator
+  Messaging:
+    request:
+      defaultPackage: 'Famelo.Satisfy'
+      defaultController: 'MailSurvey'
 
 TYPO3:
   Flow:

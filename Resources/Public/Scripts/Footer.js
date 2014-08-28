@@ -50,4 +50,9 @@ $(document).ready(function(){
 	});
 
 	$('.dropdown-toggle').dropdown();
+
+	$('.trumbowyg').trumbowyg({
+		fullscreenable: false,
+		closable: true
+	});
 });

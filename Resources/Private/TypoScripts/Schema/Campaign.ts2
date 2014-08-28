@@ -7,11 +7,11 @@ prototype(TYPO3.Expose:Schema:Famelo.Satisfy.Domain.Model.Campaign) < prototype(
 		subject.label = 'E-Mail Betreff'
 		body {
 			label = 'E-Mail Text'
-			element = 'TYPO3.Form:MultiLineText'
+			element = 'Famelo.Satisfy:FluidEditor'
 		}
 		intro {
 			label = 'Einleitungstext'
-			element = 'TYPO3.Form:MultiLineText'
+			element = 'Famelo.Satisfy:FluidEditor'
 		}
 		questions {
 			label = 'Fragen'
