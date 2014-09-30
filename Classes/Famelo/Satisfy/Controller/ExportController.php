@@ -33,7 +33,7 @@ class ExportController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$rows = array();
 		foreach ($campaign->getMailSurveys() as $survey) {
 			$row = array(
-				'Firma' => $survey->getContact()->getCustomer(),
+				'Firma' => $survey->getContact()->getCustomer()->__toString(),
 				'Ansprechpartner' => $survey->getContact()->__toString(),
 				'E-Mail' => $survey->getContact()->getEmail()
 			);

@@ -39,6 +39,7 @@ class MailSurvey {
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\Result>
 	 * @ORM\OneToMany(mappedBy="mailSurvey", cascade={"all"})
+     * @ORM\OrderBy({"question" = "ASC"})
 	 * @Flow\Lazy
 	 */
 	protected $results;
