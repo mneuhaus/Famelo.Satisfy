@@ -45,6 +45,7 @@ class Contact {
 	 *
 	 * @var \Famelo\Satisfy\Domain\Model\Customer
 	 * @ORM\ManyToOne(inversedBy="contacts")
+     * @ORM\JoinColumn(onDelete="CASCADE")
 	 */
 	protected $customer;
 

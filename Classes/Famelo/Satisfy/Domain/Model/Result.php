@@ -21,6 +21,7 @@ class Result {
 	 * The customer
 	 * @var \Famelo\Satisfy\Domain\Model\MailSurvey
 	 * @ORM\ManyToOne(inversedBy="results", cascade={"all"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
 	 * @Flow\Lazy
 	 */
 	protected $mailSurvey;

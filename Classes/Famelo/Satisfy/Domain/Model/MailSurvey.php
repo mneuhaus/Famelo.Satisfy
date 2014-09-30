@@ -20,6 +20,7 @@ class MailSurvey {
 	/**
 	 * @var \Famelo\Satisfy\Domain\Model\Contact
 	 * @ORM\ManyToOne(inversedBy="surveys")
+     * @ORM\JoinColumn(onDelete="SET NULL")
 	 */
 	protected $contact;
 
@@ -44,7 +45,8 @@ class MailSurvey {
 
 	/**
 	 * @var \Famelo\Satisfy\Domain\Model\Campaign
-	 * @ORM\ManyToOne(inversedBy="mailSurveys", cascade={"all"})
+	 * @ORM\ManyToOne(inversedBy="mailSurveys")
+     * @ORM\JoinColumn(onDelete="SET NULL")
 	 * @Flow\Lazy
 	 */
 	protected $campaign;

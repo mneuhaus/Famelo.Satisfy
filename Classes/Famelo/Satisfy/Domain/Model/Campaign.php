@@ -64,6 +64,7 @@ class Campaign {
 	 *
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\Contact>
 	 * @ORM\ManyToMany(cascade={"persist"})
+     * @ORM\JoinTable(joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")})
 	 * @Flow\Lazy
 	 */
 	protected $contacts;
