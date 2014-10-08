@@ -13,7 +13,6 @@
         "famelo/vodoo": "*",
         "famelo/messaging": "*",
         "famelo/impersonate": "*",
-        "flowpack/behat": "*",
         "famelo/common": "*",
         "twbs/bootstrap": "3.0.0",
         "leafo/lessphp": "*",
