@@ -45,4 +45,5 @@ prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Satisfy.
 
 prototype(TYPO3.Expose:LocalControllerLinks) {
 	10.controller = 'Famelo\\Satisfy\\Controller\\Campaign\\DetailController'
+	20.controller = 'Famelo\\Satisfy\\Controller\\Campaign\\EditController'
 }

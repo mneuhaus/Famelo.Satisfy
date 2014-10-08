@@ -11,3 +11,16 @@ prototype(Famelo.Satisfy:DetailController) < prototype(TYPO3.TypoScript:Template
 	objects = ${objects}
 	type = ${className}
 }
+
+#
+# TYPO3.Expose:RecordList
+# -----------------------
+#
+# Renders objects into a table or other form with ControllerLinks
+#
+Famelo.Satisfy.EditController.Index = Famelo.Satisfy:EditController
+prototype(Famelo.Satisfy:EditController) < prototype(TYPO3.TypoScript:Template) {
+	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\TemplateImplementation'
+	templatePath = 'resource://TYPO3.Expose/Private/Elements/FormLayout.html'
+	form = TYPO3.Expose:FormRenderer
+}
