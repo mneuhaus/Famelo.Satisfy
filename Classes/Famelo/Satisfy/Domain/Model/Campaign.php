@@ -81,6 +81,7 @@ class Campaign {
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Satisfy\Domain\Model\MailSurvey>
 	 * @ORM\OneToMany(mappedBy="campaign", cascade={"all"})
+	 * @ORM\OrderBy({"answered" = "DESC"})
 	 * @Flow\Lazy
 	 */
 	protected $mailSurveys;

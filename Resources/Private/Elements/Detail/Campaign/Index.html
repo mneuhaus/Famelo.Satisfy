@@ -29,7 +29,7 @@
 					</td>
 					<td>{mailSurvey.contact}</td>
 					<td>{mailSurvey.sent -> e:formatAsString()}</td>
-					<td>
+					<td class="survey-results">
 						<table>
 						<f:for each="{mailSurvey.results}" as="result">
 							<tr>
@@ -38,6 +38,7 @@
 							</tr>
 						</f:for>
 						</table>
+						<small class="pull-right">Beantwortet am: {mailSurvey.answered -> e:formatAsString()}</small>
 					</td>
 				</tr>
 				</s:wrap>
