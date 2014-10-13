@@ -15,7 +15,6 @@
         "famelo/impersonate": "*",
         "famelo/common": "*",
         "twbs/bootstrap": "3.0.0",
-        "leafo/lessphp": "*",
         "typo3/asset": "*",
         "leafo/scssphp": "*",
         "davidbadura/fixtures": "*",
