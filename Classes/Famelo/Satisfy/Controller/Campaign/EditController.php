@@ -12,6 +12,7 @@ namespace Famelo\Satisfy\Controller\Campaign;
  *                                                                        */
 
 use Doctrine\ORM\Mapping as ORM;
+use Famelo\Satisfy\Domain\Model\Campaign;
 use TYPO3\Expose\Controller\AbstractController;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
@@ -41,10 +42,12 @@ class EditController extends AbstractController {
 		$this->view->assign('className', $type);
 		$this->view->assign('objects', $objects);
 		$this->view->assign('callbackAction', 'update');
-		foreach ($objects->first()->getMailSurveys() as $mailSurvey) {
-			if ($mailSurvey->getSent() !== NULL) {
-				$this->addFlashMessage('Diese Kampagne kann nicht mehr bearbeitet werden, da Sie bereits versandt wurde.', '', Message::SEVERITY_WARNING);
-				$this->redirect('index', 'Index');
+		if ($objects->first() instanceof Campaign) {
+			foreach ($objects->first()->getMailSurveys() as $mailSurvey) {
+				if ($mailSurvey->getSent() !== NULL) {
+					$this->addFlashMessage('Diese Kampagne kann nicht mehr bearbeitet werden, da Sie bereits versandt wurde.', '', Message::SEVERITY_WARNING);
+					$this->redirect('index', 'Index');
+				}
 			}
 		}
 		$this->redirect('index', 'Edit', 'TYPO3.Expose', array('type' => $type, 'objects' => $objects));
